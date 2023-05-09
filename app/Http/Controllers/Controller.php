@@ -11,9 +11,4 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    public function index(){
-       $user =  User::find(1);
-        dd($user->role);
-    }
 }
