@@ -1,0 +1,152 @@
+.renewable-energy {
+  position: relative;
+  background-color: #f4f7fa
+}
+
+.renewable-energy .form-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  margin-bottom: 30px
+}
+
+@media only screen and (min-width:768px) and (max-width:991px) {
+  .renewable-energy .form-title {
+    font-size: 24px;
+    line-height: 35px
+  }
+}
+
+@media (max-width:767px) {
+  .renewable-energy .form-title {
+    font-size: 22px;
+    line-height: 35px
+  }
+}
+
+.renewable-energy .contact-form .form-group {
+  margin-bottom: 20px
+}
+
+.renewable-energy .contact-form .form-group input {
+  height: 52px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 0 20px;
+  width: 100%;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+  background-color: #fff
+}
+
+.renewable-energy .contact-form .form-group input:focus {
+  border-color: #3e80ff
+}
+
+.renewable-energy .contact-form .form-group textarea {
+  height: 200px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 20px;
+  resize: none;
+  width: 100%;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease
+}
+
+.renewable-energy .contact-form .form-group textarea:focus {
+  border-color: #3e80ff
+}
+
+.renewable-energy .contact-form .button {
+  margin-top: 10px
+}
+
+.renewable-energy .contact-widget-wrapper {
+  padding-right: 80px
+}
+
+@media only screen and (min-width:768px) and (max-width:991px) {
+  .renewable-energy .contact-widget-wrapper {
+    padding: 0;
+    padding-right: 200px;
+    margin-bottom: 50px
+  }
+}
+
+@media (max-width:767px) {
+  .renewable-energy .contact-widget-wrapper {
+    padding: 0;
+    margin-bottom: 40px
+  }
+}
+
+.renewable-energy .contact-widget-wrapper .main-title {
+  margin-bottom: 40px
+}
+
+.renewable-energy .contact-widget-wrapper .main-title h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 40px
+}
+
+@media only screen and (min-width:768px) and (max-width:991px) {
+  .renewable-energy .contact-widget-wrapper .main-title h2 {
+    font-size: 24px;
+    line-height: 35px
+  }
+}
+
+@media (max-width:767px) {
+  .renewable-energy .contact-widget-wrapper .main-title h2 {
+    font-size: 22px;
+    line-height: 35px
+  }
+}
+
+.renewable-energy .contact-widget-wrapper .main-title p {
+  font-size: 16px
+}
+
+.renewable-energy .contact-widget-wrapper .contact-widget-block {
+  margin-bottom: 30px
+}
+
+.renewable-energy .contact-widget-wrapper .contact-widget-block:last-child {
+  margin: 0
+}
+
+.renewable-energy .contact-widget-wrapper .contact-widget-block h3 {
+  font-size: 16px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 18px
+}
+
+.renewable-energy .contact-widget-wrapper .contact-widget-block p {
+  margin-bottom: 3px
+}
+
+.renewable-energy .contact-widget-wrapper .contact-widget-block p:last-child {
+  margin: 0
+}
+  
+  .button .btn {
+    display: inline-block;
+    text-transform: capitalize;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 30px;
+    background-color: #3e80ff;
+    color: #fff;
+    border: none;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    border-radius: 30px;
+    position: relative;
+    z-index: 1;
+    margin-right: 7px;
+    overflow: hidden
+  }
