@@ -1,0 +1,129 @@
+.account-login {
+    background-color: #f4f7fa
+  }
+  
+  .account-login .inner-content {
+    border-radius: 8px;
+    overflow: hidden;
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, .075);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .075)
+  }
+  
+  .account-login .login-form {
+    padding: 60px 70px;
+    background-color: #fff;
+    border: none
+  }
+  
+  
+  .account-login .login-form .card-body {
+    padding: 0
+  }
+  
+  .account-login .login-form .title {
+    margin-bottom: 45px;
+    text-align: center
+  }
+  
+  .account-login .login-form .title h3 {
+    font-size: 25px;
+    font-weight: 700;
+    color: #24126a;
+    margin-bottom: 8px
+  }
+  
+  .account-login .bottom-content {
+    margin-top: 25px
+  }
+  
+  .account-login .form-group {
+    margin-bottom: 20px;
+    position: relative
+  }
+  
+  .account-login .form-group label {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 9
+  }
+  
+  .account-login .form-group .form-control {
+    padding: 0 18px;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    border: 1px solid #eee;
+    background-color: #f4f7fa;
+    color: #505050;
+    font-size: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 52px;
+    border-radius: 30px !important;
+    overflow: hidden;
+    width: 100%;
+    padding-left: 55px
+  }
+  
+  
+  .account-login .lost-pass {
+    color: #888
+  }
+  
+  .account-login .lost-pass:hover {
+    color: #3e80ff
+  }
+  
+  .account-login .button {
+    margin-top: 40px;
+    text-align: center
+  }
+  
+  .account-login .alt-option li span {
+    color: #727272;
+    display: inline-block
+  }
+  
+  .account-login .create-account {
+    font-weight: 500;
+    color: #24126a;
+    text-align: center;
+    margin-top: 35px;
+    font-size: 14px;
+    display: block
+  }
+  
+  
+  
+  .button .btn {
+    display: inline-block;
+    text-transform: capitalize;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 30px;
+    background-color: green;
+    color: #fff;
+    border: none;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    border-radius: 30px;
+    position: relative;
+    z-index: 1;
+    margin-right: 7px;
+    overflow: hidden
+  }
+  
+  
+  .button .btn:hover {
+    color: #fff;
+    background-color:yellowgreen;
+  }
+  
+  .account-login .button .btn {
+    padding: 14px 40px;
+    margin-right: 20px;
+    width: 100%
+  }
