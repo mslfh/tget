@@ -26,8 +26,6 @@
 
 <body>
 
-<body>
-
 <div id="app">
     <!-- Start Header Area -->
     <header class="header navbar-area">
