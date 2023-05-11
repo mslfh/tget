@@ -29,7 +29,6 @@
 <div id="app">
     <!-- Start Header Area -->
     <header class="header navbar-area">
-        <img id="header_img" style="position: absolute;" src="{{asset("assets/images/header.png")}}">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
@@ -50,11 +49,11 @@
                                     </li>
 
                                     @if(isset($status))
-                                    @if($status==1 && $data['role'] == "manager")
-                                        <li class="nav-item">
-                                            <a href="./masterTrading.html" aria-label="Toggle navigation">Master of Trading</a>
-                                        </li>
-                                    @endif
+                                        @if($status==1 && $data['role'] == "manager")
+                                            <li class="nav-item">
+                                                <a href="./masterTrading.html" aria-label="Toggle navigation">Master of Trading</a>
+                                            </li>
+                                        @endif
                                     @endif
 
                                     <li class="nav-item">
@@ -129,9 +128,7 @@
     <!-- End Header Area -->
 
     <main >
-        <div class="section" >
-            @yield('content')
-        </div>
+        @yield('content')
     </main>
 
 </div>

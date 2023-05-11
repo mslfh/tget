@@ -43,17 +43,24 @@ Route::prefix('mtrading')->group(function () {
 });
 
 
+//Route::middleware([
+//    'auth:sanctum',
+//    config('jetstream.auth_session'),
+//    'verified'
+//])->group(function () {
+//    Route::get('/dashboard', function () {
+//        return view('dashboard');
+//    })->name('dashboard');
+//});
 
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//static page entry
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+
+Route::get('/', function () {
+    return view('home');
 });
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
