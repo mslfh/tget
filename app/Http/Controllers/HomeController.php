@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -25,36 +25,73 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        Auth::user();
-
-        $role = 'buyer';
-
-        return view('home',[
-            "status" => 1,
-            "data" => [
-                'role' => $role
-            ]
-        ]);
+        return view("home");
     }
 
+    public function getRole(Request $request)
+    {
+
+        $user = Auth::user();
+        if(isset($user->role->role_name)){
+            $role = $user->role->role_name;
+            return $this->success( $role
+            );
+        }
+        else{
+            return $this->error("role not find");
+        }
+
+    }
 
 
     public function getUserInfo(Request $request)
     {
 
-        $userId = $request->get('userId');
-
-        $data = User::find($userId);
-
-        if($data){
-            $status =1;
+        $user = Auth::user();
+        if(isset($user->id)){
+            return $this->success(
+                $user
+            );
         }
         else{
-            $status =0;
+            return $this->error("user not find");
         }
-        return [
-            "status" => $status,
-            "data" =>$data
-        ];
     }
+
+    public function updateUser(Request $request)
+    {
+        $user = Auth::user();
+        $data = $request->post();
+
+        if(isset($user->id)){
+            $user->name = isset($data['name'])? $data['name'] :$user->name;
+            $user->password = isset($data['password'])? bcrypt($data['password']):$user->password;
+            $user->postal_addr = isset($data['postal_addr'])? $data['postal_addr'] :$user->postal_addr;
+            $user->save();
+            return $this->success(
+                $user
+            );
+        }
+        else{
+            return $this->error("user not find");
+        }
+    }
+
+    public function changePicture(Request $request)
+    {
+        $user = Auth::user();
+        $data = $request->post();
+
+        if(isset($user->id)){
+            $user->profile_photo_path = isset($data['profile_photo_path'])? $data['profile_photo_path'] :$user->profile_photo_path;
+            $user->save();
+            return $this->success(
+                $user->profile_photo_path
+            );
+        }
+        else{
+            return $this->error("user not find");
+        }
+    }
+
 }
