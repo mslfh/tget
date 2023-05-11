@@ -15,11 +15,12 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src={{asset("assets/images/play/project-1.png")}} class="d-block" style="width:100%; height: 780px;">
-            <div class="carousel-item">
-                <img src="../../public/assets/images/play/project-2.jpg" class="d-block" style="width:100%;height: 780px;">
             </div>
             <div class="carousel-item">
-                <img src="../../public/assets/images/play/project-3.jpg" class="d-block" style="width:100%;height: 780px;">
+                <img src={{asset("assets/images/play/project-2.png")}} class="d-block" style="width:100%;height: 780px;">
+            </div>
+            <div class="carousel-item">
+                <img src={{asset("assets/images/play/project-3.png")}} class="d-block" style="width:100%;height: 780px;">
             </div>
         </div>
 
@@ -38,13 +39,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 col-md-12 col-12">
                     <div class="hero-content">
-                        <h4 class="wow fadeInUp" data-wow-delay=".2s">Start Envesting & Earn Money</h4>
+                        <h4 class="wow fadeInUp" data-wow-delay=".2s">Start Investing & Earn Money</h4>
                         <h1 class="wow fadeInUp" data-wow-delay=".4s">Say Hello
                             to <br>
                             <span>
-                <img class="text-shape" src="../../public/assets/images/hero/text-shape.svg" alt="#">
-                renewable energy
-              </span>
+                                <img class="text-shape" src={{asset("assets/images/hero/text-shape.svg)}} alt="#">
+                                renewable energy
+                            </span>
                         </h1>
                         <p class="wow fadeInUp" data-wow-delay=".6s">Renewable energy sources are becoming increasingly <br>
                             cost-competitive with traditional fossil fuels, making<br> them a more viable option for widespread use.
