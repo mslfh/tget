@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{asset("css/tiny-slider.css")}}" />
     <link rel="stylesheet" href="{{asset("css/index.css")}}" />
     <link rel="stylesheet" href="{{asset("css/login.css")}}" />
+    <link href="{{asset("plugins/flot/examples/examples.css")}}" rel="stylesheet" type="text/css">
 
     <!-- ========================= JS here ========================= -->
     <script src="{{asset("js/jquery-3.6.4.min.js")}}"></script>
@@ -22,6 +23,10 @@
     <script src="{{asset("js/main.js")}}"></script>
     <script src="{{asset("js/tiny-slider.js")}}"></script>
     <script src="{{asset("js/count-up.min.js")}}"></script>
+    <script src="{{asset("js/chart.js")}}"></script>
+    <script src="{{asset("plugins/flot/jquery.js")}}"></script>
+    <script src="{{asset("plugins/flot/jquery.flot.js")}}"></script>
+{{--    <script src="{{asset("plugins/flot.tooltip/js/jquery.flot.tooltip.min.js")}}"></script>--}}
 </head>
 
 <body>

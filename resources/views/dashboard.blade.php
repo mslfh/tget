@@ -26,14 +26,9 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <h6 class="title">Trading Price Chart</h6>
-                                                <div class="card-tools">
-                                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                        <i class="fas fa-mninus"></i>
-                                                    </button>
-                                                </div>
                                             </div>
                                             <div class="card-body">
-                                                <h3 class="card-title">Current Trading Price</h3>
+                                                <div id="placeholder" class="demo-placeholder" style="width:600px;height:300px"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -46,6 +41,12 @@
                 </div>
             </div>
         </section>
+    </div>
+
+    <div id="content">
+
+        <p id="click"></p>
+
     </div>
 
 @endsection
