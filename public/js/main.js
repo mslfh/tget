@@ -5,15 +5,18 @@
   ======================================= */
   window.onscroll = function () {
     var header_navbar = document.querySelector(".navbar-area");
+    var header_img = document.querySelector("#header_img");
     var sticky = header_navbar.offsetTop;
 
     var logo = document.querySelector('.navbar-brand img')
     if (window.pageYOffset > sticky) {
       header_navbar.classList.add("sticky");
+        header_img.style.display = 'none';
       logo.src = 'assets/images/logo/bule-logo.png';
     } else {
       header_navbar.classList.remove("sticky");
       logo.src = 'assets/images/logo/logo.png';
+        header_img.style.display = 'block';
     }
 
     // show or hide the back-top-top button
@@ -25,6 +28,7 @@
     }
   };
 
+  //search
   $(document).ready(function () {
     $('#search-button').click(function () {
       $('html, body').animate({

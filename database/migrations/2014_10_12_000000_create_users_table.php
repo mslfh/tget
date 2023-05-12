@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->integer('status')->default(1)->comment("1-activated 0-inactivated");
+            $table->double('account_balance',2)->default(0)->comment("record the balance of user");
+            $table->string('postal_addr')->nullable()->comment("record the postal address of user");
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
