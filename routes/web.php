@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/profile', function(){
+    return view('profile');
+})->name('profile');
 
 
 
