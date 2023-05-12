@@ -64,3 +64,7 @@ Route::get('/home', function () {
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
