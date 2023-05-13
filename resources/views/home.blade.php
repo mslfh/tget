@@ -17,10 +17,10 @@
                 <img src={{asset("assets/images/play/project-1.png")}} class="d-block" style="width:100%; height: 780px;">
             </div>
             <div class="carousel-item">
-                <img src={{asset("assets/images/play/project-2.png")}} class="d-block" style="width:100%;height: 780px;">
+                <img src={{asset("assets/images/play/project-2.jpg")}} class="d-block" style="width:100%;height: 780px;">
             </div>
             <div class="carousel-item">
-                <img src={{asset("assets/images/play/project-3.png")}} class="d-block" style="width:100%;height: 780px;">
+                <img src={{asset("assets/images/play/project-3.jpg")}} class="d-block" style="width:100%;height: 780px;">
             </div>
         </div>
 
@@ -255,7 +255,7 @@
                                 <h3>Service</h3>
                                 <ul>
                                     <li><a href="">Market</a></li>
-                                    <li><a href="">Histroy</a></li>
+                                    <li><a href="">History</a></li>
                                     <li><a href="">Manage</a></li>
                                 </ul>
                             </div>
