@@ -56,6 +56,15 @@ Route::prefix('manage')->group(function () {
     Route::post('/changeUserStatus', [App\Http\Controllers\ManageController::class, 'changeUserStatus']);
 });
 
+//manage
+Route::prefix('dashboard')->group(function () {
+    Route::get('/getActiveUserSummary', [App\Http\Controllers\DashboardController::class, 'getActiveUserSummary']);
+    Route::get('/getMarketSummary', [App\Http\Controllers\DashboardController::class, 'getMarketSummary']);
+    Route::get('/getPriceHistory', [App\Http\Controllers\DashboardController::class, 'getPriceHistory']);
+    Route::get('/getTradingHistory', [App\Http\Controllers\DashboardController::class, 'getTradingHistory']);
+    Route::post('/getTradingHistory', [App\Http\Controllers\DashboardController::class, 'getTradingHistory']);
+});
+
 
 
 //Route::middleware([
