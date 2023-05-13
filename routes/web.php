@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Auth::routes();
 
 //user
@@ -23,6 +21,7 @@ Route::get('/getUserInfo', [App\Http\Controllers\HomeController::class, 'getUser
 Route::get('/getRole', [App\Http\Controllers\HomeController::class, 'getRole']);
 Route::post('/updateUser', [App\Http\Controllers\HomeController::class, 'updateUser']);
 Route::post('/changePicture', [App\Http\Controllers\HomeController::class, 'changePicture']);
+Route::get('/getUserStatus', [App\Http\Controllers\HomeController::class, 'getUserStatus']);
 
 
 //master of trading
@@ -65,6 +64,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+
+Route::get('/profile', function(){
+    return view('profile');
+})->name('profile');
