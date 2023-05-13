@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -41,6 +41,13 @@ class HomeController extends Controller
             return $this->error("role not find");
         }
 
+    }
+
+    public function getUserStatus(Request $request)
+    {
+
+        $user = Auth::user();
+        return $this->success([ "status" => $user->status]);
     }
 
 

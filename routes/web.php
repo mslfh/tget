@@ -23,6 +23,7 @@ Route::get('/getUserInfo', [App\Http\Controllers\HomeController::class, 'getUser
 Route::get('/getRole', [App\Http\Controllers\HomeController::class, 'getRole']);
 Route::post('/updateUser', [App\Http\Controllers\HomeController::class, 'updateUser']);
 Route::post('/changePicture', [App\Http\Controllers\HomeController::class, 'changePicture']);
+Route::get('/getUserStatus', [App\Http\Controllers\HomeController::class, 'getUserStatus']);
 
 
 //master of trading
