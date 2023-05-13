@@ -15,3 +15,5 @@ yarn-error.log
 /.idea
 /.vscode
 /public/phpMyAdmin4.8.5
+./composer.lock
+./package-lock.json
