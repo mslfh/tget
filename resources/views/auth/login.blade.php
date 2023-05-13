@@ -22,7 +22,7 @@
     <script src="{{asset("js/main.js")}}"></script>
     <script src="{{asset("js/tiny-slider.js")}}"></script>
     <script src="{{asset("js/count-up.min.js")}}"></script>
-
+{{--test--}}
     <script>
         $(document).ready(function() {
             $('#LG').click(function(e){
