@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Balance;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //        $this->middleware('auth');
+                $this->middleware('auth');
     }
 
     /**
@@ -101,4 +102,52 @@ class HomeController extends Controller
         }
     }
 
+    public function getTradingHistory(Request $request)
+    {
+        $user = Auth::user();
+        $data = $request->all();
+        if(isset($user->id)){
+
+            if($data['type'] == 1){
+                $list = Balance::query()->where([
+                    "user_id" => $user->id,
+                ])->get();
+            }
+            elseif($data['type'] == 2){
+                $list = Balance::query()->where([
+                    "user_id" => $user->id,
+                    "type" => 2,
+                ])->get();
+            }
+            elseif ($data['type'] == 3){
+                $list = Balance::query()->where([
+                    "user_id" => $user->id,
+                ])->whereIn('type',[1,3])->get();
+            }
+            else{
+                $list=null;
+            }
+            return $this->success($list);
+        }
+        else{
+            return $this->error("user not find");
+        }
+    }
+
+
+    public function changeMoney(Request $request)
+    {
+        $user = Auth::user();
+
+        $data = $request->post();
+
+        if($data['type'] == "save"){
+            $user->balance($data['money'],1,1,null,"user save money of ".$data['money']);
+        }
+        else{
+            $user->balance($data['money'],0,3,null,"user withdraw money of ".$data['money']);
+        }
+        return $this->success("successfully"
+        );
+    }
 }

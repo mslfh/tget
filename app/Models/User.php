@@ -26,4 +26,35 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo(Role::class,'role_id','id');
     }
+
+    //type: 1-deposit 2- trading cost 3-withdraw
+    //mode: 1-add 0-decline
+    public function balance($price,$mode="0", $type=1,$orderId=null, $remark=null){
+        try{
+            if($mode){
+                $this->account_balance = $this->account_balance + $price;
+            }
+            else{
+                if($this->account_balance < $price){
+                    return false;
+                }
+                $this->account_balance = $this->account_balance - $price;
+            }
+            $this->save();
+            $balance = new Balance();
+            $balance->money = $price;
+            $balance->order_id = $orderId;
+            $balance->type = $type;
+            $balance->remark = $remark;
+            $balance->user_id = $this->id;
+            $balance->save();
+            return true;
+        }
+        catch (\Exception $e){
+            return false;
+        }
+
+
+    }
+
 }

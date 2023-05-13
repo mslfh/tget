@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Energy;
 use App\Models\MarketSetting;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -134,6 +135,19 @@ class MasterTradingController extends Controller
         else{
             return $this->error("not found");
         }
+    }
+
+    public function getTradingHistory(Request $request)
+    {
+        $data  = Order::query()->with([
+            "buyer:id,name,profile_photo_path",
+            "seller:id,name,profile_photo_path",
+            "store" => function ( $query){
+                $query->select('id','energy_id')->with("energy:id,title,image,type");
+            },
+        ])->get();
+        return $this->success($data);
+
     }
 
 }
