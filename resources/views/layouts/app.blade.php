@@ -37,7 +37,7 @@
                         <nav class="navbar navbar-expand-lg">
 
                             <a class="navbar-brand" href="index.html">
-                                <img src="../../public/assets/images/logo/logo.png" alt="Logo">
+                                <img src={{asset("assets/images/logo/logo.png")}} alt="Logo">
                             </a>
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
