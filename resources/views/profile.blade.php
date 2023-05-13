@@ -1,4 +1,7 @@
-// this is for profile module
+@extends('layouts.app')
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +11,10 @@
     <title>Profile</title>
 
     <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}" />
     <!-- ========================= JS here ========================= -->
-    <script src="js/jquery-3.6.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
+    <script src="{{asset("js/jquery-3.6.4.min.js")}}"></script>
+    <script src="{{asset("js/bootstrap.min.js")}}"></script>
     <style>
         .account-style {
             background-color: #f4f7fa
@@ -249,20 +251,20 @@
                                     <!-- name -->
                                     <label for="text" style="font-size: xx-large; font-weight: 700;">Name</label>
                                     <div class="form-group input-group">
-                                        <label><image src="./assets/icon/user.png" height="25px"></image></label>
+                                        <label><image src={{asset("assets/icon/user.png")}} height="25px"></image></label>
                                         <input class=form-control type='text' id="username" value="SellerA">
                                     </div>
                                     <!-- email -->
                                     <label for="email" style="font-size: xx-large; font-weight: 700;">Email Address</label>
                                     <div class="form-group input-group">
-                                        <label><image src="./assets/icon/email.png" height="25px"></label>
+                                        <label><image src={{asset("assets/icon/email.png")}} height="25px"></image></label>
                                         <input class=form-control type='email' id="userEmail" value="userEmail@gmail.com" required>
                                     </div>
                                     <!-- Position -->
                                     <label for="" style="font-size: xx-large; font-weight: 700;">Position</label>
                                     <div class="form-group">
                                         <div>
-                                            <label><image src="./assets/icon/role.png" height="25px"></image></label>
+                                            <label><image src={{asset("assets/icon/role.png")}} height="25px"></image></label>
                                             <select class="form-select" value="">
                                                 <option value="buyer">Buyer</option>
                                                 <option value="seller">Seller</option>
@@ -275,9 +277,9 @@
                                 <!-- Image of user -->
                                 <div class="col-lg col"></div>
                                 <div class="col-lg-3 col-3">
-                                    <img src="./avatar.png" class="button-control" style="width:300px; max-height: 270px; " alt="">
+                                    <img id="ChangImage" src={{asset("assets/images/profile/personalAvatar.png")}} class="button-control" style="width:300px; max-height: 270px; " alt="">
                                     <div class="button-control">
-                                        <button class="btn" style="margin-top:5%; margin-left:25%; background-color: chocolate;" id="picture">Change picture</button>
+                                        <button class="btn" style="margin-top:5%; margin-left:19%; background-color: chocolate;" id="picture">Change picture</button>
                                     </div>
                                 </div>
                                 <!-- Zone -->
@@ -286,7 +288,7 @@
                                 <div class="col-lg-12 col-12">
                                     <label for="text" style="font-size: xx-large; font-weight: 700;">Zone</label>
                                     <div class="form-group">
-                                        <label><image src="./location.png" height="25px"></image></label>
+                                        <label><image src={{asset("assets/images/profile/location.png")}} height="25px"></image></label>
                                         <select class="form-select" value="">
                                             <option value="A">A</option>
                                             <option value="B">B</option>
@@ -306,15 +308,15 @@
                                 <div class="col-lg-12 col-12 mt-5">
                                     <label for="text" style="font-size: xx-large; font-weight: 700;">Current Balance</label>
                                     <div class="form-group input-group">
-                                        <label><image src="./price.png" height="25px"></image></label>
+                                        <label><image src={{asset("assets/images/profile/price.png")}} height="25px"></image></label>
                                         <input class=form-control type='text' id="balance" value="100" readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-12">
                                     <label for="text" style="font-size: xx-large; font-weight: 700;">Recharge Amount</label>
                                     <div class="form-group input-group">
-                                        <label><image src="./changeMoney.png" height="25px"></image></label>
-                                        <input class=form-control type='text'>
+                                        <label><image src={{asset("assets/images/profile/changeMoney.png")}} height="25px"></image></label>
+                                        <input class=form-control type='text' placeholder="enter recharge amount">
                                     </div>
                                 </div>
                                 <!-- Money -->
@@ -375,3 +377,5 @@
 </script>
 </body>
 </html>
+
+@endsection

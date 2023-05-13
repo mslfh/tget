@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Auth::routes();
 
 //user
@@ -65,3 +63,8 @@ Route::get('/home', function () {
 Route::get('/', function () {
     return view('home');
 });
+
+
+Route::get('/profile', function(){
+    return view('profile');
+})->name('profile');
