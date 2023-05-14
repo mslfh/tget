@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class ManageController extends Controller
 {
     //
+    public function index(){
+        return view('manage',["status" => 1]);
+    }
+
+
     public function getAllUser(Request $request)
     {
         $role_id = $request->get("roleId");

@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     //
+    public function index(Request $request){
+           $data =  $this->getMarketSummary($request);
+           return view('dashboard',['data'=>$data]);
+    }
+
+
     public function getActiveUserSummary(Request $request)
     {
         $users = User::query()->get();
@@ -43,6 +49,7 @@ class DashboardController extends Controller
             $energy->avg_price = $avg_price;
             unset($energy->store);
         }
+        return $energies;
         return $this->success($energies
         );
 

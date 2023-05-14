@@ -36,7 +36,13 @@ function getFakeData(){
     return d;
 }
 
-function drawPriceHistoryChart(){
+function drawPriceHistoryChart(data){
+
+
+    for(let index =0; index<data.length;index++){
+        console.log( data[index] );
+    }
+
     let options = {
         series: {
             lines: {
@@ -64,24 +70,32 @@ function drawPriceHistoryChart(){
         }
     };
 
-    let priceDatasets = [{
-            label: "Hydro",
-            data: getFakeData()
-        },
-        {
-            label: "Wind",
-            data: getFakeData()
-        },
-        {
-            label: "Solar",
-            data: getFakeData()
-        }]
-
+    // let priceDatasets = [{
+    //     label: "Hydro",
+    //     data: getFakeData()
+    // },
+    //     {
+    //         label: "Wind",
+    //         data: getFakeData()
+    //     },
+    //     {
+    //         label: "Solar",
+    //         data: getFakeData()
+    //     }]
     let plot = $.plot("#pricehistory-chart", priceDatasets,options);
 }
 
-$(function() {
-    drawPriceHistoryChart();
+    $(function() {
+
+        //demo
+        $.get("/dashboard/getPriceHistory", function(data) {
+            drawPriceHistoryChart(data);
+        });
+
+        $.post("/dashboard/getPriceHistory", { name: "John", age: 30 } ,function(data) {
+            drawPriceHistoryChart(data);
+        });
+
     var datasets = {
         // "usa": {
         //     label: "USA",
