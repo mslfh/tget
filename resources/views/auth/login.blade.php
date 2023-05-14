@@ -23,6 +23,48 @@
     <script src="{{asset("js/tiny-slider.js")}}"></script>
     <script src="{{asset("js/count-up.min.js")}}"></script>
 {{--test--}}
+    <script>
+        $(document).ready(function() {
+            $('#LG').click(function(e){
+                e.preventDefault();
+                var userEmail = $('#email').val().trim();
+                var userPWD = $('#password').val().trim();
+                var rememberMe = $('#remember').is(':checked');
+
+                var emailExp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                if (!emailExp.test(userEmail)){
+                    $('#logErr').text("The email address is incorrect.");
+                    return;
+                }
+
+                var passwordExp = /^(?=.*[A-Z].*[A-Z])(?=.*\d)(?=.*[~`!@#$%^&*()_+-={}|\\:;"'<>,.?/])(?!.*\s).{5,10}$/;
+                if(!passwordExp.test(userPWD)){
+                    $('#logErr').text('Password is incorect, include:5~10 characters in length, at least 2 uppercase letters, 1 number and one of special.');
+                    return;
+                }
+
+                //save data or delete
+                if (rememberMe) {
+                    localStorage.setItem('userEmail', userEmail);
+                    localStorage.setItem('userPWD', userPWD);
+                } else {
+                    localStorage.removeItem('userEmail');
+                    localStorage.removeItem('userPWD');
+                }
+
+                $('#logErr').text('');
+                $("#LG").unbind("click").submit();
+            });
+
+            var storedEmail = localStorage.getItem('userEmail');
+            var storedPWD = localStorage.getItem('userPWD');
+            if (storedEmail && storedPWD) {
+                $('#').val(storedEmail);
+                $('#password').val(storedPWD);
+                $('#remember').prop('checked', true);
+            }
+        })
+    </script>
 </head>
 @extends('layouts.app')
 

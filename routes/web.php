@@ -93,3 +93,13 @@ Route::get('/', function () {
 Route::get('/profile', function(){
     return view('profile');
 })->name('profile');
+
+//add trading page
+Route::get('/trading', function(){
+    return view('trading');
+})->name('trading');
+
+//add masterTrading
+Route::get('/masterTrading', function(){
+    return view('masterTrading');
+})->name('masterTrading');
