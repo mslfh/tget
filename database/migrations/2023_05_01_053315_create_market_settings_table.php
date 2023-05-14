@@ -15,7 +15,7 @@ class CreateMarketSettingsTable extends Migration
     {
         Schema::create('market_settings', function (Blueprint $table) {
             $table->id();
-            $table->double('tax',11,2)->default(0)->comment('the tax of market when trading');
+            $table->double('tax',11,2)->default(0)->comment('the tax precentage  of market when trading');
             $table->double('administration_fee',11,2)->default(0)->comment('the administration_fee of market when trading');
             $table->timestamps();
 //            record the set of market

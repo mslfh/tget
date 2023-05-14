@@ -9,5 +9,7 @@ class Energy extends Model
 {
     use HasFactory;
 
-
+    public function store(){
+        return $this->hasMany(Store::class, 'energy_id', 'id');
+    }
 }
