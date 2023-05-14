@@ -132,8 +132,8 @@
                             </div>
                             <div class="form-group">
                                 <label><image src={{asset("assets/icon/role.png")}} height="25px"></image></label>
-                                <select class="form-select" value="" id="role">
-                                    <option value="">Select an option</option>
+                                <select class="form-select" value="" id="role" style="text-align-last:center">
+                                    <option value="" >Select an option</option>
                                     <option value="buyer">Buyer</option>
                                     <option value="seller">Seller</option>
                                     <option value="both">Both(Seller&Buyer)</option>
@@ -176,7 +176,7 @@
                             </div>
                             <div class="form-group">
                                     <label><image src={{asset("assets/images/profile/location.png")}} height="25px"></image></label>
-                                    <select class="form-select" value="" id="zone">
+                                    <select class="form-select" value="" id="zone" style="text-align-last:center">
                                         <option value="">Select your zone</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
