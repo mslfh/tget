@@ -112,7 +112,6 @@
                                             </div>
                                             <div class="card-body">
                                                 <div id="tradinghistory-chart" class="demo-placeholder" style="width:600px;height:300px"></div>
-                                                <p id="choices" style="width:600px;height:300px";"></p>
                                             </div>
                                         </div>
                                     </div>
