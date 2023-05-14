@@ -11,3 +11,6 @@ function removeUser(){
 //         // }
 //     });
 }
+// $(document).ready(function() {
+//     $('.dropdown-toggle').dropdown();
+// });
