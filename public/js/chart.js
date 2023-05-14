@@ -36,12 +36,26 @@ function getFakeData(){
     return d;
 }
 
+function priceHistoryData(data){
+    let priceDatasets = []
+    for(let index=0;index<data.length;index++){
+        let energiesData = data["data"][index]["energies"]
+        let dateData = data["data"]["date"]
+        for(let i=0;i<energiesData.length; i++){
+            let priceData = {
+                label:energiesData[i]["energy"]["type"],
+                data:[dateData.getTime(),energiesData[i]["selling_price"]]
+            }
+            priceDatasets.push(priceData)
+        }
+    }
+}
+
 function drawPriceHistoryChart(){
     let options = {
         series: {
             lines: {
                 show: true,
-                // fill:true
             },
             points: {
                 show: true
@@ -56,7 +70,7 @@ function drawPriceHistoryChart(){
         },
         tooltip: true,
         tooltipOpts: {
-            content: "Price of '%s' %x is %y.4",
+            content: "Price of '%s' %x is %y.2",
             shifts: {
                 x: -60,
                 y: 25
@@ -76,13 +90,61 @@ function drawPriceHistoryChart(){
             label: "Solar",
             data: getFakeData()
         }]
-
     let plot = $.plot("#pricehistory-chart", priceDatasets,options);
 }
 
+function drawTradingHistoryChart(){
+    let options = {
+        series: {
+            lines: {
+                show: true,
+            },
+            points: {
+                show: true
+            }
+        },
+        xaxis: {
+            mode: "time",
+            tickLength: 5,
+        },
+        grid: {
+            hoverable: true //IMPORTANT! this is needed for tooltip to work
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: "Trade of '%s' %x at price %y.2",
+            shifts: {
+                x: -60,
+                y: 25
+            }
+        }
+    };
+    let priceDatasets = [
+        {
+            label: "Hydro",
+            data: getFakeData()
+        },
+        {
+            label: "Wind",
+            data: getFakeData()
+        },
+        {
+            label: "Solar",
+            data: getFakeData()
+        }]
+
+    let plot = $.plot("#tradinghistory-chart", priceDatasets,options);
+}
+
 $(function() {
-    drawPriceHistoryChart();
-    var datasets = {
+    drawPriceHistoryChart()
+    drawTradingHistoryChart()
+    // Draw price history chart using API call
+    // $.get("/dashboard/getPriceHistory", function(data) {
+    //     drawPriceHistoryChart(data);
+    // });
+    // drawPriceHistoryChart(data);
+    // var datasets = {
         // "usa": {
         //     label: "USA",
         //     data: [[2023-05-13, 483994]]
@@ -111,7 +173,7 @@ $(function() {
         //     label: "Norway",
         //     data: [[1988, 4382], [1989, 4498], [1990, 4535], [1991, 4398], [1992, 4766], [1993, 4441], [1994, 4670], [1995, 4217], [1996, 4275], [1997, 4203], [1998, 4482], [1999, 4506], [2000, 4358], [2001, 4385], [2002, 5269], [2003, 5066], [2004, 5194], [2005, 4887], [2006, 4891]]
         // }
-    };
+    // };
 
     // hard-code color indices to prevent them from shifting as
     // countries are turned on/off
@@ -160,5 +222,5 @@ $(function() {
 
     // Add the Flot version string to the footer
 
-    $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
+    // $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
 });

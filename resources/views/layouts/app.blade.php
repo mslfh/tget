@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset("css/tiny-slider.css")}}" />
     <link rel="stylesheet" href="{{asset("css/index.css")}}" />
     <link rel="stylesheet" href="{{asset("css/login.css")}}" />
+    <link rel="stylesheet" href="{{asset("css/dashboard.css")}}" />
     <link href="{{asset("plugins/flot/examples/examples.css")}}" rel="stylesheet" type="text/css">
 {{--    <link href="{{asset("plugins/bootstrap/examples.css")}}" rel="stylesheet" type="text/css">--}}
 
