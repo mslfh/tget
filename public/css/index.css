@@ -462,9 +462,9 @@ html {
 
 
 .section {
-    padding-top: 130px;
+    padding-top: 55px;
     padding-bottom: 110px;
-    position: relative
+    position: relative;
   }
 
   .section-title {
