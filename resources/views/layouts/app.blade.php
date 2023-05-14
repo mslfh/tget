@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -46,35 +45,35 @@
                         <!-- Start Navbar -->
                         <nav class="navbar navbar-expand-lg">
 
-                            <a class="navbar-brand" href="index.html">
-                                <img src="../../public/assets/images/logo/logo.png" alt="Logo">
+                            <a class="navbar-brand" href={{route('home')}}>
+                                <img src={{asset("assets/images/logo/logo.png")}} alt="Logo">
                             </a>
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="index.html" class="home" aria-label="Toggle navigation">Home</a>
+                                        <a href={{route('home')}} class="home" aria-label="Toggle navigation">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="./trading.html" aria-label="Toggle navigation">Trading</a>
+                                        <a href={{route('trading')}} class="home" aria-label="Toggle navigation">Trading</a>
                                     </li>
 
                                     @if(isset($status))
                                     @if($status==1 && $data['role'] == "manager")
                                         <li class="nav-item">
-                                            <a href="./masterTrading.html" aria-label="Toggle navigation">Master of Trading</a>
+                                            <a href={{route('masterTrading')}} class="home" aria-label="Toggle navigation">Master of Trading</a>
                                         </li>
                                     @endif
                                     @endif
 
-                                    <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
-                                           data-bs-target="#submenu-1-1" aria-controls="navbarSupportedContent" aria-expanded="false"
-                                           aria-label="Toggle navigation">Get started</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-1">
-                                            <li class="nav-item"><a href="registration.html">Register now</a></li>
-                                            <li class="nav-item"><a href="login.html">Login/Logout</a></li>
-                                        </ul>
-                                    </li>
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"--}}
+{{--                                           data-bs-target="#submenu-1-1" aria-controls="navbarSupportedContent" aria-expanded="false"--}}
+{{--                                           aria-label="Toggle navigation">Get started</a>--}}
+{{--                                        <ul class="sub-menu collapse" id="submenu-1-1">--}}
+{{--                                            <li class="nav-item"><a href={{route('register')}}>Register now</a></li>--}}
+{{--                                            <li class="nav-item"><a href={{route('login')}}>Login/Logout</a></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
                                 </ul>
                             </div>
                             <div class="button">

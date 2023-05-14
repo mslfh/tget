@@ -31,47 +31,54 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+
+
+                                        @foreach( $data as $item)
                                             <tr>
-                                                <td style="width:50px;"><span class="round">S</span></td>
+                                                <td style="width:50px;"><span class="round">{{$item['title']}}</span></td>
                                                 <td class="align-middle">
-                                                    <h6>Solar</h6>
+                                                    <h6>{{$item['type']}}</h6>
                                                 </td>
-                                                <td class="align-middle">12.50</td>
-                                                <td class="align-middle">$16.90</td>
+                                                <td class="align-middle">{{$item['total_volume']}}</td>
+                                                <td class="align-middle">{{$item['avg_price']}}</td>
                                             </tr>
-                                            <tr class="active">
-                                                <td><span class="round"><img src="../assets/images/users/2.jpg"
-                                                                             alt="user" width="50"></span></td>
-                                                <td class="align-middle">
-                                                    <h6>Solar</h6>
-                                                </td>
-                                                <td class="align-middle">12.50</td>
-                                                <td class="align-middle">$16.90</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-success">B</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Solar</h6>
-                                                </td>
-                                                <td class="align-middle">12.50</td>
-                                                <td class="align-middle">$16.90</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-primary">N</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Solar</h6>
-                                                </td>
-                                                <td class="align-middle">12.50</td>
-                                                <td class="align-middle">$16.90</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="round round-warning">M</span></td>
-                                                <td class="align-middle">
-                                                    <h6>Solar</h6>
-                                                </td>
-                                                <td class="align-middle">12.50</td>
-                                                <td class="align-middle">$16.90</td>
-                                            </tr>
+                                        @endforeach
+
+
+
+{{--                                            <tr class="active">--}}
+{{--                                                <td><span class="round"><img src="../assets/images/users/2.jpg"--}}
+{{--                                                                             alt="user" width="50"></span></td>--}}
+{{--                                                <td class="align-middle">--}}
+{{--                                                    <h6>Solar</h6>--}}
+{{--                                                </td>--}}
+{{--                                                <td class="align-middle">12.50</td>--}}
+{{--                                                <td class="align-middle">$16.90</td>--}}
+{{--                                            </tr>--}}
+{{--                                            <tr>--}}
+{{--                                                <td><span class="round round-success">B</span></td>--}}
+{{--                                                <td class="align-middle">--}}
+{{--                                                    <h6>Solar</h6>--}}
+{{--                                                </td>--}}
+{{--                                                <td class="align-middle">12.50</td>--}}
+{{--                                                <td class="align-middle">$16.90</td>--}}
+{{--                                            </tr>--}}
+{{--                                            <tr>--}}
+{{--                                                <td><span class="round round-primary">N</span></td>--}}
+{{--                                                <td class="align-middle">--}}
+{{--                                                    <h6>Solar</h6>--}}
+{{--                                                </td>--}}
+{{--                                                <td class="align-middle">12.50</td>--}}
+{{--                                                <td class="align-middle">$16.90</td>--}}
+{{--                                            </tr>--}}
+{{--                                            <tr>--}}
+{{--                                                <td><span class="round round-warning">M</span></td>--}}
+{{--                                                <td class="align-middle">--}}
+{{--                                                    <h6>Solar</h6>--}}
+{{--                                                </td>--}}
+{{--                                                <td class="align-middle">12.50</td>--}}
+{{--                                                <td class="align-middle">$16.90</td>--}}
+{{--                                            </tr>--}}
                                         </tbody>
                                     </table>
                                 </div>

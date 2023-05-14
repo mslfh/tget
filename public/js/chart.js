@@ -28,10 +28,10 @@ function getFakeData(){
 
     // first correct the timestamps - they are recorded as the daily
     // midnights in UTC+0100, but Flot always displays dates in UTC
-    // so we have to add eleven hour to hit the midnights (AU time) in the plot
+    // so we have to add one hour to hit the midnights in the plot
 
     for (let i = 0; i < d.length; ++i) {
-        d[i][0] += 11* 60 * 60 * 1000;
+        d[i][0] += 60 * 60 * 1000;
     }
     return d;
 }
@@ -80,53 +80,8 @@ function drawPriceHistoryChart(){
     let plot = $.plot("#pricehistory-chart", priceDatasets,options);
 }
 
-function drawTradingHistoryChart(){
-    let options = {
-        series: {
-            lines: {
-                show: true,
-                // fill:true
-            },
-            points: {
-                show: true
-            }
-        },
-        xaxis: {
-            mode: "time",
-            tickLength: 5,
-        },
-        grid: {
-            hoverable: true //IMPORTANT! this is needed for tooltip to work
-        },
-        tooltip: true,
-        tooltipOpts: {
-            content: "Price of '%s' %x is %y.4",
-            shifts: {
-                x: -60,
-                y: 25
-            }
-        }
-    };
-    let priceDatasets = [{
-        label: "Hydro",
-        data: getFakeData()
-    },
-        {
-            label: "Wind",
-            data: getFakeData()
-        },
-        {
-            label: "Solar",
-            data: getFakeData()
-        }]
-
-    let plot = $.plot("#tradinghistory-chart", priceDatasets,options);
-
-}
-
 $(function() {
     drawPriceHistoryChart();
-    drawTradingHistoryChart();
     var datasets = {
         // "usa": {
         //     label: "USA",

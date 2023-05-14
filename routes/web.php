@@ -22,6 +22,8 @@ Route::get('/getRole', [App\Http\Controllers\HomeController::class, 'getRole']);
 Route::post('/updateUser', [App\Http\Controllers\HomeController::class, 'updateUser']);
 Route::post('/changePicture', [App\Http\Controllers\HomeController::class, 'changePicture']);
 Route::get('/getUserStatus', [App\Http\Controllers\HomeController::class, 'getUserStatus']);
+Route::get('/getTradingHistory', [App\Http\Controllers\HomeController::class, 'getTradingHistory']);
+Route::post('/changeMoney', [App\Http\Controllers\HomeController::class, 'changeMoney']);
 
 
 //master of trading
@@ -32,14 +34,37 @@ Route::prefix('mtrading')->group(function () {
 
 
     Route::get('/getEnergyList', [App\Http\Controllers\MasterTradingController::class, 'getEnergyList']);
+    Route::get('/getTradingHistory', [App\Http\Controllers\MasterTradingController::class, 'getTradingHistory']);
     Route::post('/addNewEnergy', [App\Http\Controllers\MasterTradingController::class, 'addNewEnergy']);
     Route::delete('/deleteEnergy', [App\Http\Controllers\MasterTradingController::class, 'deleteEnergy']);
     Route::get('/getEnergyDetai', [App\Http\Controllers\MasterTradingController::class, 'getEnergyDetai']);
     Route::post('/updateEnergy', [App\Http\Controllers\MasterTradingController::class, 'updateEnergy']);
     Route::post('/uploadEnergyImage', [App\Http\Controllers\MasterTradingController::class, 'uploadEnergyImage']);
 
-
 });
+
+//trading
+Route::prefix('trading')->group(function () {
+    Route::post('/submitOrder', [App\Http\Controllers\OrderController::class, 'submitOrder']);
+    Route::post('/submitEnergy', [App\Http\Controllers\OrderController::class, 'submitEnergy']);
+});
+//manage
+Route::prefix('manage')->group(function () {
+    Route::get('/getAllUser', [App\Http\Controllers\ManageController::class, 'getAllUser']);
+    Route::post('/addNewUser', [App\Http\Controllers\ManageController::class, 'addNewUser']);
+    Route::delete('/removeUser', [App\Http\Controllers\ManageController::class, 'removeUser']);
+    Route::post('/changeUserStatus', [App\Http\Controllers\ManageController::class, 'changeUserStatus']);
+});
+
+//manage
+Route::prefix('dashboard')->group(function () {
+    Route::get('/getActiveUserSummary', [App\Http\Controllers\DashboardController::class, 'getActiveUserSummary']);
+    Route::get('/getMarketSummary', [App\Http\Controllers\DashboardController::class, 'getMarketSummary']);
+    Route::get('/getPriceHistory', [App\Http\Controllers\DashboardController::class, 'getPriceHistory']);
+    Route::get('/getTradingHistory', [App\Http\Controllers\DashboardController::class, 'getTradingHistory']);
+    Route::post('/getTradingHistory', [App\Http\Controllers\DashboardController::class, 'getTradingHistory']);
+});
+
 
 
 //Route::middleware([
@@ -64,11 +89,21 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//});
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
 
 Route::get('/profile', function(){
     return view('profile');
 })->name('profile');
+
+//add trading page
+Route::get('/trading', function(){
+    return view('trading');
+})->name('trading');
+
+//add masterTrading
+Route::get('/masterTrading', function(){
+    return view('masterTrading');
+})->name('masterTrading');
