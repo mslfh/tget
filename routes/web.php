@@ -89,6 +89,13 @@ Route::get('/', function () {
     return view('home');
 });
 
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//});
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+Route::get('/manage', function(){
+    return view('manage');
+});
 
 Route::get('/profile', function(){
     return view('profile');
