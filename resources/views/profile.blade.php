@@ -273,19 +273,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Image of user -->
-                                <div class="col-lg col"></div>
-                                <div class="col-lg-3 col-3">
-                                    <img id="ChangImage" src={{asset("assets/images/profile/personalAvatar.png")}} class="button-control" style="width:300px; max-height: 270px; " alt="">
-                                    <div class="button-control">
-                                        <button class="btn" style="margin-top:5%; margin-left:19%; background-color: chocolate;" id="picture">Change picture</button>
-                                    </div>
-                                </div>
-                                <!-- Zone -->
-                                <div class="col-lg-12 col-12">
-                                </div>
-                                <div class="col-lg-12 col-12">
+                                    <!-- Zone -->
                                     <label for="text" style="font-size: xx-large; font-weight: 700;">Zone</label>
                                     <div class="form-group">
                                         <label><image src={{asset("assets/images/profile/location.png")}} height="25px"></image></label>
@@ -298,10 +286,17 @@
                                         </select>
                                     </div>
                                 </div>
-                                <!-- Edit Details Button -->
+                                <!-- Image of user -->
+                                <div class="col-lg col"></div>
+                                <div class="col-lg-3 col-3" style="margin-top: 90px">
+                                    <img id="ChangImage" src={{asset("assets/images/profile/personalAvatar.png")}} class="button-control" style="width:300px; max-height: 270px; " alt="">
+                                    <div class="button-control">
+                                        <button class="btn" style="margin-top:5%; margin-left:19%; background-color: chocolate;" id="picture">Change picture</button>
+                                    </div>
+                                </div>
+                                <!-- Save Edit Details Button -->
                                 <div class='button-control mb-5'>
-                                    <button class='btn col-lg-2 col-3' type='button' id="edit">Edit Details</button>
-                                    <button class='btn col-lg-2 col-3' type='submit' id="update">Update Details</button>
+                                    <button class='btn col-lg-2 col-3' type='submit' id="save">Save Details</button>
                                 </div>
 
                                 <!-- Balance -->
