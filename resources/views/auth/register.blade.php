@@ -152,7 +152,7 @@
                                 <div class="form-group">
                                     <label><image src={{asset("assets/icon/role.png")}} height="25px"></image></label>
                                     <select class="form-select" value="" id="role" style="text-align-last:center">
-                                        <option value="" >Select an option</option>
+                                        <option value="" >Select your role</option>
                                         <option value="buyer">Buyer</option>
                                         <option value="seller">Seller</option>
                                         <option value="both">Both(Seller&Buyer)</option>
@@ -160,11 +160,16 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-12">
-                                <div class="form-group input-group">
-                                    <div class="form-group input-group">
-                                        <label><image src={{asset("assets/icon/phone.png")}} height="25px"></image></label>
-                                        <input class=form-control type='number' placeholder="Your phone" maxlength="10" required>
-                                    </div>
+                                <div class="form-group">
+                                    <label><image src={{asset("assets/images/profile/location.png")}} height="25px"></image></label>
+                                    <select class="form-select" value="" id="zone" style="text-align-last:center">
+                                        <option value="">Select your zone</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -180,6 +185,8 @@
                                     @enderror
                                 </div>
                             </div>
+                        </div>
+                        <div>
                             <div class="col-lg-6 col-12">
                                 <div class="form-group input-group">
                                     {{--                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>--}}
@@ -195,17 +202,16 @@
                                     <input class=form-control type='text' placeholder="Postal address" id="postalAddress" required>
                                 </div>
                             </div>
+
+                        </div>
+
+                        <div>
                             <div class="col-lg-6 col-12">
-                                <div class="form-group">
-                                    <label><image src={{asset("assets/images/profile/location.png")}} height="25px"></image></label>
-                                    <select class="form-select" value="" id="zone" style="text-align-last:center">
-                                        <option value="">Select your zone</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                    </select>
+                                <div class="form-group input-group">
+                                    <div class="form-group input-group">
+                                        <label><image src={{asset("assets/icon/phone.png")}} height="25px"></image></label>
+                                        <input class=form-control type='number' placeholder="Your phone" maxlength="10" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
