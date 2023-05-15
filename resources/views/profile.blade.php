@@ -240,7 +240,7 @@
 <div class="account-style">
     <div class=container>
         <div class=row>
-            <div class="col-lg-12 offset-lg-1 col-md-10 offset-md-1 col-11">
+            <div class="col-12">
                 <h3 class="card-header" style="text-align: center; color: #452bac;">Profile</h3>
                 <form class="card login-form inner-content" method='post' action="#" id="update-form">
                     <div class="text-danger formMargin" id="error"></div>

@@ -108,73 +108,95 @@
 
 @section('content')
 <div class="account-login section">
-    <h3 style="text-align: center; color: #452bac;">{{ __('Register') }}</h3>
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
+            <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-12">
 {{--                <div class="card-header">{{ __('Register') }}</div>--}}
 
 {{--                <div class="card-body">--}}
                     <form class="card login-form inner-content" method="POST" action="{{ route('register') }}">
                         @csrf
-
-                        <div class="text-danger formMargin" id="Err"></div>
-                        <div  class="card-body">
-                            <div class="form-group input-group">
-    {{--                                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>--}}
-                                <label><image src={{asset("assets/icon/user.png")}} height="25px"></image></label>
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Enter your name, please">
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label><image src={{asset("assets/icon/role.png")}} height="25px"></image></label>
-                                <select class="form-select" value="" id="role" style="text-align-last:center">
-                                    <option value="" >Select an option</option>
-                                    <option value="buyer">Buyer</option>
-                                    <option value="seller">Seller</option>
-                                    <option value="both">Both(Seller&Buyer)</option>
-                                </select>
-                            </div>
-                            <div class="form-group input-group">
-    {{--                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>--}}
-                                <label><image src={{asset("assets/icon/email.png")}} height="25px"></image></label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your Email">
-
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                @enderror
-                            </div>
-                            <div class="form-group input-group">
+                        <div class="title">
+                            <h3>{{ __('Register') }}</h3>
+                            <p>Please enter the information below to register.</p>
+                            <div class="text-danger formMargin" id="Err"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
                                 <div class="form-group input-group">
-                                    <label><image src={{asset("assets/icon/phone.png")}} height="25px"></image></label>
-                                    <input class=form-control type='number' placeholder="Your phone" maxlength="10" required>
+                                    <label><image src={{asset("assets/icon/user.png")}} height="25px"></image></label>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Enter your name, please">
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="form-group input-group">
-                                <label><image src={{asset("assets/icon/password.png")}} height="25px"></image></label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Enter your password">
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                @enderror
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group input-group">
+                                    {{--                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>--}}
+                                    <label><image src={{asset("assets/icon/email.png")}} height="25px"></image></label>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your Email">
+
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
                             </div>
-                            <div class="form-group input-group">
-    {{--                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>--}}
-                                <label><image src="./assets/icon/password.png" height="25px"></image></label>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Double check your password">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label><image src={{asset("assets/icon/role.png")}} height="25px"></image></label>
+                                    <select class="form-select" value="" id="role" style="text-align-last:center">
+                                        <option value="" >Select an option</option>
+                                        <option value="buyer">Buyer</option>
+                                        <option value="seller">Seller</option>
+                                        <option value="both">Both(Seller&Buyer)</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group input-group">
-                                <label><image src="./assets/icon/home.png" height="25px"></label>
-                                <input class=form-control type='text' placeholder="Postal address" id="postalAddress" required>
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group input-group">
+                                    <div class="form-group input-group">
+                                        <label><image src={{asset("assets/icon/phone.png")}} height="25px"></image></label>
+                                        <input class=form-control type='number' placeholder="Your phone" maxlength="10" required>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group input-group">
+                                    <label><image src={{asset("assets/icon/password.png")}} height="25px"></image></label>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Enter your password">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group input-group">
+                                    {{--                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>--}}
+                                    <label><image src="./assets/icon/password.png" height="25px"></image></label>
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Double check your password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group input-group">
+                                    <label><image src={{asset("assets/icon/home.png")}} height="25px"></image></label>
+                                    <input class=form-control type='text' placeholder="Postal address" id="postalAddress" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
                                     <label><image src={{asset("assets/images/profile/location.png")}} height="25px"></image></label>
                                     <select class="form-select" value="" id="zone" style="text-align-last:center">
                                         <option value="">Select your zone</option>
@@ -184,24 +206,24 @@
                                         <option value="D">D</option>
                                         <option value="E">E</option>
                                     </select>
+                                </div>
                             </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="CKB" class="hover-orange">
-                                    <input type="checkbox" class="form-check-input checkBox" id="CKB">
-                                    <b>*I acknowledge that I have read and understand the terms and conditions.</b>
-                                </label>
-                            </div>
-
-                            <div class="button">
-                                <button type="submit" class="btn btn-primary" id="SB">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                            <h4 class='create-account'>Already have an account? <a href={{route('login')}}>Login</a></h4>
                         </div>
+                        <br>
+                        <div class="form-group">
+                            <br>
+                            <label for="CKB" class="hover-orange">
+                                <input type="checkbox" class="form-check-input checkBox" id="CKB">
+                                <b>*I acknowledge that I have read and understand the terms and conditions.</b>
+                            </label>
+                        </div>
+                        <div class="button">
+                            <button type="submit" class="btn btn-primary" id="SB">
+                                {{ __('Register') }}
+                            </button>
+                        </div>
+                        <h4 class='create-account'>Already have an account? <a href={{route('login')}}>Login</a></h4>
                     </form>
-                </div>
             </div>
         </div>
     </div>
