@@ -299,19 +299,21 @@
                                     </div>
                                 </div>
 
-                                    <div class="col-lg-7 col-10">
+                                <div class="col-lg-7 col-10">
                                         <label for="text" style="font-size: xx-large; font-weight: 700;">Current Balance</label>
                                         <div class="form-group input-group">
                                             <label><image src={{asset("assets/images/profile/price.png")}} height="25px"></image></label>
                                             <input class=form-control type='text' id="balance" value="100" readonly style="color: gray">
                                          </div>
                                         <div class='button-control mb-5'>
-                                            <button class='btn' type='button' data-bs-toggle="modal" data-bs-target="#rechargeModal" id="recharge" style="background-color:gray;">Change Amount</button>
+                                            <button class='btn' type='button' data-bs-toggle="modal" data-bs-target="#rechargeModal" id="recharge" style="background-color:darkblue;">Recharge</button>
+                                            <button class='btn' type='button' data-bs-toggle="modal" data-bs-target="#withdrawModal" id="withdraw" style="float: right; background-color:orange">Withdraw</button>
+{{--                                            rechrage modal--}}
                                             <div class="modal" tabindex="-1" id="rechargeModal">
                                                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4>Enter your amount</h4>
+                                                            <h4>Recharge your amount</h4>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
@@ -324,22 +326,48 @@
                                                                 <br>
                                                                 <div class="mb-3">
                                                                     <label for="Recharge Amount">Recharge Amount</label>
-                                                                    <input type="text" class="form-control input-group" id="RechargeAmount" value="0">
-                                                                    <button type="button" class="btn btn-primary my-2" id="rechargeSave" data-bs-dismiss="modal" style="float: right">Recharge</button>
+                                                                    <input type="number" class="form-control input-group" id="RechargeAmount" value="0">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:gray;">Close</button>
+                                                            <button type="button" class="btn btn-primary" id="rechargeAmount">Recharge Amount</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+{{--                                            withdraw modal--}}
+                                            <div class="modal" tabindex="-1" id="withdrawModal">
+                                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4>Withdraw your amount</h4>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            {{--                                                            <p class="text-danger" id="error"></p>--}}
+                                                            <form>
+                                                                <div class="mb-3">
+                                                                    <label for="Current Amount">Current Amount</label>
+                                                                    <input type="text" class="form-control input-group" id="CurrentAmount" value="100" readonly>
                                                                 </div>
                                                                 <br>
                                                                 <div class="mb-3">
                                                                     <label for="Withdraw Amount">Withdraw Amount</label>
-                                                                    <input type="text" class="form-control input-group" id="WithdrawAmount" value="0">
-                                                                    <button type="button" class="btn btn-primary my-2" id="withdrawSave" data-bs-dismiss="modal" style="float: right">Withdraw</button>
+                                                                    <input type="number" class="form-control input-group" id="WithdrawAmount" value="0">
                                                                 </div>
                                                             </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:gray;">Close</button>
+                                                            <button type="button" class="btn btn-primary">Withdraw Amount</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                </div>
                             <!-- Balance -->
 {{--                                <div class="col-lg-12 col-12 mt-5">--}}
 {{--                                    <label for="text" style="font-size: xx-large; font-weight: 700;">Current Balance</label>--}}
@@ -359,42 +387,47 @@
 
                                 <!-- Trading History -->
                                 <div class="col-lg-12 col-12 button-control mb-5">
-                                    <label for="" style="font-size: xx-large; font-weight: 700; color: #452bac;">Trading History</label>
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>NO.</th>
-                                            <th>Energy of Type</th>
-                                            <th>Amount of transaction</th>
-                                            <th>Trading date</th>
-                                            <th>Description</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Solar</td>
-                                            <td>30</td>
-                                            <td>1-April</td>
-                                            <td>enough</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>wind</td>
-                                            <td>30</td>
-                                            <td>10-April</td>
-                                            <td>ok</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>wind</td>
-                                            <td>30</td>
-                                            <td>15-April</td>
-                                            <td>good</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <button class='btn col-lg-3 col-7' type='button' id="trading-history" style="float:right; background-color: #24126a;" id="download">Download</button>
+                                    <div class="d-flex align-items-center">
+                                        <label for="" style="font-size: 57px; font-weight: 700; vertical-align: middle">Trading History</label>
+                                        <button class='btn mx-3' type='button' id="showTrading" onclick="$('#TradingHistory').show()">More Details</button>
+                                    </div>
+                                    <div id="TradingHistory" style="display: none">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>NO.</th>
+                                                <th>Energy of Type</th>
+                                                <th>Amount of transaction</th>
+                                                <th>Trading date</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Solar</td>
+                                                <td>30</td>
+                                                <td>1-April</td>
+                                                <td>enough</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>wind</td>
+                                                <td>30</td>
+                                                <td>10-April</td>
+                                                <td>ok</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>wind</td>
+                                                <td>30</td>
+                                                <td>15-April</td>
+                                                <td>good</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <button class='btn col-lg-3 col-7' type='button' id="trading-history" style="float:right; background-color: #24126a;" id="download">Download</button>
+                                    </div>
                                 </div>
                             </div>
                 </form>
