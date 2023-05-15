@@ -109,6 +109,10 @@ Route::get('/trading', function(){
     return view('trading');
 })->name('trading');
 
+Route::get('/trading/energyDetail', function(){
+    return view('energyDetail');
+})->name('energyDetail');
+
 //add masterTrading
 Route::get('/masterTrading', function(){
     return view('masterTrading');
