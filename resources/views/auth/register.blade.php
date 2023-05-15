@@ -159,7 +159,19 @@
                                     </select>
                                 </div>
                             </div>
-d
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label><image src={{asset("assets/images/profile/location.png")}} height="25px"></image></label>
+                                    <select class="form-select" value="" id="zone" style="text-align-last:center" name="zone">
+                                        <option value="">Select your zone</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group input-group">
                                 <label><image src={{asset("assets/icon/phone.png")}} height="25px"></image></label>
                                 <input class=form-control type='number' placeholder="Your phone" maxlength="10" name="phone" required>
@@ -173,6 +185,7 @@ d
                                 </span>
                                 @enderror
                             </div>
+                        </div>
                             <div class="form-group input-group">
                                 {{--                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>--}}
                                 <label><image src="./assets/icon/password.png" height="25px"></image></label>
@@ -182,9 +195,8 @@ d
                                 <label><image src={{asset("assets/icon/home.png")}} height="25px"></image></label>
                                 <input class=form-control type='text' placeholder="Postal address" id="postalAddress" name="postalAddress" required>
                             </div>
-                        <br>
                         <div class="form-group">
-                            <br>
+                            <br><br>
                             <label for="CKB" class="hover-orange">
                                 <input type="checkbox" class="form-check-input checkBox" id="CKB">
                                 <b>*I acknowledge that I have read and understand the terms and conditions.</b>
