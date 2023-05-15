@@ -100,6 +100,9 @@ Route::get('/manage', function(){
 Route::get('/profile', function(){
     return view('profile');
 })->name('profile');
+Route::get('/forgotPasswd', function(){
+    return view('auth.forgot-password');
+})->name('forgot-password');
 
 //add trading page
 Route::get('/trading', function(){
