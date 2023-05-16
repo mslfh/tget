@@ -21,7 +21,7 @@
         }
 
         .account-style .login-form {
-            padding: 60px 70px;
+            padding: 30px 70px;
             background-color: #fff;
             border: none
         }
@@ -32,7 +32,7 @@
         }
 
         .account-style .bottom-content {
-            margin-top: 25px
+            margin-top: 15px
         }
 
         .account-style .form-group {
@@ -50,7 +50,7 @@
         }
 
         .account-style .form-group .form-control {
-            padding: 0 18px;
+            padding: 0 13px;
             -webkit-transition: all .4s ease;
             transition: all .4s ease;
             border: 1px solid #eee;
@@ -68,7 +68,7 @@
         }
 
         .account-style .form-select{
-            padding: 0 18px;
+            padding: 0 13px;
             -webkit-transition: all .4s ease;
             transition: all .4s ease;
             border: 1px solid #eee;
@@ -117,7 +117,7 @@
         .account-style .or {
             position: relative;
             text-align: center;
-            margin: 30px 0;
+            margin: 15px 0;
             z-index: 0
         }
 
@@ -226,13 +226,37 @@
         }
 
 
-        .button-control .btn:hover {
+        .button-control1 .btn1:hover {
             color: #fff;
-            background-color:yellowgreen;
+            background-color:orange;
+        }
+
+        .button-control1 .btn1 {
+            display: inline-block;
+            text-transform: capitalize;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 9px 13px;
+            background-color: orangered;
+            color: #fff;
+            border: none;
+            -webkit-transition: all .4s ease;
+            transition: all .4s ease;
+            border-radius: 15px;
+            position: relative;
+            z-index: 1;
+            margin-right: 3px;
+            overflow: hidden
+        }
+
+
+        .button-control1 .btn1:hover {
+            color: #fff;
+            background-color:red;
         }
 
         .formMargin{
-            margin: 25px;
+            margin: 15px;
         }
     </style>
 
@@ -249,19 +273,19 @@
                             <div class=row>
                                 <div class="col-lg-5 col-6">
                                     <!-- name -->
-                                    <label for="text" style="font-size: xx-large; font-weight: 700;">Name</label>
+                                    <label for="text" style="font-size: large; font-weight: 700;">Name</label>
                                     <div class="form-group input-group">
                                         <label><image src={{asset("assets/icon/user.png")}} height="25px"></image></label>
                                         <input class=form-control type='text' id="username" value="SellerA" style="font-weight:bold">
                                     </div>
                                     <!-- email -->
-                                    <label for="email" style="font-size: xx-large; font-weight: 700;">Email Address</label>
+                                    <label for="email" style="font-size:large; font-weight: 700;">Email Address</label>
                                     <div class="form-group input-group">
                                         <label><image src={{asset("assets/icon/email.png")}} height="25px"></image></label>
                                         <input class=form-control type='email' id="userEmail" value="userEmail@gmail.com" readonly style="color:gray">
                                     </div>
                                     <!-- Position -->
-                                    <label for="" style="font-size: xx-large; font-weight: 700;">Position</label>
+                                    <label for="" style="font-size: large; font-weight: 700;">Position</label>
                                     <div class="form-group">
                                         <div>
                                             <label><image src={{asset("assets/icon/role.png")}} height="25px"></image></label>
@@ -274,7 +298,7 @@
                                         </div>
                                     </div>
                                     <!-- Zone -->
-                                    <label for="text" style="font-size: xx-large; font-weight: 700;">Zone</label>
+                                    <label for="text" style="font-size: large; font-weight: 700;">Zone</label>
                                     <div class="form-group">
                                         <label><image src={{asset("assets/images/profile/location.png")}} height="25px"></image></label>
                                         <select class="form-select" value="" style="font-weight:bold">
@@ -286,8 +310,8 @@
                                         </select>
                                     </div>
                                 <!-- Save Edit Details Button -->
-                                <div class='button-control mb-5 d-flex'>
-                                    <button class='btn' type='submit' id="save">Save Details</button>
+                                <div class='button-control1 mb-5 d-flex'>
+                                    <button class='btn1' type='submit' id="save">Save</button>
                                 </div>
                                 </div>
                                 <!-- Image of user -->
@@ -295,12 +319,12 @@
                                 <div class="col-lg-5 col-5" style="margin-top: 90px">
                                     <img id="ChangImage" src={{asset("assets/images/profile/personalAvatar.png")}} class="button-control" style="width:300px; max-height: 270px; " alt="">
                                     <div class="button-control">
-                                        <button class="btn" style="margin-top:5%; margin-left:19%; background-color: chocolate;" id="picture">Change picture</button>
+                                        <button class="btn"  style="margin-top:5%; margin-left:19%;" id="picture">Change picture</button>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-7 col-10">
-                                        <label for="text" style="font-size: xx-large; font-weight: 700;">Current Balance</label>
+                                        <label for="text" style="font-size:large; font-weight: 700;">Current Balance</label>
                                         <div class="form-group input-group">
                                             <label><image src={{asset("assets/images/profile/price.png")}} height="25px"></image></label>
                                             <input class=form-control type='text' id="balance" value="100" readonly style="color: gray">
