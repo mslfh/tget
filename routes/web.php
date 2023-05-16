@@ -92,10 +92,10 @@ Route::get('/', function () {
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
 //});
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/manage', function(){
     return view('manage');
-});
+})->name('manage');
 
 Route::get('/profile', function(){
     return view('profile');

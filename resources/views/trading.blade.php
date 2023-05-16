@@ -249,7 +249,6 @@
     </div>
 </div>
 
-
 <!--Pagination-->
 <div class="pagination justify-content-center">
     <ul class=pagination-list>
@@ -262,85 +261,4 @@
         <li class="next"><a href="javascript:void(0)">Next</a></li>
     </ul>
 </div>
-
-<!-- Start Footer Area -->
-<footer class="footer section">
-    <!-- Start Footer Top -->
-    <div class="footer-top">
-        <div class="container">
-            <div class="inner-content">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer f-about">
-                            <div class="logo">
-                                <a href="index.html">
-                                    <img src="assets/images/logo/bule-logo.png" alt="#">
-                                </a>
-                            </div>
-                            <p>Making the world a better place through developing renewable energy.</p>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer f-link">
-                            <h3>Service</h3>
-                            <ul>
-                                <li><a href="">Market</a></li>
-                                <li><a href="">History</a></li>
-                                <li><a href="">Manage</a></li>
-                            </ul>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer f-link">
-                            <h3>Support</h3>
-                            <ul>
-                                <li><a href="">Pricing</a></li>
-                                <li><a href="">Sell</a></li>
-                                <li><a href="">Buy</a></li>
-                            </ul>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer newsletter">
-                            <h3>Subscribe</h3>
-                            <p>Our platform provides a revolutionary solution to the growing demand for renewable energy and the
-                                need to reduce carbon emissions</p>
-                            <form action="#" method="get" target="_blank" class="newsletter-form">
-                                <input name="EMAIL" placeholder="Email address" required="required" type="email">
-                                <div class="button">
-                                    <button class="sub-btn">
-                                        <image src="./assets/icon/send.png">
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/ End Footer Top -->
-    <!-- Start Copyright Area -->
-    <div class="copyright-area">
-        <div class="container">
-            <div class="inner-content">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <p class="copyright-text">© 2023 TaGET - All Rights Reserved</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Copyright Area -->
-</footer>
-<!--/ End Footer Area -->
 @endsection
