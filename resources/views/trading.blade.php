@@ -22,8 +22,6 @@
                 </div>
             </div>
 
-
-
         </div>
         <div class="row">
             <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s">
@@ -72,7 +70,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s">
                 <div class="feature-box">
@@ -122,96 +119,96 @@
 <!-- End Features Area -->
 
 <!-- Sell or Buy Energy -->
-<div class="bottom-container" style="text-align: center;">
-    <button type="button" class="btn btn-outline-success sell-button mb-3" data-bs-toggle="modal"
-            data-bs-target="#sellerModal" id="sellEnergyButton">Sell Energy</button>
-    <div class="modal" tabindex="-1" id="sellerModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Sell Your Energy</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p id="sellError" class="text-danger"></p>
-                    <form>
-                        <div class="mb-3">
-                            <label for="inputEnergyType">Energy Type</label>
-                            <select id="inputEnergyType" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>Solar</option>
-                                <option>Wind</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="inputSellVolume">Sell Volume</label>
-                            <input type="number" class="form-control" id="inputSellVolume" value="">
-                        </div>
-                        <div class="mb-3">
-                            <label for="inputSellPrice">Sell Price</label>
-                            <input type="number" class="form-control" id="inputSellPrice" value="">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" id="cancelButton" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="sellSubmitButton" onclick="submitSell()">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--<div class="bottom-container" style="text-align: center;">--}}
+{{--    <button type="button" class="btn btn-outline-success sell-button mb-3" data-bs-toggle="modal"--}}
+{{--            data-bs-target="#sellerModal" id="sellEnergyButton">Sell Energy</button>--}}
+{{--    <div class="modal" tabindex="-1" id="sellerModal">--}}
+{{--        <div class="modal-dialog">--}}
+{{--            <div class="modal-content">--}}
+{{--                <div class="modal-header">--}}
+{{--                    <h4>Sell Your Energy</h4>--}}
+{{--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
+{{--                </div>--}}
+{{--                <div class="modal-body">--}}
+{{--                    <p id="sellError" class="text-danger"></p>--}}
+{{--                    <form>--}}
+{{--                        <div class="mb-3">--}}
+{{--                            <label for="inputEnergyType">Energy Type</label>--}}
+{{--                            <select id="inputEnergyType" class="form-control">--}}
+{{--                                <option selected>Choose...</option>--}}
+{{--                                <option>Solar</option>--}}
+{{--                                <option>Wind</option>--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
+{{--                        <div class="mb-3">--}}
+{{--                            <label for="inputSellVolume">Sell Volume</label>--}}
+{{--                            <input type="number" class="form-control" id="inputSellVolume" value="">--}}
+{{--                        </div>--}}
+{{--                        <div class="mb-3">--}}
+{{--                            <label for="inputSellPrice">Sell Price</label>--}}
+{{--                            <input type="number" class="form-control" id="inputSellPrice" value="">--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
+{{--                </div>--}}
+{{--                <div class="modal-footer">--}}
+{{--                    <button type="button" class="btn btn-danger" id="cancelButton" data-bs-dismiss="modal">Cancel</button>--}}
+{{--                    <button type="button" class="btn btn-primary" id="sellSubmitButton" onclick="submitSell()">Submit</button>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
-    <!-- Buy Energy -->
-    <button type="button" class="btn btn-outline-primary buy-button mb-3" data-bs-toggle="modal"
-            data-bs-target="#buyerModal" id="buyEnergyButton">Buy Energy</button>
-    <div class="modal" tabindex="-1" id="buyerModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Buy Available Energy</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p class="text-danger" id="error"></p>
-                    <form>
-                        <div class="mb-3">
-                            <label for="energyType">Energy Type</label>
-                            <input type="text" class="form-control" id="energyType" value="Solar" disabled>
-                        </div>
-                        <div class="mb-3">
-                            <label for="availableVolume">Available Volume</label>
-                            <input type="text" class="form-control" id="availableVolume" value="100" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="buyPrice">Buy Price</label>
-                            <input type="text" class="form-control" id="buyPrice" value="1.9 /kWh" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="buyVolume">Buy Volume</label>
-                            <input type="number" class="form-control" id="buyVolume" value="">
-                        </div>
-                    </form>
-                    <div class="container" id="summaryDetail" style="display: none;">
-                        <h3>Summary of the Price</h3>
-                        <ul>
-                            <li>Price (Buy volume x Buy price): $</li>
-                            <li>Admin Fee: $</li>
-                            <li>Tax Fee: $</li>
-                            <li>Total Fee (Price + Admin Fee + tax): $</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" id="cancelButton" onclick="cancel()"
-                            data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="buyCheckButton" onclick="checkBuyVolume()">Check</button>
-                    <button type="button" class="btn btn-primary" id="buySubmitButton" onclick="submitBuy()"
-                            style="display: none;" data-bs-dismiss="modal">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{{--    <!-- Buy Energy -->--}}
+{{--    <button type="button" class="btn btn-outline-primary buy-button mb-3" data-bs-toggle="modal"--}}
+{{--            data-bs-target="#buyerModal" id="buyEnergyButton">Buy Energy</button>--}}
+{{--    <div class="modal" tabindex="-1" id="buyerModal">--}}
+{{--        <div class="modal-dialog">--}}
+{{--            <div class="modal-content">--}}
+{{--                <div class="modal-header">--}}
+{{--                    <h4>Buy Available Energy</h4>--}}
+{{--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
+{{--                </div>--}}
+{{--                <div class="modal-body">--}}
+{{--                    <p class="text-danger" id="error"></p>--}}
+{{--                    <form>--}}
+{{--                        <div class="mb-3">--}}
+{{--                            <label for="energyType">Energy Type</label>--}}
+{{--                            <input type="text" class="form-control" id="energyType" value="Solar" disabled>--}}
+{{--                        </div>--}}
+{{--                        <div class="mb-3">--}}
+{{--                            <label for="availableVolume">Available Volume</label>--}}
+{{--                            <input type="text" class="form-control" id="availableVolume" value="100" readonly>--}}
+{{--                        </div>--}}
+{{--                        <div class="mb-3">--}}
+{{--                            <label for="buyPrice">Buy Price</label>--}}
+{{--                            <input type="text" class="form-control" id="buyPrice" value="1.9 /kWh" readonly>--}}
+{{--                        </div>--}}
+{{--                        <div class="mb-3">--}}
+{{--                            <label for="buyVolume">Buy Volume</label>--}}
+{{--                            <input type="number" class="form-control" id="buyVolume" value="">--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
+{{--                    <div class="container" id="summaryDetail" style="display: none;">--}}
+{{--                        <h3>Summary of the Price</h3>--}}
+{{--                        <ul>--}}
+{{--                            <li>Price (Buy volume x Buy price): $</li>--}}
+{{--                            <li>Admin Fee: $</li>--}}
+{{--                            <li>Tax Fee: $</li>--}}
+{{--                            <li>Total Fee (Price + Admin Fee + tax): $</li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="modal-footer">--}}
+{{--                    <button type="button" class="btn btn-danger" id="cancelButton" onclick="cancel()"--}}
+{{--                            data-bs-dismiss="modal">Cancel</button>--}}
+{{--                    <button type="button" class="btn btn-primary" id="buyCheckButton" onclick="checkBuyVolume()">Check</button>--}}
+{{--                    <button type="button" class="btn btn-primary" id="buySubmitButton" onclick="submitBuy()"--}}
+{{--                            style="display: none;" data-bs-dismiss="modal">Submit</button>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 <div class="modal" tabindex="-1" id="sellerModal">
     <div class="modal-dialog">
