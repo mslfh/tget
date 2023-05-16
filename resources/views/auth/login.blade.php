@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html class="no-js" lang="zxx">
+@extends('layouts.app')
 
+@section('content')
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>TaGET Services</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}" />
     <link rel="stylesheet" href="{{asset("css/animate.css")}}" />
     <link rel="stylesheet" href="{{asset("css/tiny-slider.css")}}" />
@@ -22,76 +14,9 @@
     <script src="{{asset("js/main.js")}}"></script>
     <script src="{{asset("js/tiny-slider.js")}}"></script>
     <script src="{{asset("js/count-up.min.js")}}"></script>
-{{--test--}}
-    <script>
-        $(document).ready(function() {
-            //remember me stored user's email & password
-            var storedEmail = localStorage.getItem('userEmail');
-            var storedPWD = localStorage.getItem('userPWD');
-            if (storedEmail && storedPWD) {
-                $('#email').val(storedEmail);
-                $('#password').val(storedPWD);
-                $('#remember').prop('checked', true);
-            }
-            $('#LF').on('submit', function(e) {
-                var userEmail = $('#email').val().trim();
-                var userPWD = $('#password').val().trim();
-                var rememberMe = $('#remember').is(':checked');
-                if (rememberMe) {
-                    localStorage.setItem('userEmail', userEmail);
-                    localStorage.setItem('userPWD', userPWD);
-                } else {
-                    localStorage.removeItem('userEmail');
-                    localStorage.removeItem('userPWD');
-                }
-            });
 
-            // $('#LG').click(function(e){
-            //     e.preventDefault();
-            //     var userEmail = $('#email').val().trim();
-            //     var userPWD = $('#password').val().trim();
-            //     var rememberMe = $('#remember').is(':checked');
-            //
-            //     var emailExp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-            //     if (!emailExp.test(userEmail)){
-            //         $('#logErr').text("The email address is incorrect.");
-            //         return;
-            //     }
-            //
-            //     var passwordExp = /^$/;
-            //     if(passwordExp.test(userPWD)){
-            //         $('#logErr').text('Password is null.');
-            //         return;
-            //     }
-            //
-            //     //save data or delete
-            //     if (rememberMe) {
-            //         localStorage.setItem('userEmail', userEmail);
-            //         localStorage.setItem('userPWD', userPWD);
-            //     } else {
-            //         localStorage.removeItem('userEmail');
-            //         localStorage.removeItem('userPWD');
-            //     }
-            //
-            //     $('#logErr').text('');
-            //     $("#LG").unbind("click").submit();
-            // });
-            //
-            // var storedEmail = localStorage.getItem('userEmail');
-            // var storedPWD = localStorage.getItem('userPWD');
-            // if (storedEmail && storedPWD) {
-            //     $('#email').val(storedEmail);
-            //     $('#password').val(storedPWD);
-            //     $('#remember').prop('checked', true);
-            // }
-        })
-    </script>
-</head>
-@extends('layouts.app')
-
-@section('content')
     <div class="account-login section">
-        <div class="container">
+        <div class="container" style="padding: 50px">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
                     <div class="card">
@@ -165,44 +90,28 @@
         </div>
     </div>
 
-
-
-{{--<div class="account-login section">--}}
-{{--    <div class=container>--}}
-{{--        <div class=row>--}}
-{{--            <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">--}}
-{{--                <form class="login-form" action="#" method='post' id="LF" >--}}
-{{--                    <div >--}}
-{{--                        <div class=title>--}}
-{{--                            <h3>Login</h3>--}}
-{{--                            <p>Login by entering the information below.</p>--}}
-{{--                            <div class="text-danger" id="logErr"></div>--}}
-{{--                        </div>--}}
-{{--                        <div class="form-group input-group">--}}
-{{--                            <label><img src="../html/assets/icon/email.png" height="25px" alt=""></label>--}}
-{{--                            <input class='form-control placeholder-color' type='email' placeholder="Enter your email" id="LE" required>--}}
-{{--                        </div>--}}
-{{--                        <div class="form-group input-group">--}}
-{{--                            <label><img src="../html/assets/icon/password.png" height="25px" alt=""></label>--}}
-{{--                            <input class='form-control placeholder-color' type='password' placeholder="Enter your password" id="LPW" required>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="d-flex flex-wrap justify-content-between bottom-content">--}}
-{{--                        <div class=form-check>--}}
-{{--                            <label for="LCK" class="hover-orange form-check-label">--}}
-{{--                                <input type="checkbox" class="form-check-input checkBox width-auto" id="LCK">--}}
-{{--                                <b>Remember me!</b>--}}
-{{--                            </label>--}}
-{{--                        </div>--}}
-{{--                        <a class=lost-pass href='./reset.html'>Forgot password?</a> </div>--}}
-{{--                    <div class='button'>--}}
-{{--                        <button class='btn' id="LG" type='submit'>Login</button>--}}
-{{--                    </div>--}}
-{{--                    <h4 class=create-account>Don't have an account? <a href='./registration.html'>Registration Here</a> </h4>--}}
-{{--                </form>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-
+    <script>
+        $(document).ready(function() {
+            //remember me stored user's email & password
+            var storedEmail = localStorage.getItem('userEmail');
+            var storedPWD = localStorage.getItem('userPWD');
+            if (storedEmail && storedPWD) {
+                $('#email').val(storedEmail);
+                $('#password').val(storedPWD);
+                $('#remember').prop('checked', true);
+            }
+            $('#LF').on('submit', function(e) {
+                var userEmail = $('#email').val().trim();
+                var userPWD = $('#password').val().trim();
+                var rememberMe = $('#remember').is(':checked');
+                if (rememberMe) {
+                    localStorage.setItem('userEmail', userEmail);
+                    localStorage.setItem('userPWD', userPWD);
+                } else {
+                    localStorage.removeItem('userEmail');
+                    localStorage.removeItem('userPWD');
+                }
+            });
+        })
+    </script>
 @endsection
