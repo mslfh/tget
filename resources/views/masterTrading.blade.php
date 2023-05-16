@@ -1,16 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/masterTrading.css" />
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/trading.css" />
-
-    <script src="js/jquery-3.6.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/tiny-slider.js"></script>
-    <script src="js/count-up.min.js"></script>
-    <script src="js/trading.js"></script>
     <style>
         table {
             font-family: arial, sans-serif;
@@ -38,14 +28,8 @@
         }
 
     </style>
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="css/index.css" />
-    <!-- ========================= JS here ========================= -->
-    <script src="js/jquery-3.6.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-
     <div class="renewable-energy section">
+
         <div class=container>
             <div class=row>
                 <div class="col-12">
@@ -71,12 +55,20 @@
                 </div>
             </div>
         </div>
+
         <div class=container>
             <br><br>
+
+
             <div class=row>
                 <div class="col-12">
                     <div class=contact-form>
                         <h3 class=form-title>Renewable Energy Types and Prices</h3>
+
+                        <i class="bi bi-search"></i>
+
+
+
                         <div class=col-12>
 
                             <div class=button>
@@ -186,6 +178,58 @@
                 </div>
             </div>
         </div>
+
+        <div class=container>
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <span class="glyphicon glyphicon-search"></span>
+                    <h5>BSTable - Editable Bootstrap Table Examples</h5>
+                    <hr>
+                    <div class="table-responsive">
+
+                        <table class="table table-striped table-bordered mb-0" id="table1">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                                <th scope="col">
+                                    <div class="btn-group pull-right">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
 
 {{--        <div class=container><br><br>--}}
 {{--            <div class=row>--}}

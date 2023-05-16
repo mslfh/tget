@@ -394,14 +394,14 @@
                                 </div>
                             <!-- Balance -->
 {{--                                <div class="col-lg-12 col-12 mt-5">--}}
-{{--                                    <label for="text" style="font-size: xx-large; font-weight: 700;">Current Balance</label>--}}
+{{--                                    <label for="text" style="fonts-size: xx-large; fonts-weight: 700;">Current Balance</label>--}}
 {{--                                    <div class="form-group input-group">--}}
 {{--                                        <label><image src={{asset("assets/images/profile/price.png")}} height="25px"></image></label>--}}
 {{--                                        <input class=form-control type='text' id="balance" value="100" readonly style="color: gray">--}}
 {{--                                    </div>--}}
 {{--                                </div>--}}
 {{--                                <div class="col-lg-12 col-12">--}}
-{{--                                    <label for="text" style="font-size: xx-large; font-weight: 700;">Recharge Amount</label>--}}
+{{--                                    <label for="text" style="fonts-size: xx-large; fonts-weight: 700;">Recharge Amount</label>--}}
 {{--                                    <div class="form-group input-group">--}}
 {{--                                        <label><image src={{asset("assets/images/profile/changeMoney.png")}} height="25px"></image></label>--}}
 {{--                                        <input class=form-control type='text' placeholder="enter recharge amount">--}}

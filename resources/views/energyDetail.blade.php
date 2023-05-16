@@ -2,6 +2,9 @@
 
 @section('content')
 
+<link rel="stylesheet" href={{asset("assets/css/style.min.css")}}>
+<link rel="stylesheet" href={{asset("assets/css/plugins/plugins.min.css")}}>
+<link rel="stylesheet" href={{asset("assets/css/vendor/vendor.min.css")}}>
 
 <!-- Start Feature Area -->
 <div class="section">
@@ -17,7 +20,6 @@
                 </div>
             </div>
         </div>
-
 
 <!-- Product Details Area Start -->
 <div class="product-details-area">

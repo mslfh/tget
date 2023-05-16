@@ -8,28 +8,28 @@ body{
   color:#0b0a0a;
   overflow-x:hidden;
   font-size:15px}
-  
+
   p{
     margin:0;
     padding:0;
     font-size:16px;
     line-height:28px}
-    
+
   *{
     margin:0;
     padding:0}
-        
+
   .pagination{
     text-align:center;
     margin:60px 0 0 0;
     display:block}
-        
+
   @media only screen and (min-width:768px) and (max-width:991px){
     .pagination{margin-top:50px}}
-    
+
   @media (max-width:767px){
     .pagination{margin-top:40px}}
-    
+
   .pagination.center{text-align:center}
   .pagination.right{text-align:right}
   .pagination.left{text-align:left}
@@ -46,7 +46,7 @@ body{
     padding:8px 20px;
     text-align:center;
     border:1px solid #eee}
-    
+
   .pagination .pagination-list li.active a,.pagination .pagination-list li:hover a{
     background:#3e80ff;
     color:#fff;
@@ -68,7 +68,7 @@ body{
     z-index:1;
     margin-right:7px;
     overflow:hidden}
-    
+
   @media only screen and (min-width:768px) and (max-width:991px){.button .btn{padding:14px 25px;font-size:14px;font-weight:500}}
   @media (max-width:767px){.button .btn{padding:14px 25px;font-size:14px;font-weight:500}}
   .button .btn i{
@@ -76,19 +76,19 @@ body{
     margin-right:5px}
   .button .btn:last-child{margin:0}
   .button .btn:hover{color:#fff;background-color:#24126a}
-  .button{margin-left:0!important}.button 
+  .button{margin-left:0!important}.button
   .btn-alt{
     background-color:#24126a!important;
     color:#fff!important}
-      
+
   @media only screen and (min-width:768px) and (max-width:991px){.button .btn-alt{padding:14px 25px;
     font-size:14px;
     font-weight:500}}
-    
+
   @media (max-width:767px){.button .btn-alt{padding:14px 25px;
     font-size:14px;
     font-weight:500}}
-    
+
   .button .btn-alt:hover{
     background-color:#3e80ff!important;
     color:#fff!important}
@@ -227,7 +227,7 @@ body{
     padding: 0 300px;
     position: relative;
     z-index: 5;
-    
+
 }
 
 
@@ -239,7 +239,7 @@ body{
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    
+
 } */
 
 /* .row {
@@ -266,16 +266,16 @@ body{
     background-color: var(--bs-body-bg);
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
-    font-style: normal;
-    font-weight: var(--bs-body-font-weight);
+    fonts-style: normal;
+    fonts-weight: var(--bs-body-fonts-weight);
     overflow-x: hidden;
     color: var(--bs-body-color);
-    font-family: "DM Sans",sans-serif;
-    font-weight: normal;
-    font-style: normal;
+    fonts-family: "DM Sans",sans-serif;
+    fonts-weight: normal;
+    fonts-style: normal;
     color: #727272;
     overflow-x: hidden;
-    font-size: 15px;
+    fonts-size: 15px;
 } */
 
 .pagination {

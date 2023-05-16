@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
     <div class="container page-wrapper page-content">
         <section class="content-header">
             <div class="page-title">
