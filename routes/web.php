@@ -100,11 +100,18 @@ Route::get('/manage', function(){
 Route::get('/profile', function(){
     return view('profile');
 })->name('profile');
+Route::get('/forgotPasswd', function(){
+    return view('auth.forgot-password');
+})->name('forgot-password');
 
 //add trading page
 Route::get('/trading', function(){
     return view('trading');
 })->name('trading');
+
+Route::get('/trading/energyDetail', function(){
+    return view('energyDetail');
+})->name('energyDetail');
 
 //add masterTrading
 Route::get('/masterTrading', function(){
