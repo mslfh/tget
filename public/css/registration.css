@@ -1,31 +1,31 @@
   .formMargin{
-    margin: 25px;
+    margin: 15px;
   }
 
   .account-login {
       background-color: #f4f7fa
   }
-  
+
   .account-login .login-form {
     padding: 60px 70px;
     background-color: #fff;
     border: none
   }
-  
-  
+
+
   .account-login .login-form .card-body {
     padding: 0
   }
-  
+
   .account-login .bottom-content {
     margin-top: 25px
   }
-  
+
   .account-login .form-group {
     margin-bottom: 20px;
     position: relative
   }
-  
+
   .account-login .form-group label {
     position: absolute;
     left: 20px;
@@ -34,7 +34,7 @@
     transform: translateY(-50%);
     z-index: 9
   }
-  
+
   .account-login .form-group .form-control {
     padding: 0 18px;
     -webkit-transition: all .4s ease;
@@ -76,44 +76,44 @@
     -webkit-box-shadow: 0 5px 8px rgba(0, 0, 0, .233);
     box-shadow: 0 5px 8px rgba(0, 0, 0, .233)
   }
-  
+
   .account-login .lost-pass {
     color: #888
   }
-  
+
   .account-login .lost-pass:hover {
     color: #3e80ff
   }
-  
+
   .account-login .button {
     margin-top: 40px;
     text-align: center
   }
-  
+
   .account-login .button .btn {
     padding: 14px 40px;
     margin-right: 20px;
     width: 100%
   }
-  
+
   .account-login .button .btn:last-child {
     margin: 0
   }
-  
+
   .account-login .or {
     position: relative;
     text-align: center;
     margin: 30px 0;
     z-index: 0
   }
-  
+
   .account-login .or span {
     text-align: center;
     font-size: 16px;
     background-color: #fff;
     padding: 5px 12px
   }
-  
+
   .account-login .or::before {
     position: absolute;
     content: "";
@@ -125,18 +125,18 @@
     width: 100%;
     z-index: -1
   }
-  
+
   .account-login .alt-option {
     margin-top: 30px;
     text-align: center
   }
-  
+
   .account-login .alt-option .small-title {
     margin-bottom: 15px;
     text-align: center;
     display: block
   }
-  
+
   .account-login .alt-option .option-button {
     padding: 14px 25px 14px 15px;
     border: 1px solid #eee;
@@ -145,36 +145,36 @@
     text-align: center;
     color: #727272
   }
-  
+
   .account-login .alt-option .option-button img {
     display: inline-block;
     margin-right: 15px
   }
-  
+
   .account-login .alt-option li {
     font-weight: 500;
     display: inline-block;
     margin-right: 15px
   }
-  
-  
+
+
   .account-login .alt-option li span {
     color: #727272;
     display: inline-block
   }
-  
+
   .account-login .alt-option li:last-child {
     margin: 0
   }
-  
+
   .account-login .alt-option li a {
     color: #3e80ff
   }
-  
+
   .account-login .alt-option li a:hover {
     color: #24126a
   }
-  
+
   .account-login .create-account {
     font-weight: 500;
     color: #24126a;
@@ -183,11 +183,11 @@
     font-size: 14px;
     display: block
   }
-  
+
   .account-login .create-account a {
     color: #3e80ff
   }
-  
+
   .account-login .create-account a:hover {
     text-decoration: underline
   }
@@ -209,13 +209,13 @@
     margin-right: 7px;
     overflow: hidden
   }
-  
-  
+
+
   .button .btn:hover {
     color: #fff;
     background-color:yellowgreen;
   }
-  
+
   .hover-orange:hover{
     color: orange;
     cursor: pointer;
