@@ -35,8 +35,8 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <th scope="row">15.00</th>
-                            <td>20.00</td>
+                            <th id="AdministrationFee">-</th>
+                            <td id="TaxFee">-</td>
                             <td>
                                 <button class="btn btn-sm btn-default">
                                     <i class="bi bi-pencil"></i>
@@ -413,4 +413,18 @@
         </div>
     </div>
 
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+            url: '/mtrading/getServiceFee',
+            type: 'GET',
+            success: function(result) {
+                console.log(result.data.administration_fee)
+                $("#AdministrationFee").html( result.data.administration_fee);
+                $("#TaxFee").html( result.data.tax)
+            }
+            });
+        })
+    </script>
 @endsection

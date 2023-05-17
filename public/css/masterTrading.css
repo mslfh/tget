@@ -24,6 +24,13 @@
     }
 }
 
+.contact-form {
+    padding: 60px 40px 60px 40px;
+    -webkit-box-shadow: 0 8px 36px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 8px 36px 0 rgba(0, 0, 0, .1);
+    border-radius: 20px
+}
+
 .renewable-energy .contact-form .form-group {
     margin-bottom: 20px
 }
