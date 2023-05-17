@@ -24,7 +24,7 @@
 
                 <div class="col-12 " style="padding: 15px 55px;">
                     <br><br>
-                    <h3 class=form-title>Service Fee</h3>
+                    <h3 class=form-title style="color: #397d98; padding-bottom: 20px">Service Fee</h3>
                     <table class="table table-striped table-bordered mb-0" id="table1">
                         <thead class="thead-light">
                         <tr>
