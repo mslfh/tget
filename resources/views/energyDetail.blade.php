@@ -2,6 +2,7 @@
 
 @section('content')
 
+<link rel="stylesheet" href={{asset("css/energyDetail.css")}}>
 
 <!-- Start Feature Area -->
 <div class="section">
@@ -17,7 +18,6 @@
                 </div>
             </div>
         </div>
-
 
 <!-- Product Details Area Start -->
 <div class="product-details-area">
@@ -157,19 +157,16 @@
                         <span>Share: </span>
                         <ul class="d-flex">
                             <li>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
+                           <a> <i class="bi bi-facebook"></i> </a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a>     <i class="bi bi-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-google"></i></a>
+                                <a>     <i class="bi bi-google"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-youtube"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a>    <i class="bi bi-youtube"></i></a>
                             </li>
                         </ul>
                     </div>

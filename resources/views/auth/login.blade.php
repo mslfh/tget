@@ -62,7 +62,7 @@
                                 <div class="d-flex flex-wrap justify-content-between bottom-content">
                                         <div class="form-check">
                                             <label for="remember" class="hover-orange form-check-label">
-                                            <input class="form-check-input checkBox width-auto" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            <input class="form-check-input checkBox width-auto" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}  style="padding-left:0">
 {{--                                            <label class="form-check-label" for="remember">--}}
                                                 {{ __('Remember Me') }}
                                             </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

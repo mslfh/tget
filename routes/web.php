@@ -115,3 +115,8 @@ Route::get('/trading/energyDetail', function(){
 Route::get('/masterTrading', function(){
     return view('masterTrading');
 })->name('masterTrading');
+
+
+Route::get('/test', function(){
+    return view('test');
+})->name('test');

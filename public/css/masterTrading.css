@@ -1,139 +1,146 @@
 .renewable-energy {
-  position: relative;
-  background-color: #f4f7fa
+    position: relative;
+    background-color: #f4f7fa
 }
 
 .renewable-energy .form-title {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 30px;
-  margin-bottom: 30px
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    margin-bottom: 30px
 }
 
-@media only screen and (min-width:768px) and (max-width:991px) {
-  .renewable-energy .form-title {
-    font-size: 24px;
-    line-height: 35px
-  }
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .renewable-energy .form-title {
+        font-size: 24px;
+        line-height: 35px
+    }
 }
 
-@media (max-width:767px) {
-  .renewable-energy .form-title {
-    font-size: 22px;
-    line-height: 35px
-  }
+@media (max-width: 767px) {
+    .renewable-energy .form-title {
+        font-size: 22px;
+        line-height: 35px
+    }
+}
+
+.contact-form {
+    padding: 60px 40px 60px 40px;
+    -webkit-box-shadow: 0 8px 36px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 8px 36px 0 rgba(0, 0, 0, .1);
+    border-radius: 20px
 }
 
 .renewable-energy .contact-form .form-group {
-  margin-bottom: 20px
+    margin-bottom: 20px
 }
 
 .renewable-energy .contact-form .form-group input {
-  height: 52px;
-  border: 1px solid #eee;
-  border-radius: 5px;
-  padding: 0 20px;
-  width: 100%;
-  -webkit-transition: all .4s ease;
-  transition: all .4s ease;
-  background-color: #fff
+    height: 52px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 0 20px;
+    width: 100%;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    background-color: #fff
 }
 
 .renewable-energy .contact-form .form-group input:focus {
-  border-color: #3e80ff
+    border-color: #3e80ff
 }
 
 .renewable-energy .contact-form .form-group textarea {
-  height: 200px;
-  border: 1px solid #eee;
-  border-radius: 6px;
-  padding: 20px;
-  resize: none;
-  width: 100%;
-  -webkit-transition: all .4s ease;
-  transition: all .4s ease
+    height: 200px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 20px;
+    resize: none;
+    width: 100%;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease
 }
 
 .renewable-energy .contact-form .form-group textarea:focus {
-  border-color: #3e80ff
+    border-color: #3e80ff
 }
 
 .renewable-energy .contact-form .button {
-  margin-top: 10px
+    margin-top: 10px
 }
 
 .renewable-energy .contact-widget-wrapper {
-  padding-right: 80px
+    padding-right: 80px
 }
 
-@media only screen and (min-width:768px) and (max-width:991px) {
-  .renewable-energy .contact-widget-wrapper {
-    padding: 0;
-    padding-right: 200px;
-    margin-bottom: 50px
-  }
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .renewable-energy .contact-widget-wrapper {
+        padding: 0;
+        padding-right: 200px;
+        margin-bottom: 50px
+    }
 }
 
-@media (max-width:767px) {
-  .renewable-energy .contact-widget-wrapper {
-    padding: 0;
-    margin-bottom: 40px
-  }
+@media (max-width: 767px) {
+    .renewable-energy .contact-widget-wrapper {
+        padding: 0;
+        margin-bottom: 40px
+    }
 }
 
 .renewable-energy .contact-widget-wrapper .main-title {
-  margin-bottom: 40px
+    margin-bottom: 40px
 }
 
 .renewable-energy .contact-widget-wrapper .main-title h2 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  line-height: 40px
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 40px
 }
 
-@media only screen and (min-width:768px) and (max-width:991px) {
-  .renewable-energy .contact-widget-wrapper .main-title h2 {
-    font-size: 24px;
-    line-height: 35px
-  }
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .renewable-energy .contact-widget-wrapper .main-title h2 {
+        font-size: 24px;
+        line-height: 35px
+    }
 }
 
-@media (max-width:767px) {
-  .renewable-energy .contact-widget-wrapper .main-title h2 {
-    font-size: 22px;
-    line-height: 35px
-  }
+@media (max-width: 767px) {
+    .renewable-energy .contact-widget-wrapper .main-title h2 {
+        font-size: 22px;
+        line-height: 35px
+    }
 }
 
 .renewable-energy .contact-widget-wrapper .main-title p {
-  font-size: 16px
+    font-size: 16px
 }
 
 .renewable-energy .contact-widget-wrapper .contact-widget-block {
-  margin-bottom: 30px
+    margin-bottom: 30px
 }
 
 .renewable-energy .contact-widget-wrapper .contact-widget-block:last-child {
-  margin: 0
+    margin: 0
 }
 
 .renewable-energy .contact-widget-wrapper .contact-widget-block h3 {
-  font-size: 16px;
-  font-weight: 700;
-  display: block;
-  margin-bottom: 18px
+    font-size: 16px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 18px
 }
 
 .renewable-energy .contact-widget-wrapper .contact-widget-block p {
-  margin-bottom: 3px
+    margin-bottom: 3px
 }
 
 .renewable-energy .contact-widget-wrapper .contact-widget-block p:last-child {
-  margin: 0
+    margin: 0
 }
-  
-  .button .btn {
+
+.button .btn {
     display: inline-block;
     text-transform: capitalize;
     font-size: 15px;
@@ -149,4 +156,219 @@
     z-index: 1;
     margin-right: 7px;
     overflow: hidden
-  }
+}
+
+.table_page table {
+    width: 100%;
+    caption-side: bottom;
+    border-collapse: collapse
+}
+
+.table_page table thead {
+    background: #f2f2f2
+}
+
+.table_page table thead tr th {
+    color: #24262b;
+    border-bottom: 3px solid #eaaa85;
+    border-right: 1px solid #ededed;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    padding: 10px;
+    text-align: center
+}
+
+.table_page tbody tr td {
+    border-right: 1px solid #ededed;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 14px;
+    text-align: center;
+    min-width: 150px
+}
+
+.table_page tbody tr td a:hover {
+    color: #eaaa85
+}
+
+.table_page table tbody tr td {
+    border-bottom: 1px solid #ededed;
+    border-right: 1px solid #ededed;
+    text-align: center;
+    padding: 10px
+}
+
+.table_desc table tbody tr td:last-child, .table_page table thead tr:last-child th {
+    border-right: 0
+}
+
+.single-my-account h4.panel-title a {
+    font-size: 24px;
+    color: #212121;
+    display: block;
+    padding: 16px 45px;
+    position: relative;
+}
+.panel-body .container{
+    padding: 0px 0px 0px 40px;
+}
+
+
+
+
+.your-order-area h3 {
+    font-weight: 500;
+    color: #000;
+    margin: 0 0 30px;
+    font-size: 24px;
+    line-height: 16px
+}
+
+.your-order-area .your-order-wrap {
+    padding: 38px 45px 44px;
+    background: #ebebeb
+}
+
+.your-order-area .your-order-wrap .your-order-product-info .your-order-top ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-family: Rubik, sans-serif
+}
+
+.your-order-area .your-order-wrap .your-order-product-info .your-order-top ul li {
+    font-size: 16px;
+    font-weight: 500;
+    list-style: outside none none;
+    color: #000
+}
+
+.your-order-area .your-order-wrap .your-order-product-info .your-order-middle {
+    border-bottom: 1px solid #dee0e4;
+    border-top: 1px solid #dee0e4;
+    margin: 29px 0;
+    padding: 19px 0 18px
+}
+
+.your-order-area .your-order-wrap .your-order-product-info .your-order-middle li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0 0 10px
+}
+
+.your-order-area .your-order-wrap .your-order-product-info .your-order-bottom ul {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-family: Rubik, sans-serif
+}
+
+.your-order-area .your-order-wrap .your-order-product-info .your-order-bottom ul li.your-order-shipping {
+    font-size: 16px;
+    color: #000;
+    font-weight: 500
+}
+
+.your-order-area .your-order-wrap .your-order-product-info .your-order-total {
+    border-bottom: 1px solid #dee0e4;
+    border-top: 1px solid #dee0e4;
+    margin: 18px 0 33px;
+    padding: 17px 0 19px
+}
+
+.your-order-area .your-order-wrap .your-order-product-info .your-order-total ul {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between
+}
+
+.your-order-area .your-order-wrap .your-order-product-info .your-order-total ul li {
+    font-weight: 500;
+    color: #eaaa85;
+    font-size: 16px;
+    list-style: outside none none;
+    font-family: Rubik, sans-serif
+}
+
+.your-order-area .your-order-wrap .your-order-product-info .your-order-total ul li.order-total {
+    font-weight: 500;
+    color: #000;
+    font-size: 18px
+}
+
+@media only screen and (max-width: 767px) {
+    .your-order-area .your-order-wrap {
+        padding: 38px 30px 44px
+    }
+}
+
+.your-order-area .payment-accordion {
+    margin: 0 0 16px
+}
+
+.your-order-area .payment-accordion:last-child {
+    margin: 0 0 0
+}
+
+.your-order-area .payment-accordion h4 a {
+    color: #000;
+    font-size: 16px;
+    margin: 0;
+    font-weight: 500
+}
+
+.your-order-area .payment-accordion .panel-body {
+    padding: 5px 0 0 0
+}
+
+.your-order-area .payment-accordion .panel-body p {
+    padding: 0 0 0 10px;
+    font-size: 14px;
+    color: #474747;
+    line-height: 24px
+}
+
+.your-order-area .Place-order {
+    margin-top: 25px
+}
+
+.your-order-area .Place-order a {
+    background-color: #eaaa85;
+    color: #fff;
+    display: block;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1;
+    padding: 18px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 0;
+    z-index: 9
+}
+
+.your-order-area .Place-order a:hover {
+    background-color: #000
+}
+
+
+

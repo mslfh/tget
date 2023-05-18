@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+
     <div class="container page-wrapper page-content">
         <section class="content-header">
             <div class="page-title">
@@ -68,7 +70,7 @@
                                         </div>
                                     </div>
                                     <div class="table-responsive mt-5">
-                                        <table class="table"->
+                                        <table class="table">
                                             <thead>
                                             <tr>
                                                 <th class="border-top-0">ID</th>
@@ -86,9 +88,9 @@
                                                 <td>test@test.com</td>
                                                 <td>Seller</td>
                                                 <td>Active</td>
-                                                <td><input class="btn btn-secondary" type="button" value="Deactivate"></td>
+                                                <td><input class="btn btn-warning" type="button" value="Deactivate"></td>
                                                 <td class="align-middle">
-                                                    <input class="btn btn-danger delBtn" type="button" onclick="removeUser(1)" value="Delete">
+                                                    <input class="btn btn-danger" type="button" onclick="removeUser()" value="Delete">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -97,9 +99,9 @@
                                                 <td>test2@test.com</td>
                                                 <td>Seller</td>
                                                 <td>Active</td>
-                                                <td><input class="btn btn-secondary" type="button" value="Deactivate"></td>
+                                                <td><input class="btn btn-warning" type="button" value="Deactivate"></td>
                                                 <td class="align-middle">
-                                                    <input class="btn btn-danger delBtn" type="button" onclick="removeUser()" value="Delete">
+                                                    <input class="btn btn-danger" type="button" onclick="removeUser()" value="Delete">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -108,9 +110,9 @@
                                                 <td>test3@test.com</td>
                                                 <td>Buyer and Seller</td>
                                                 <td>Active</td>
-                                                <td><input class="btn btn-secondary" type="button" value="Deactivate"></td>
+                                                <td><input class="btn btn-warning" type="button" value="Deactivate"></td>
                                                 <td class="align-middle">
-                                                    <input class="btn btn-danger delBtn" type="button" onclick="removeUser()" value="Delete">
+                                                    <input class="btn btn-danger" type="button" onclick="removeUser()" value="Delete">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -121,7 +123,7 @@
                                                 <td>Deactive</td>
                                                 <td><input class="btn btn-success" type="button" value="Activate"></td>
                                                 <td class="align-middle">
-                                                    <input class="btn btn-danger delBtn" type="button" onclick="removeUser()" value="Delete">
+                                                    <input class="btn btn-danger" type="button" onclick="removeUser()" value="Delete">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -130,9 +132,9 @@
                                                 <td>test5@test.com</td>
                                                 <td>Buyer</td>
                                                 <td>Active</td>
-                                                <td><input class="btn btn-secondary" type="button" value="Deactivate"></td>
+                                                <td><input class="btn btn-warning" type="button" value="Deactivate"></td>
                                                 <td class="align-middle">
-                                                    <input class="btn btn-danger delBtn" type="button" onclick="removeUser()" value="Delete">
+                                                    <input class="btn btn-danger" type="button" onclick="removeUser()" value="Delete">
                                                 </td>
                                             </tr>
                                             </tbody>

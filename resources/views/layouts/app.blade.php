@@ -8,38 +8,29 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+
+    <!-- ========================= bootstrap icon here ========================= -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
     <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}" />
     <link rel="stylesheet" href="{{asset("css/animate.css")}}" />
     <link rel="stylesheet" href="{{asset("css/tiny-slider.css")}}" />
     <link rel="stylesheet" href="{{asset("css/index.css")}}" />
     <link rel="stylesheet" href="{{asset("css/login.css")}}" />
+    <link rel="stylesheet" href="{{asset("css/registration.css")}}" />
     <link rel="stylesheet" href="{{asset("css/trading.css")}}" />
     <link rel="stylesheet" href="{{asset("css/dashboard.css")}}" />
-    <link href="{{asset("plugins/flot/examples/examples.css")}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{asset("css/masterTrading.css")}}" />
+    <link rel="stylesheet" href="{{asset("css/fonts.css")}}" />
 
-    <link rel="stylesheet" href= "{{asset("assets/css/vendor/vendor.min.css")}}"/>
-    <link rel="stylesheet" href= "{{asset("assets/css/plugins/plugins.min.css")}}"/>
-    <link rel="stylesheet" href= "{{asset("assets/css/style.min.css")}}"/>
-
-{{--    <link href="{{asset("plugins/bootstrap/examples.css")}}" rel="stylesheet" type="text/css">--}}
 
     <!-- ========================= JS here ========================= -->
-    <script src="{{asset("js/jquery-3.6.4.min.js")}}"></script>
     <script src="{{asset("js/bootstrap.min.js")}}"></script>
+    <script src="{{asset("js/jquery-3.6.4.min.js")}}"></script>
     <script src="{{asset("js/main.js")}}"></script>
     <script src="{{asset("js/tiny-slider.js")}}"></script>
     <script src="{{asset("js/count-up.min.js")}}"></script>
-    <script src="{{asset("js/chart.js")}}"></script>
-    <script src="{{asset("js/trading.js")}}"></script>
-    <script src="{{asset("js/manage.js")}}"></script>
-    <script src="{{asset("plugins/c/jquery.js")}}"></script>
-    <script src="{{asset("plugins/flot/jquery.js")}}"></script>
-    <script src="{{asset("plugins/flot/jquery.flot.js")}}"></script>
-    <script src="{{asset("plugins/flot/jquery.flot.time.js")}}"></script>
-    <script src="{{asset("plugins/flot/jquery.flot.selection.js")}}"></script>
-    <script src="{{asset("plugins/flot.tooltip/js/jquery.flot.tooltip.min.js")}}"></script>
-
 
 </head>
 
