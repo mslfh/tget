@@ -26,18 +26,20 @@ Route::get('/getTradingHistory', [App\Http\Controllers\HomeController::class, 'g
 Route::post('/changeMoney', [App\Http\Controllers\HomeController::class, 'changeMoney']);
 
 
+//add masterTrading
+Route::get('/masterTrading', [App\Http\Controllers\MasterTradingController::class, 'index'])->name('masterTrading');
+
 //master of trading
 Route::prefix('mtrading')->group(function () {
     Route::get('/getServiceFee', [App\Http\Controllers\MasterTradingController::class, 'getServiceFee']);
-    Route::post('/updateAdminFee', [App\Http\Controllers\MasterTradingController::class, 'updateAdminFee']);
-    Route::post('/updateTaxFee', [App\Http\Controllers\MasterTradingController::class, 'updateTaxFee']);
-
+    Route::post('/updateFee', [App\Http\Controllers\MasterTradingController::class, 'updateFee']);
 
     Route::get('/getEnergyList', [App\Http\Controllers\MasterTradingController::class, 'getEnergyList']);
     Route::get('/getTradingHistory', [App\Http\Controllers\MasterTradingController::class, 'getTradingHistory']);
     Route::post('/addNewEnergy', [App\Http\Controllers\MasterTradingController::class, 'addNewEnergy']);
     Route::delete('/deleteEnergy', [App\Http\Controllers\MasterTradingController::class, 'deleteEnergy']);
-    Route::get('/getEnergyDetai', [App\Http\Controllers\MasterTradingController::class, 'getEnergyDetai']);
+    Route::get('/getEnergyDetail', [App\Http\Controllers\MasterTradingController::class, 'getEnergyDetail']);
+    Route::get('/getOrderDetail', [App\Http\Controllers\MasterTradingController::class, 'getOrderDetail']);
     Route::post('/updateEnergy', [App\Http\Controllers\MasterTradingController::class, 'updateEnergy']);
     Route::post('/uploadEnergyImage', [App\Http\Controllers\MasterTradingController::class, 'uploadEnergyImage']);
 
@@ -113,10 +115,7 @@ Route::get('/trading/energyDetail', function(){
     return view('energyDetail');
 })->name('energyDetail');
 
-//add masterTrading
-Route::get('/masterTrading', function(){
-    return view('masterTrading');
-})->name('masterTrading');
+
 
 
 Route::get('/test', function(){

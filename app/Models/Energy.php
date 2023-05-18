@@ -12,4 +12,8 @@ class Energy extends Model
     public function store(){
         return $this->hasMany(Store::class, 'energy_id', 'id');
     }
+
+    public function records(){
+        return $this->hasMany(EnergyRecord::class, 'energy_id', 'id');
+    }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,4 +21,12 @@ class Order extends Model
     public function store(){
         return $this->hasOne(Store::class,'id','store_id');
     }
+
+    public static function getCreatedAtAttribute($created)
+    {
+        $time =  Carbon::create($created);
+        return $time->format('d/m/Y');
+    }
+
+
 }
