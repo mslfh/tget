@@ -46,6 +46,7 @@ class OrderController extends Controller
             $trade_price = $average_price * $data['volume'] + $market_set->administration_fee
             + ($average_price * $data['volume'])*$market_set->tax/100;
 
+
             $market_price = EnergyRecord::query()->where('energy_id',$store->energy_id)
                 ->orderBy('created_at','desc')->limit(1);
 
@@ -53,7 +54,8 @@ class OrderController extends Controller
 
             $order->market_price = $market_price;
             $order->average_price = $average_price;
-
+            $order->trading_price = $trade_price;
+            $order->order_no = 'O'.$store->location.time();
             $order->save();
 
             //change money of buyer
