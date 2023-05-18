@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+{{--    <link href={{asset("static/css/simplebar.css")}} rel="stylesheet">--}}
+{{--    <link href={{asset("static/css/perfect-scrollbar.css")}} rel="stylesheet">--}}
+{{--    <link href={{asset("static/css/metisMenu.min.css")}} rel="stylesheet">--}}
+{{--    <link href={{asset("static/css/pace.min.css")}} rel="stylesheet">--}}
+{{--    <link rel="stylesheet" href={{asset("static/css/bootstrap.min.css")}}>--}}
+{{--    <link rel="stylesheet" href={{asset("static/css/icons.css")}}>--}}
+{{--    <link rel="stylesheet" href={{asset("static/css/app.css")}}>--}}
+{{--    <link rel="stylesheet" href={{asset("static/css/dark-style.css")}}>--}}
+
     <div class="container page-wrapper page-content">
         <section class="content-header">
             <div class="page-title">
@@ -195,5 +206,8 @@
         <p id="click"></p>
 
     </div>
+
+
+
 
 @endsection

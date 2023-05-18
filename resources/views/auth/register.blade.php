@@ -29,23 +29,95 @@
         }
     </style>
 
+    <script>
+        $(document).ready(function() {
 
+            $("#SB").click(function(e) {
+                e.preventDefault();
+
+                var username = $("#name").val().trim();
+                var role = $("#role").val();
+                var email = $("#email").val().trim();
+                var password = $("#password").val().trim();
+                var confirmPassword = $("#password-confirm").val().trim();
+                var postalAddress = $("#postalAddress").val().trim();
+                var zone = $("#zone").val();
+                var acknowledge = $("#CKB").prop("checked");
+
+                if (username.length < 1) {
+                    $("#Err").text("Please enter your name.");
+                    return;
+                }
+
+                if($('role').val() ==="Select an option"){
+                    $("#Err").text("Please, choose buyer, seller or both!");
+                    return;
+                }
+
+                if (!["seller", "buyer", "both"].includes(role)) {
+                    $("#Err").text("Please, choose buyer, seller or both!");
+                    return;
+                }
+
+                //check email
+                var emailPattern = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                if (!emailPattern.test(email)) {
+                    $("#Err").text("The email address is incorrect.");
+                    return;
+                }
+
+                //check password
+                var passwordPattern = /^(?=.*[A-Z].*[A-Z])(?=.*\d)(?=.*[~`!@#$%^&*()_+-={}|\\:;"'<>,.?/])(?!.*\s).{5,10}$/;
+                if (!passwordPattern.test(password)) {
+                    $("#Err").text("Password include 5~10 characters in length, at least 2 uppercase letters, 1 number and one of special.");
+                    return;
+                }
+
+                // double check the password
+                if (confirmPassword !== password) {
+                    $("#Err").text("The two password entries are inconsistent.");
+                    return;
+                }
+
+
+                if (postalAddress === "") {
+                    $("#Err").text("Please input your address detail.");
+                    return;
+                }
+
+                if (!["A", "B", "C", "D", "E"].includes(zone)) {
+                    $("#Err").text("Please select one option from A, B, C, D, or E.");
+                    return;
+                }
+
+                if (!acknowledge) {
+                    $("#Err").text("Please confirm that you have read and understand the terms and conditions");
+                    return;
+                }
+
+                // all pass then submit
+                $("#Err").text("");
+                $(this).unbind("click").submit();
+            });
+        });
+
+    </script>
 </head>
 
 @extends('layouts.app')
 
 @section('content')
 <div class="account-login section">
-    <div class="container"style="padding:50px;">
+    <div class="container" style="padding: 50px;max-width: 1500px;">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12">
+            <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
 {{--                <div class="card-header">{{ __('Register') }}</div>--}}
 
 {{--                <div class="card-body">--}}
                     <form class="card login-form inner-content" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="title">
-                            <h3 style="margin-top: 20px">{{ __('Register') }}</h3>
+                            <h3>{{ __('Register') }}</h3>
                             <p>Please enter the information below to register.</p>
                             <div class="text-danger formMargin" id="Err"></div>
                         </div>
@@ -126,7 +198,7 @@
                         <div class="form-group">
                             <br><br>
                             <label for="CKB" class="hover-orange">
-                                <input type="checkbox" class="form-check-input checkBox" id="CKB" style="padding-left:0">
+                                <input type="checkbox" class="form-check-input checkBox" id="CKB">
                                 <b>*I acknowledge that I have read and understand the terms and conditions.</b>
                             </label>
                         </div>
@@ -141,78 +213,4 @@
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-
-        $("#SB").click(function(e) {
-            e.preventDefault();
-
-            var username = $("#name").val().trim();
-            var role = $("#role").val();
-            var email = $("#email").val().trim();
-            var password = $("#password").val().trim();
-            var confirmPassword = $("#password-confirm").val().trim();
-            var postalAddress = $("#postalAddress").val().trim();
-            var zone = $("#zone").val();
-            var acknowledge = $("#CKB").prop("checked");
-
-            if (username.length < 1) {
-                $("#Err").text("Please enter your name.");
-                return;
-            }
-
-            if($('role').val() ==="Select an option"){
-                $("#Err").text("Please, choose buyer, seller or both!");
-                return;
-            }
-
-            if (!["seller", "buyer", "both"].includes(role)) {
-                $("#Err").text("Please, choose buyer, seller or both!");
-                return;
-            }
-
-            //check email
-            var emailPattern = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-            if (!emailPattern.test(email)) {
-                $("#Err").text("The email address is incorrect.");
-                return;
-            }
-
-            //check password
-            var passwordPattern = /^(?=.*[A-Z].*[A-Z])(?=.*\d)(?=.*[~`!@#$%^&*()_+-={}|\\:;"'<>,.?/])(?!.*\s).{5,10}$/;
-            if (!passwordPattern.test(password)) {
-                $("#Err").text("Password include 5~10 characters in length, at least 2 uppercase letters, 1 number and one of special.");
-                return;
-            }
-
-            // double check the password
-            if (confirmPassword !== password) {
-                $("#Err").text("The two password entries are inconsistent.");
-                return;
-            }
-
-
-            if (postalAddress === "") {
-                $("#Err").text("Please input your address detail.");
-                return;
-            }
-
-            if (!["A", "B", "C", "D", "E"].includes(zone)) {
-                $("#Err").text("Please select one option from A, B, C, D, or E.");
-                return;
-            }
-
-            if (!acknowledge) {
-                $("#Err").text("Please confirm that you have read and understand the terms and conditions");
-                return;
-            }
-
-            // all pass then submit
-            $("#Err").text("");
-            $(this).unbind("click").submit();
-        });
-    });
-
-</script>
 @endsection

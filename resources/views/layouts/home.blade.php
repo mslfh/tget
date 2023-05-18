@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -48,15 +47,25 @@
                                         <a href={{route("trading")}}  aria-label="Toggle">Trading</a>
                                     </li>
 
-                                    @if(isset($status))
-                                        @if($status==1 && $data['role'] == "manager")
-                                            <li class="nav-item">
-                                                <a href={{route('masterTrading')}} aria-label="Toggle">Master of Trading</a>
-                                            </li>
-                                        @endif
-                                    @endif
+                                    <li class="nav-item">
+                                        <a href={{route('masterTrading')}} class="home" aria-label="Toggle navigation">Master of Trading</a>
+                                    </li>
+                                    {{--                                    @endif--}}
+                                    {{--                                    @endif--}}
+                                    <li class="nav-item">
+                                        <a href={{route('dashboard')}} class="home" aria-label="Toggle navigation">Dashboard</a>
+                                    </li>
 
-{{--                                    <li class="nav-item">--}}
+                                    <li class="nav-item">
+                                        <a href={{route('manage')}} class="home" aria-label="Toggle navigation">Manage</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href={{route('profile')}} class="home" aria-label="Toggle navigation">Profile</a>
+                                    </li>
+
+
+                                    {{--                                    <li class="nav-item">--}}
 {{--                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"--}}
 {{--                                           data-bs-target="#submenu-1-1" aria-controls="navbarSupportedContent" aria-expanded="false"--}}
 {{--                                           aria-label="Toggle navigation">Get started</a>--}}
@@ -132,6 +141,8 @@
     </main>
 
 </div>
+
+
 </body>
 
 <!-- End Header Area -->

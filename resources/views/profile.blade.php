@@ -2,6 +2,14 @@
 
 @section('content')
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
     <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}" />
     <!-- ========================= JS here ========================= -->
@@ -23,9 +31,9 @@
             padding: 0
         }
 
-        /*.account-style .bottom-content {*/
-        /*    margin-top: 20px*/
-        /*}*/
+        .account-style .bottom-content {
+            margin-top: 15px
+        }
 
         .account-style .form-group {
             margin-bottom: 20px;
@@ -42,8 +50,7 @@
         }
 
         .account-style .form-group .form-control {
-            padding-left: 13px;
-            padding-right: 13px;
+            padding: 0 13px;
             -webkit-transition: all .4s ease;
             transition: all .4s ease;
             border: 1px solid #eee;
@@ -61,8 +68,7 @@
         }
 
         .account-style .form-select{
-            padding-left: 13px;
-            padding-right: 13px;
+            padding: 0 13px;
             -webkit-transition: all .4s ease;
             transition: all .4s ease;
             border: 1px solid #eee;
@@ -222,7 +228,7 @@
 
         .button-control1 .btn1:hover {
             color: #fff;
-            background-color:blue;
+            background-color:orange;
         }
 
         .button-control1 .btn1 {
@@ -246,7 +252,7 @@
 
         .button-control1 .btn1:hover {
             color: #fff;
-            background-color:blueviolet;
+            background-color:red;
         }
 
         .formMargin{
@@ -254,92 +260,89 @@
         }
     </style>
 
+<body>
 <div class="account-style">
-    <div class="container section" style="margin-top: 20px">
+    <div class="container section">
         <div class=row>
             <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12">
-                <div class="card login-form inner-content">
-                        <h3 style="text-align: center; color: #452bac;">Profile</h3>
-                        <div class="text-danger formMargin" id="error"></div>
-                        <div class=card-body>
-                            <div class="input-head">
-                                <form  method='post' action="#" id="update-form">
-                                    <div class=row>
-                                        <div class="col-lg-5 col-6">
-                                        <!-- name -->
-                                            <label for="text" style="font-size: large; font-weight: 700;">Name</label>
-                                            <div class="form-group input-group">
-                                                <label><image src={{asset("assets/icon/user.png")}} height="25px"></image></label>
-                                                <input class=form-control type='text' id="username" value="SellerA" style="font-weight:bold">
-                                            </div>
-                                            <!-- email -->
-                                            <label for="email" style="font-size:large; font-weight: 700;">Email Address</label>
-                                            <div class="form-group input-group">
-                                                <label><image src={{asset("assets/icon/email.png")}} height="25px"></image></label>
-                                                <input class=form-control type='email' id="userEmail" value="userEmail@gmail.com" readonly style="color:gray">
-                                            </div>
-                                            <!-- Position -->
-                                            <label for="" style="font-size: large; font-weight: 700;">Position</label>
-                                            <div class="form-group">
-                                                <div>
-                                                    <label><image src={{asset("assets/icon/role.png")}} height="25px"></image></label>
-                                                    <select class="form-select" value="" style="font-weight:bold">
-                                                        <option value="buyer">Buyer</option>
-                                                        <option value="seller">Seller</option>
-                                                        <option value="both">Buyer&Seller</option>
-                                                        <option value="both">service manager</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <!-- Zone -->
-                                            <label for="text" style="font-size: large; font-weight: 700;">Zone</label>
-                                            <div class="form-group">
-                                                <label><image src={{asset("assets/images/profile/location.png")}} height="25px"></image></label>
-                                                <select class="form-select" value="" style="font-weight:bold">
-                                                    <option value="A">A</option>
-                                                    <option value="B">B</option>
-                                                    <option value="C">C</option>
-                                                    <option value="D">D</option>
-                                                    <option value="E">E</option>
-                                                </select>
-                                            </div>
-                                            <!-- Save Edit Details Button -->
-                                            <div class='button-control1 mb-5 d-flex'>
-                                                <button class='btn1 btn-primary' type='submit' id="save" style="padding: 15px;">Save</button>
-                                            </div>
-                                        </div>
-                                        <!-- Image of user -->
-                                        <div class="col-lg col"></div>
-                                        <div class="col-lg-5 col-5" style="margin-top: 10px">
-                                            <img id="ChangImage" src={{asset("assets/images/profile/personalAvatar.png")}} class="button-control" style="width:300px; max-height: 270px; " alt="">
-                                            <div class="button-control">
-                                                <button class="btn"  style="margin-top:5%; margin-left:19%;" id="picture">Change picture</button>
-                                            </div>
+                <form class="card login-form inner-content" method='post' action="#" id="update-form">
+                    <h3 style="text-align: center; color: #452bac;">Profile</h3>
+                    <div class="text-danger formMargin" id="error"></div>
+                    <div class=card-body>
+                        <div class=input-head>
+                            <div class=row>
+                                <div class="col-lg-5 col-6">
+                                    <!-- name -->
+                                    <label for="text" style="font-size: large; font-weight: 700;">Name</label>
+                                    <div class="form-group input-group">
+                                        <label><image src={{asset("assets/icon/user.png")}} height="25px"></image></label>
+                                        <input class=form-control type='text' id="username" value="SellerA" style="font-weight:bold">
+                                    </div>
+                                    <!-- email -->
+                                    <label for="email" style="font-size:large; font-weight: 700;">Email Address</label>
+                                    <div class="form-group input-group">
+                                        <label><image src={{asset("assets/icon/email.png")}} height="25px"></image></label>
+                                        <input class=form-control type='email' id="userEmail" value="userEmail@gmail.com" readonly style="color:gray">
+                                    </div>
+                                    <!-- Position -->
+                                    <label for="" style="font-size: large; font-weight: 700;">Position</label>
+                                    <div class="form-group">
+                                        <div>
+                                            <label><image src={{asset("assets/icon/role.png")}} height="25px"></image></label>
+                                            <select class="form-select" value="" style="font-weight:bold">
+                                                <option value="buyer">Buyer</option>
+                                                <option value="seller">Seller</option>
+                                                <option value="both">Buyer&Seller</option>
+                                                <option value="both">service manager</option>
+                                            </select>
                                         </div>
                                     </div>
-                                </form>
-                                <div style="position: absolute; right:10%; top:470px">
-                                    {{--                                current balance--}}
-                                    <form method='post' action="#" id="update-balance">
-                                        <div class="col-lg-12 col-12">
-                                            <label for="text" style="font-size:large; font-weight: 700;">Current Balance</label>
-                                            <div class="form-group input-group">
-                                                <label><image src={{asset("assets/images/profile/price.png")}} height="25px"></image></label>
-                                                <input class=form-control type='text' id="balance" value="100" readonly style="color: gray">
-                                            </div>
-                                            <div class='button-control mb-5'>
-                                                <button class='btn' type='button' data-bs-toggle="modal" data-bs-target="#rechargeModal" id="recharge" style="background-color:darkblue; padding: 7px">Recharge</button>
-                                                <button class='btn' type='button' data-bs-toggle="modal" data-bs-target="#withdrawModal" id="withdraw" style="float: right; background-color:grey; padding: 7px">Withdraw</button>
-                                                {{--                                            rechrage modal--}}
-                                                <div class="modal" tabindex="-1" id="rechargeModal">
-                                                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4>Recharge your amount</h4>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                {{--                                                            <p class="text-danger" id="error"></p>--}}
+                                    <!-- Zone -->
+                                    <label for="text" style="font-size: large; font-weight: 700;">Zone</label>
+                                    <div class="form-group">
+                                        <label><image src={{asset("assets/images/profile/location.png")}} height="25px"></image></label>
+                                        <select class="form-select" value="" style="font-weight:bold">
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                        </select>
+                                    </div>
+                                <!-- Save Edit Details Button -->
+                                <div class='button-control1 mb-5 d-flex'>
+                                    <button class='btn1' type='submit' id="save">Save</button>
+                                </div>
+                                </div>
+                                <!-- Image of user -->
+                                <div class="col-lg col"></div>
+                                <div class="col-lg-5 col-5" style="margin-top: 90px">
+                                    <img id="ChangImage" src={{asset("assets/images/profile/personalAvatar.png")}} class="button-control" style="width:300px; max-height: 270px; " alt="">
+                                    <div class="button-control">
+                                        <button class="btn"  style="margin-top:5%; margin-left:19%;" id="picture">Change picture</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-7 col-10">
+                                        <label for="text" style="font-size:large; font-weight: 700;">Current Balance</label>
+                                        <div class="form-group input-group">
+                                            <label><image src={{asset("assets/images/profile/price.png")}} height="25px"></image></label>
+                                            <input class=form-control type='text' id="balance" value="100" readonly style="color: gray">
+                                         </div>
+                                        <div class='button-control mb-5'>
+                                            <button class='btn' type='button' data-bs-toggle="modal" data-bs-target="#rechargeModal" id="recharge" style="background-color:darkblue;">Recharge</button>
+                                            <button class='btn' type='button' data-bs-toggle="modal" data-bs-target="#withdrawModal" id="withdraw" style="float: right; background-color:orange">Withdraw</button>
+{{--                                            rechrage modal--}}
+                                            <div class="modal" tabindex="-1" id="rechargeModal">
+                                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4>Recharge your amount</h4>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+{{--                                                            <p class="text-danger" id="error"></p>--}}
+                                                            <form class="card login-form inner-content form-group input-group">
                                                                 <div class="mb-3">
                                                                     <label for="Current Amount">Current Amount</label>
                                                                     <input type="text" class="form-control input-group" id="CurrentAmount" value="100" readonly>
@@ -349,24 +352,26 @@
                                                                     <label for="Recharge Amount">Recharge Amount</label>
                                                                     <input type="number" class="form-control input-group" id="RechargeAmount" value="0">
                                                                 </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:gray;">Close</button>
-                                                                <button type="button" class="btn btn-primary" id="rechargeAmount">Recharge Amount</button>
-                                                            </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:gray;">Close</button>
+                                                            <button type="button" class="btn btn-primary" id="rechargeAmount">Recharge Amount</button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{--                                            withdraw modal--}}
-                                                <div class="modal" tabindex="-1" id="withdrawModal">
-                                                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4>Withdraw your amount</h4>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                {{--                                                            <p class="text-danger" id="error"></p>--}}
+                                            </div>
+{{--                                            withdraw modal--}}
+                                            <div class="modal" tabindex="-1" id="withdrawModal">
+                                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4>Withdraw your amount</h4>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            {{--                                                            <p class="text-danger" id="error"></p>--}}
+                                                            <form>
                                                                 <div class="mb-3">
                                                                     <label for="Current Amount">Current Amount</label>
                                                                     <input type="text" class="form-control input-group" id="CurrentAmount" value="100" readonly>
@@ -376,93 +381,92 @@
                                                                     <label for="Withdraw Amount">Withdraw Amount</label>
                                                                     <input type="number" class="form-control input-group" id="WithdrawAmount" value="0">
                                                                 </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:gray;">Close</button>
-                                                                <button type="button" class="btn btn-primary">Withdraw Amount</button>
-                                                            </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color:gray;">Close</button>
+                                                            <button type="button" class="btn btn-primary">Withdraw Amount</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
                                 </div>
+                            <!-- Balance -->
+{{--                                <div class="col-lg-12 col-12 mt-5">--}}
+{{--                                    <label for="text" style="fonts-size: xx-large; fonts-weight: 700;">Current Balance</label>--}}
+{{--                                    <div class="form-group input-group">--}}
+{{--                                        <label><image src={{asset("assets/images/profile/price.png")}} height="25px"></image></label>--}}
+{{--                                        <input class=form-control type='text' id="balance" value="100" readonly style="color: gray">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-lg-12 col-12">--}}
+{{--                                    <label for="text" style="fonts-size: xx-large; fonts-weight: 700;">Recharge Amount</label>--}}
+{{--                                    <div class="form-group input-group">--}}
+{{--                                        <label><image src={{asset("assets/images/profile/changeMoney.png")}} height="25px"></image></label>--}}
+{{--                                        <input class=form-control type='text' placeholder="enter recharge amount">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+                                <!-- Money -->
 
-                                    <!-- Trading History -->
-                                    <div class="col-lg-12 col-12 button-control mb-5">
-                                        <div class="d-flex align-items-center">
-                                            <label for="" style="font-size:large; font-weight: 700; vertical-align: middle">Trading History</label>
-                                            <button class='btn mx-3' type='button' id="showTrading" style="padding:5px; font-size:15px; margin-bottom: 2%; background-color: #0000FF">More Details</button>
-                                        </div>
-                                        <div id="TradingHistory" style="display: none">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                <tr>
-                                                    <th>NO.</th>
-                                                    <th>Energy of Type</th>
-                                                    <th>Amount of transaction</th>
-                                                    <th>Trading date</th>
-                                                    <th>Description</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Solar</td>
-                                                    <td>30</td>
-                                                    <td>1-April</td>
-                                                    <td>enough</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>wind</td>
-                                                    <td>30</td>
-                                                    <td>10-April</td>
-                                                    <td>ok</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>wind</td>
-                                                    <td>30</td>
-                                                    <td>15-April</td>
-                                                    <td>good</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <button class='btn col-lg-3 col-7' type='button' id="trading-history" style="float:right; background-color: #24126a;" id="download">Download</button>
-                                        </div>
+                                <!-- Trading History -->
+                                <div class="col-lg-12 col-12 button-control mb-5">
+                                    <div class="d-flex align-items-center">
+                                        <label for="" style="font-size: 57px; font-weight: 700; vertical-align: middle">Trading History</label>
+                                        <button class='btn mx-3' type='button' id="showTrading" onclick="$('#TradingHistory').show()">More Details</button>
+                                    </div>
+                                    <div id="TradingHistory" style="display: none">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>NO.</th>
+                                                <th>Energy of Type</th>
+                                                <th>Amount of transaction</th>
+                                                <th>Trading date</th>
+                                                <th>Description</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Solar</td>
+                                                <td>30</td>
+                                                <td>1-April</td>
+                                                <td>enough</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>wind</td>
+                                                <td>30</td>
+                                                <td>10-April</td>
+                                                <td>ok</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>wind</td>
+                                                <td>30</td>
+                                                <td>15-April</td>
+                                                <td>good</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <button class='btn col-lg-3 col-7' type='button' id="trading-history" style="float:right; background-color: #24126a;" id="download">Download</button>
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
-                </div>
+                </form>
             </div>
         </div>
+    </div>
 </div>
 
-
 <script>
-{{--    trading details show or hidden--}}
-    $(document).ready(function(){
-        $("#showTrading").click(function(){
-            $("#TradingHistory").toggle();
-            if ($("#TradingHistory").is(":visible")) {
-                $("#showTrading").text("Hide Details");
-            } else {
-                $("#showTrading").text("Show Details");
-            }
-        });
-    });
-
-
     // JavaScript代码用于处理下载交易记录的功能
     function downloadTradingHistory() {
         // 这里编写下载交易记录的逻辑
     }
 </script>
+</body>
+</html>
 
 @endsection
-
-

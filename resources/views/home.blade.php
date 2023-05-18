@@ -282,7 +282,7 @@
                                 <form action="#" method="get" target="_blank" class="newsletter-form">
                                     <input name="EMAIL" placeholder="Email address" required="required" type="email">
                                     <div class="button">
-                                        <button class="sub-btn"><image src={{asset("assets/icon/send.png")}}>
+                                        <button class="sub-btn"><image src={{asset("assets/icon/send.png")}}></image>
                                         </button>
                                     </div>
                                 </form>
