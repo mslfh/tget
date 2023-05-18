@@ -198,4 +198,6 @@ function tradingHistoryChart(){
 $(document).ready(function() {
     tradingPriceChart()
     tradingHistoryChart()
+
+//    Check the role of current user. If it is manager display the manager view
 })
