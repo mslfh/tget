@@ -14,7 +14,8 @@ class DashboardController extends Controller
     //
     public function index(Request $request){
            $data =  $this->getMarketSummary($request);
-           return view('dashboard',['data'=>$data]);
+           $userData = $this->getActiveUserSummary($request);
+           return view('dashboard',['data'=>$data,'userData'=>$userData]);
     }
 
 
