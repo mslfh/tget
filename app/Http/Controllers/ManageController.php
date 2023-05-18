@@ -45,7 +45,7 @@ class ManageController extends Controller
         $user->role_id = $data['role_id'];
         $user->status = $data['status'];
         $user->email = $data['email'];
-        $user->password = encrypt($data['password'])??encrypt($data['12345abc']);
+        $user->password = bcrypt($data['password'])??bcrypt($data['12345abc']);
         $user->profile_photo_path = $data['profile_photo_path']??null;
         $user->postal_addr = $data['postal_addr']??null;
 
