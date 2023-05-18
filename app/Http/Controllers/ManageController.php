@@ -10,7 +10,9 @@ class ManageController extends Controller
 {
     //
     public function index(){
-        return view('manage',["status" => 1]);
+
+        $role = "buyer";
+        return view('manage',["role" => $role]);
     }
 
 
@@ -45,7 +47,7 @@ class ManageController extends Controller
         $user->role_id = $data['role_id'];
         $user->status = $data['status'];
         $user->email = $data['email'];
-        $user->password = $data['password']??'12345abc';
+        $user->password = bcrypt($data['password']??'12345abc');
         $user->profile_photo_path = $data['profile_photo_path']??null;
         $user->postal_addr = $data['postal_addr']??null;
 
@@ -61,6 +63,10 @@ class ManageController extends Controller
 
         $data = $request->post();
         $user = User::query()->find($data['user_id']);
+
+        if(!$user){
+            return $this->error('user not found');
+        }
         $user->delete();
         return $this->success( "delete successfully");
     }

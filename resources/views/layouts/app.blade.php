@@ -32,6 +32,7 @@
     <script src="{{asset("js/count-up.min.js")}}"></script>
     <script src="{{asset("js/chart.js")}}"></script>
     <script src="{{asset("js/trading.js")}}"></script>
+    <script src="{{asset("js/manage.js")}}"></script>
     <script src="{{asset("plugins/c/jquery.js")}}"></script>
     <script src="{{asset("plugins/flot/jquery.js")}}"></script>
     <script src="{{asset("plugins/flot/jquery.flot.js")}}"></script>

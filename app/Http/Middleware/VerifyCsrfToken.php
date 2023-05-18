@@ -13,5 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'http://tget.com/*',
+        'http://tget.com:8080/*',
     ];
 }
