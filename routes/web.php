@@ -45,11 +45,19 @@ Route::prefix('mtrading')->group(function () {
 
 });
 
+
+//add trading page
+Route::get('/trading', [App\Http\Controllers\OrderController::class, 'index'])->name('trading');
 //trading
 Route::prefix('trading')->group(function () {
     Route::post('/submitOrder', [App\Http\Controllers\OrderController::class, 'submitOrder']);
     Route::post('/submitEnergy', [App\Http\Controllers\OrderController::class, 'submitEnergy']);
+    Route::get('/energyDetail', [App\Http\Controllers\OrderController::class, 'energyDetail'])->name('energyDetail');
 });
+
+
+
+
 //manage
 Route::prefix('manage')->group(function () {
     Route::get('/getAllUser', [App\Http\Controllers\ManageController::class, 'getAllUser']);
@@ -103,16 +111,6 @@ Route::get('/profile', function(){
 Route::get('/forgotPasswd', function(){
     return view('auth.forgot-password');
 })->name('forgot-password');
-
-//add trading page
-Route::get('/trading', function(){
-    return view('trading');
-})->name('trading');
-
-Route::get('/trading/energyDetail', function(){
-    return view('energyDetail');
-})->name('energyDetail');
-
 
 
 

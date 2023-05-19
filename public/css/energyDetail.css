@@ -309,6 +309,7 @@
     color: #eaaa85
 }
 
+
 .product-details-content .pro-details-same-style.pro-details-categories-info {
     margin: 10px 0
 }
@@ -347,4 +348,8 @@ dl, ol, ul {
     padding: 0;
     margin: 0;
     list-style: none
+}
+
+.product-details-content .stock .avallabillty .in-stock.active-span {
+    color: #b73a3a;
 }

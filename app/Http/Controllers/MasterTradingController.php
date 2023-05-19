@@ -31,8 +31,6 @@ class MasterTradingController extends Controller
         );
     }
 
-
-
     public function getServiceFee(Request $request)
     {
         $MarketSetting = MarketSetting::find(1);
@@ -43,7 +41,6 @@ class MasterTradingController extends Controller
         ];
         return $this->success($data);
     }
-
 
     public function updateFee(Request $request)
     {

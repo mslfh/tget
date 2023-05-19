@@ -636,6 +636,7 @@
                 url: '/getUserInfo',
                 type: 'GET',
                 success: function(result) {
+                    console.log(result.data);
                     var balance = $("#balance");
                     // var CurrentAmount1 = $("#CurrentAmount1");   //Modal Recharge your Amount readonly part
                     // var CurrentAmount2 = $("#CurrentAmount2");   ////Modal Withdraw your Amount readonly part
@@ -670,6 +671,7 @@
                 }
             });
         })
+
     </script>
 
 
