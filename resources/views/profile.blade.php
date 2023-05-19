@@ -648,28 +648,11 @@
             });
 
 
-        //when click open the modal current money change
-            function transferCurrentValue(){
-                console.log("okkk")
-                // console.log($("#balance").val())
-                $("#CurrentAmount1").val($("#balance").val());
-            };
         });
-            //
-            // $("#withdraw").click(function(){
-            //     $("#CurrentAmount2").val($("#balance").val());
-            // });
-            // $('#recharge').on('shown.bs.modal', function (e) {
-            //     console.log("ok")
-            //     $("#CurrentAmount1").val($("#balance").val());
-            // });
-            //
-            // $('#withdraw').on('shown.bs.modal', function (e) {
-            //     $("#CurrentAmount2").val($("#balance").val());
-            // });
-
-
-
+        $("#recharge").click(function(){
+            var balance = $("#balance").val();
+            $("#CurrentAmount1").val(balance)
+        });
         $("#rechargeAmount").click(function(){
 
             var money = $("#AddMoney").val()
@@ -686,24 +669,7 @@
                     location.reload()
                 }
             });
-
-            $("withdrawAmount").click(function(){
-
-                var money = $("#reduceMoney").val()
-
-                $.ajax({
-                    url: '/changeMoney',
-                    type: 'POST',
-                    data:{
-                        "money": money,
-                        "type" : "withdraw"
-                    },
-                    success: function(result) {
-                        alert(result.data)
-                    }
-                });
         })
-
     </script>
 
 
