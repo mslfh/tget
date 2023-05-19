@@ -325,52 +325,40 @@
                                             <label style="padding: 0px;">
                                                 <image src={{asset("assets/icon/role.png")}}></image>
                                             </label>
-                                            <select class="form-select" value="" style="font-weight:bold">
+                                            <select class="form-select" value="" style="font-weight:bold" name="role">
                                                 <option value="buyer">Buyer</option>
                                                 <option value="seller">Seller</option>
                                                 <option value="both">Buyer&Seller</option>
-                                                <option value="both">service manager</option>
+                                                {{--  <option value="both">service manager</option>--}}
                                             </select>
                                         </div>
                                     </div>
-                                    <!-- Zone -->
+                                    <!-- password -->
+                                    <label for="password" style="font-size: large; font-weight: 700;">Password</label>
+                                    <div class="form-group">
+                                        <label style="padding: 0px;">
+                                            <image src={{asset("assets/icon/password.png")}} ></image>
+                                        </label>
+                                        <input class=form-control type='password' id="password" value="" name="password">
+                                    </div>
+
+
+                                    <!-- postal_address -->
+                                    <label for="text" style="font-size: large; font-weight: 700;">Postal address</label>
+                                    <div class="form-group">
+                                        <label style="padding: 0px;">
+                                            <image src={{asset("assets/icon/home.png")}}></image>
+                                        </label>
+                                        <input class=form-control type='text' id="postal_address" value="" name="postal_address">
+                                    </div>
+
+                                    <!-- zone -->
                                     <label for="text" style="font-size: large; font-weight: 700;">Zone</label>
                                     <div class="form-group">
                                         <label style="padding: 0px;">
                                             <image src={{asset("assets/images/profile/location.png")}}></image>
                                         </label>
-                                        <select class="form-select" value="" style="font-weight:bold">
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
-                                        </select>
-                                    </div>
-
-
-                                    <!-- password -->
-                                    <label for="text" style="font-size: large; font-weight: 700;">Password</label>
-                                    <div class="form-group">
-                                        <label style="padding: 0px;">
-                                            <image src={{asset("assets/images/profile/location.png")}}></image>
-                                        </label>
-                                        <select class="form-select" value="" style="font-weight:bold">
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- potal_address -->
-                                    <label for="text" style="font-size: large; font-weight: 700;">Potal address</label>
-                                    <div class="form-group">
-                                        <label style="padding: 0px;">
-                                            <image src={{asset("assets/images/profile/location.png")}}></image>
-                                        </label>
-                                        <select class="form-select" value="" style="font-weight:bold">
+                                        <select class="form-select" value="" style="font-weight:bold" name="zone">
                                             <option value="A">A</option>
                                             <option value="B">B</option>
                                             <option value="C">C</option>
@@ -400,14 +388,14 @@
                                                 <image
                                                     src={{asset("assets/images/profile/price.png")}} height="25px"></image>
                                             </label>
-                                            <input  id="balance" class=form-control type='text' value="100" readonly
+                                            <input  id="balance" class=form-control type='text' value="100"
                                                    style="color: gray">
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class='button-control mb-5 '>
-                                            <button class='btn' type='button' data-bs-toggle="modal"
-                                                    data-bs-target="#rechargeModal" id="recharge"
+                                            <button id="recharge" class='btn' type='button' data-bs-toggle="modal"
+                                                    data-bs-target="#rechargeModal"
                                                     style="background-color:darkblue; padding: 7px">
                                                 <i class="bi bi-currency-exchange"></i>
                                             </button>
@@ -431,13 +419,13 @@
                                                             <div class="mb-3">
                                                                 <label for="Current Amount">Current Amount</label>
                                                                 <input type="text" class="form-control input-group"
-                                                                       id="CurrentAmount" value="-" readonly>
+                                                                       id="CurrentAmount1" >
                                                             </div>
                                                             <br>
                                                             <div class="mb-3">
                                                                 <label for="Recharge Amount">Recharge Amount</label>
                                                                 <input type="number" class="form-control input-group"
-                                                                       id="AddMoney" value="0">
+                                                                       id="AddMoney" value="0" name="AddMoney">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -468,13 +456,13 @@
                                                             <div class="mb-3">
                                                                 <label for="Current Amount">Current Amount</label>
                                                                 <input type="text" class="form-control input-group"
-                                                                       id="CurrentAmount" value="100" readonly>
+                                                                       id="CurrentAmount2" value="" readonly>
                                                             </div>
                                                             <br>
                                                             <div class="mb-3">
                                                                 <label for="Withdraw Amount">Withdraw Amount</label>
                                                                 <input type="number" class="form-control input-group"
-                                                                       id="WithdrawAmount" value="0">
+                                                                       id="reduceMoney" value="0" name="WithdrawAmount">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -482,7 +470,7 @@
                                                                     data-bs-dismiss="modal"
                                                                     style="background-color:gray;">Close
                                                             </button>
-                                                            <button type="button" class="btn btn-primary">Withdraw
+                                                            <button type="button" class="btn btn-primary" id="withdrawAmount">Withdraw
                                                                 Amount
                                                             </button>
                                                         </div>
@@ -643,16 +631,35 @@
 
     <script>
         $(document).ready(function () {
+            //Current Amount readonly get data
             $.ajax({
                 url: '/getUserInfo',
                 type: 'GET',
                 success: function(result) {
                     var balance = $("#balance");
+                    // var CurrentAmount1 = $("#CurrentAmount1");   //Modal Recharge your Amount readonly part
+                    // var CurrentAmount2 = $("#CurrentAmount2");   ////Modal Withdraw your Amount readonly part
 
                     $("#balance").val(result.data.account_balance)
+                    // $("#CurrentAmount1").val(result.data.account_balance)
+                    // $("#CurrentAmount2").val(result.data.account_balance)
+
                 }
             });
-        })
+        });
+
+        //when click open the modal current money change
+        $("#recharge").click(function(){
+            // console.log("okkk")
+            // console.log($("#balance").val())
+            $("#CurrentAmount1").val($("#balance").val());
+        });
+
+        $("#withdraw").click(function(){
+            $("#CurrentAmount2").val($("#balance").val());
+        });
+
+
         $("#rechargeAmount").click(function(){
 
             var money = $("#AddMoney").val()
@@ -668,8 +675,25 @@
                    alert(result.data)
                 }
             });
+
+            $("withdrawAmount").click(function(){
+
+                var money = $("#reduceMoney").val()
+
+                $.ajax({
+                    url: '/changeMoney',
+                    type: 'POST',
+                    data:{
+                        "money": money,
+                        "type" : "withdraw"
+                    },
+                    success: function(result) {
+                        alert(result.data)
+                    }
+                });
         })
     </script>
+
 
 @endsection
 
