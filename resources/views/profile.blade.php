@@ -396,7 +396,7 @@
                                         <div class='button-control mb-5 '>
                                             <button id="recharge" class='btn' type='button' data-bs-toggle="modal"
                                                     data-bs-target="#rechargeModal"
-                                                    style="background-color:darkblue; padding: 7px" onclick="transferCurrentValue()">
+                                                    style="background-color:darkblue; padding: 7px">
                                                 <i class="bi bi-currency-exchange"></i>
                                             </button>
                                             <button class='btn' type='button' data-bs-toggle="modal"
@@ -419,7 +419,7 @@
                                                             <div class="mb-3">
                                                                 <label for="Current Amount">Current Amount</label>
                                                                 <input type="text" class="form-control input-group"
-                                                                       id="CurrentAmount1" >
+                                                                       id="CurrentAmount1" readonly>
                                                             </div>
                                                             <br>
                                                             <div class="mb-3">
@@ -649,10 +649,18 @@
 
 
         });
+        //modal 1 current money
         $("#recharge").click(function(){
             var balance = $("#balance").val();
             $("#CurrentAmount1").val(balance)
         });
+
+        //modal 2 current money
+        $("#withdraw").click(function(){
+            var balance = $("#balance").val();
+            $("#CurrentAmount2").val(balance)
+        });
+
         $("#rechargeAmount").click(function(){
 
             var money = $("#AddMoney").val()
@@ -666,6 +674,24 @@
                 },
                 success: function(result) {
                    alert(result.data)
+                    location.reload()
+                }
+            });
+        })
+
+        $("#withdrawAmount").click(function(){
+
+            var money = $("#reduceMoney").val()
+
+            $.ajax({
+                url: '/changeMoney',
+                type: 'POST',
+                data:{
+                    "money": money,
+                    "type" : "withdraw"
+                },
+                success: function(result) {
+                    alert(result.data)
                     location.reload()
                 }
             });
