@@ -44,12 +44,16 @@
                                             <tbody>
                                                 @foreach($users as $user)
                                                     <tr>
-                                                        <td>{{user["id"]}}</td>
-                                                        <td>{{user["name"]}}</td>
-                                                        <td>{{user["email"]}}</td>
-                                                        <td>{{user["role_id"]}}</td>
-                                                        <td>{{user["status"]}}</td>
-                                                        @if({{user["status"]}} === 1)
+                                                        <td>{{$user->id}}</td>
+                                                        <td>{{$user->name}}</td>
+                                                        <td>{{$user->email}}</td>
+                                                        <td>{{$user->role_id}}</td>
+                                                        @if($user->status == 1)
+                                                            <td>Active</td>
+                                                        @else
+                                                            <td>Inactive</td>
+                                                        @endif
+                                                        @if($user->status == 1)
                                                             <td><input class="btn btn-warning" type="button" value="Deactivate" onclick="changeUserStatus(0)"></td>
                                                         @else
                                                             <td><input class="btn btn-success" type="button" value="Activate" onclick="changeUserStatus(1)"></td>

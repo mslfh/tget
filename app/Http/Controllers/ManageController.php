@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Auth;
 class ManageController extends Controller
 {
     //
-    public function index(){
-
-        $role = "buyer";
-        return view('manage',["role" => $role]);
+    public function index(Request $request){
+        $users = $this->getAllUser($request)->getData()->data;
+//        dd($users->list);
+        return view('manage',["users" => $users->list]);
     }
 
 

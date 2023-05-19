@@ -27,7 +27,8 @@
             <div class="page-content">
                 <div class="container-fluid">
                     {{--Manager Only Views--}}
-                    <div class="row manager-view" id="user-summary">
+                    @if($role == 1)
+                        <div class="row manager-view" id="user-summary">
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
@@ -61,6 +62,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     {{--Market Summary--}}
                     <div class="row" id="market-summary">
                         <div class="col-lg-12">
