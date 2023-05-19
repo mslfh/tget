@@ -289,7 +289,7 @@
                                             <image src={{asset("assets/icon/user.png")}}></image>
                                         </label>
                                         {{--                                                <label for="text" style="font-size: large; font-weight: 700;">Name:</label>--}}
-                                        <input class=form-control type='email' id="userEmail" value="Name: Ryan"
+                                        <input class=form-control type='text' id="userName" value="Name: Ryan"
                                                readonly style="color:gray">
 
                                     </div>
@@ -325,10 +325,10 @@
                                             <label style="padding: 0px;">
                                                 <image src={{asset("assets/icon/role.png")}}></image>
                                             </label>
-                                            <select class="form-select" value="" style="font-weight:bold" name="role">
-                                                <option value="buyer">Buyer</option>
-                                                <option value="seller">Seller</option>
-                                                <option value="both">Buyer&Seller</option>
+                                            <select class="form-select" value="" style="font-weight:bold" name="role" id="role_id">
+                                                <option value="2">Buyer</option>
+                                                <option value="3">Seller</option>
+                                                <option value="4">Buyer&Seller</option>
                                                 {{--  <option value="both">service manager</option>--}}
                                             </select>
                                         </div>
@@ -358,7 +358,7 @@
                                         <label style="padding: 0px;">
                                             <image src={{asset("assets/images/profile/location.png")}}></image>
                                         </label>
-                                        <select class="form-select" value="" style="font-weight:bold" name="zone">
+                                        <select class="form-select" value="" style="font-weight:bold" name="zone" id="zone">
                                             <option value="A">A</option>
                                             <option value="B">B</option>
                                             <option value="C">C</option>
@@ -378,8 +378,7 @@
                         {{--balance--}}
                         <div class="contact-form" style="margin: 1%;">
                             <form method='post' action="#" id="update-balance">
-                                <label for="text" style="font-size:large; font-weight: 700; padding-bottom: 20px;">Current
-                                    Balance</label>
+                                <label for="text" style="font-size:large; font-weight: 700; padding-bottom: 20px;">Current Balance</label>
 
                                 <div class="row">
                                     <div class="col-8">
@@ -389,7 +388,7 @@
                                                     src={{asset("assets/images/profile/price.png")}} height="25px"></image>
                                             </label>
                                             <input  id="balance" class=form-control type='text' value="100"
-                                                   style="color: gray">
+                                                   style="color: gray" readonly>
                                         </div>
                                     </div>
                                     <div class="col-3">
@@ -520,13 +519,15 @@
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
+{{--                                                                            @foreach($tradingHistory as $trading)--}}
+{{--                                                                            <tr>--}}
+{{--                                                                                <td>{{$trading->id}}</td>--}}
+{{--                                                                                <td>{{$trading->type}}</td>--}}
+{{--                                                                                <td>{{$trading->money}}</td>--}}
+{{--                                                                                <td>{{$trading->created_at}}</td>--}}
+{{--                                                                                <td>{{$trading->remark}}</td>--}}
+{{--                                                                            </tr>--}}
+{{--                                                                            @endforeach--}}
                                                                             <tr>
                                                                                 <td>1</td>
                                                                                 <td>Solar</td>
@@ -631,23 +632,37 @@
 
     <script>
         $(document).ready(function () {
-            //Current Amount readonly get data
+            //getUserInformation
             $.ajax({
                 url: '/getUserInfo',
                 type: 'GET',
                 success: function(result) {
+                    // console.log(result)
                     var balance = $("#balance");
-                    // var CurrentAmount1 = $("#CurrentAmount1");   //Modal Recharge your Amount readonly part
-                    // var CurrentAmount2 = $("#CurrentAmount2");   ////Modal Withdraw your Amount readonly part
-
                     $("#balance").val(result.data.account_balance)
-                    // $("#CurrentAmount1").val(result.data.account_balance)
-                    // $("#CurrentAmount2").val(result.data.account_balance)
-
+                    // var userName = $("#userName")
+                    $("#userName").val("Name: "+ result.data.name)
+                    //userEmail
+                    $("#userEmail").val("Email: "+ result.data.email)
+                    //role_id
+                    $("#role_id").val(result.data.role_id)
+                    //password
+                    $("#password").val(result.data.password)
+                    //postal_address
+                    $("#postal_address").val(result.data.postal_addr)
+                    //zone
+                    $("zone").val(result.data.zone)
                 }
             });
+        });
 
-
+        //getTradingHistory
+        $.ajax({
+            url: '/getTradingHistory?type=1',
+            type: 'GET',
+            success: function (result) {
+                console.log(result)
+            }
         });
         //modal 1 current money
         $("#recharge").click(function(){
