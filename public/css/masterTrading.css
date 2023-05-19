@@ -207,7 +207,7 @@
     font-size: 24px;
     color: #212121;
     display: block;
-    padding: 16px 45px;
+    padding: 10px 35px;
     position: relative;
 }
 .panel-body .container{
@@ -384,3 +384,60 @@ table td{
 
 }
 
+.Trading-info{
+    padding: 0px 60px;
+    color: gray;
+}
+
+.deleteBtn{
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+
+ .form-group {
+    margin-bottom: 20px;
+    position: relative
+}
+
+.form-group label {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 9
+}
+
+.form-group .form-control {
+    padding-right: 13px;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    border: 1px solid #eee;
+    background-color: #f4f7fa;
+    color: #505050;
+    font-size: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 40px;
+    border-radius: 30px !important;
+    overflow: hidden;
+    width: 100%;
+    padding-left: 55px
+}
+
+
+
+
+.energy-area {
+    padding: 20px 20px 20px;
+}
+
+.energy-area table tbody {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    margin-bottom: 10px;
+}

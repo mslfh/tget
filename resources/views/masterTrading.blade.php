@@ -92,7 +92,7 @@
                                                             <td>
                                                                 <div>
                                                                     <button id="editEnergy-Btn-{{$energy->id}}" type="button" class="btn btn-sm btn-default editEnergy-bt" data-bs-toggle="modal" data-bs-target="#editRenewableEnergy" ><i class="bi bi-pencil-square"></i></button>
-                                                                    <button class="btn btn-sm btn-default"><i class="bi bi-trash3"></i></button>
+                                                                    <button id="deleteEnergy-Btn-{{$energy->id}}" class="btn btn-sm btn-default deleteEnergy-bt" data-bs-toggle="modal" data-bs-target="#confirmModal"><i class="bi bi-trash3"></i></button>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -264,15 +264,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit Renewable Energy</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h3>Add Renewable Energy</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="#" method="post">
                         <div class="form-group">
-                            <table>
+                            <div class="energy-area">
+                            <table >
                                 <input style="display: none" id="energyIdInput">
                                 <tr>
                                     <td>Image</td>
@@ -280,86 +279,49 @@
                                         <button type="file">Change image</button>
                                     </td>
                                 </tr>
-
+                                <tr style="height: 10px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                                 <tr>
-                                    <td>Title</td>
+                                    <td>Title:</td>
                                     <td><input type="input" class="form-control" name="title" placeholder="Enter title"></td>
                                 </tr>
+
+                                <tr style="height: 20px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                                 <tr>
-                                    <td>Description</td>
+                                    <td>Description: </td>
                                     <td><input type="input" class="form-control" name="description" placeholder="Enter Description"></td>
                                 </tr>
+                                <tr style="height:20px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                                 <tr>
-                                    <td>Type</td>
+                                    <td>Type:</td>
                                     <td><input type="input" class="form-control" name="type" placeholder="Enter Type"></td>
                                 </tr>
+                                <tr style="height: 20px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                                 <tr>
-                                    <td>Market Price (kWh)</td>
+                                    <td>Market Price (kWh):</td>
                                     <td><input type="input" class="form-control" name="price" placeholder="Enter Price per kWh"></td>
                                 </tr>
-
                             </table>
-                        </div>
 
+                        </div>
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary" id="saveEnergyBtn">Save</button>
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" tabindex="-1" role="dialog" id="updateDetails">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Update Renewable Energy</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="#" method="post">
-                        <div class="form-group">
-                            <div style="text-align:center">
-                                <img src="assets/images/solar.jpg" class="energyPlaceholerDetail"><br>
-                                <button type="file" class="btn btn-light">Upload image</button>
-                            </div>
-                            <table>
-                                <tr>
-                                    <td>Title</td>
-                                    <td><input type="input" class="form-control" placeholder="Enter title"
-                                               value="On-grid solar"></td>
-                                </tr>
-                                <tr>
-                                    <td>Description</td>
-                                    <td><input type="input" class="form-control" placeholder="Enter Description"
-                                               value="On-grid means your solar system is tied to your local utility's GRID	">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Type</td>
-                                    <td><input type="input" class="form-control" placeholder="Enter Type" value="Solar">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Price per kWh</td>
-                                    <td><input type="input" class="form-control" placeholder="Enter Price per kWh"
-                                               value="2.12"></td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Update</button>
-                        </div>
-                    </form>
-
-                </div>
-
             </div>
         </div>
     </div>
@@ -425,7 +387,7 @@
                                             </div>
                                             <div id="buyer-info" class="panel-collapse collapse show" data-bs-parent="#faq">
                                                 <div class="panel-body">
-                                                    <p class="buyer-info">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                                    <p class="buyer-info" id="buyer-info"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -436,7 +398,7 @@
                                             </div>
                                             <div id="seller-info" class="panel-collapse collapse show" data-bs-parent="#faq">
                                                 <div class="panel-body">
-                                                    <p class="seller-info">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                                    <p class="seller-info"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -458,6 +420,37 @@
 
                         <div class="Place-order mt-25" style="">
                             <a class="btn-hover" href="#">Place Order</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Confirm delete</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="padding: 0px">
+
+                    <div class="your-order-area">
+
+                        <div class="your-order-wrap gray-bg-4">
+                            <div class="your-order-product-info">
+                                <div class="your-order-total">
+                                    <input style="display: none" id="energyId">
+                                    <span class="order-total" style="font-size: 20px;">Are you sure to delete this energy?</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="Place-order mt-25" >
+                            <a class="btn-hover" style="background-color: rgba(200,87,87,0.74);" >
+                                <button class="btn btn-sm btn-default deleteBtn"  id="confirm_delete_btn" >I'm confirmed</button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -558,6 +551,15 @@
             });
         });
 
+
+        $('.deleteEnergy-bt').click(function () {
+
+            var energyId = $(this).attr('id').split('-')[2];
+            var modal = $('#confirmModal');
+            // Make an AJAX request to fetch energy details
+            modal.find('#energyId').val(energyId);
+        });
+
         $('.btn-view-order').click(function () {
                 var orderId = $(this).attr('id').split('-')[2];
 
@@ -575,19 +577,21 @@
                         modal.find('#Administration_Fee').text("$ "+order.administration_fee);
                         modal.find('#Market_Price').text("$ "+order.market_price);
                         modal.find('#trading_price').text("$ "+order.trading_price);
+                        modal.find('#buyer-info').html("<span class='Trading-info'>Name:   "+order.buyer.name+"<br>Email:   "+order.buyer.email+"<br> Zone:   "+order.buyer.zone+"</span >");
+                        modal.find('#seller-info').html("<span class='Trading-info'>Name: "+order.seller.name+"<br>Email:   "+order.seller.email+"<br> Zone:  "+order.seller.zone+"</span >");
+                        modal.find('#order-info').html("<span class='Trading-info'>Order time:  "+order.created_at +"<br>Remark:   "+order.remark+"</span >");
                         // Update HTML witTh order details
                         modal.modal('show');
                     }
                 });
             });
 
-
         $('#updateEnergyBtn').click(function() {
             var $form = $('#editRenewableEnergy form');
 
-            $energyId =   $('#energyIdInput').val()
+            var energyId =   $('#energyIdInput').val()
 
-            var $url = "/mtrading/updateEnergy?id="+$energyId; // Set the URL for updating the energy data
+            var $url = "/mtrading/updateEnergy?id="+energyId; // Set the URL for updating the energy data
             var $data = {
                 "title": $form.find('input[name="title"]').val(),
                 "description": $form.find('input[name="description"]').val(),
@@ -599,6 +603,22 @@
             $.post($url, $data, function($response) {
                 alert($response.msg)
                 location.reload()
+            });
+        });
+
+
+        $('#confirm_delete_btn').click(function() {
+
+            var energyId =   $('#confirmModal').find('#energyId').val();
+
+
+            $.ajax({
+                url: 'mtrading/deleteEnergy?id='+energyId,
+                type: 'DELETE',
+                success: function(result) {
+                    alert(result.msg)
+                    location.reload()
+                }
             });
         });
 
@@ -619,5 +639,6 @@
                 location.reload()
             });
         });
+
     </script>
 @endsection

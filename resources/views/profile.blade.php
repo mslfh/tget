@@ -666,6 +666,7 @@
                 },
                 success: function(result) {
                    alert(result.data)
+                    location.reload()
                 }
             });
         })
