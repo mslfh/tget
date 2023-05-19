@@ -396,7 +396,7 @@
                                         <div class='button-control mb-5 '>
                                             <button id="recharge" class='btn' type='button' data-bs-toggle="modal"
                                                     data-bs-target="#rechargeModal"
-                                                    style="background-color:darkblue; padding: 7px">
+                                                    style="background-color:darkblue; padding: 7px" onclick="transferCurrentValue()">
                                                 <i class="bi bi-currency-exchange"></i>
                                             </button>
                                             <button class='btn' type='button' data-bs-toggle="modal"
@@ -646,18 +646,28 @@
 
                 }
             });
-        });
+
 
         //when click open the modal current money change
-        $("#recharge").click(function(){
-            // console.log("okkk")
-            // console.log($("#balance").val())
-            $("#CurrentAmount1").val($("#balance").val());
+            function transferCurrentValue(){
+                console.log("okkk")
+                // console.log($("#balance").val())
+                $("#CurrentAmount1").val($("#balance").val());
+            };
         });
+            //
+            // $("#withdraw").click(function(){
+            //     $("#CurrentAmount2").val($("#balance").val());
+            // });
+            // $('#recharge').on('shown.bs.modal', function (e) {
+            //     console.log("ok")
+            //     $("#CurrentAmount1").val($("#balance").val());
+            // });
+            //
+            // $('#withdraw').on('shown.bs.modal', function (e) {
+            //     $("#CurrentAmount2").val($("#balance").val());
+            // });
 
-        $("#withdraw").click(function(){
-            $("#CurrentAmount2").val($("#balance").val());
-        });
 
 
         $("#rechargeAmount").click(function(){
@@ -692,6 +702,7 @@
                     }
                 });
         })
+
     </script>
 
 
