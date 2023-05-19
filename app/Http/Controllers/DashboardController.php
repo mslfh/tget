@@ -8,13 +8,16 @@ use App\Models\Store;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     //
     public function index(Request $request){
+           $user =  Auth::user();
            $data =  $this->getMarketSummary($request);
-           return view('dashboard',['data'=>$data]);
+           $userData = $this->getActiveUserSummary($request);
+           return view('dashboard',['data'=>$data,'userData'=>$userData, 'role'=>$user->role_id]);
     }
 
 

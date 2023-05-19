@@ -54,7 +54,7 @@ Route::prefix('trading')->group(function () {
 Route::prefix('manage')->group(function () {
     Route::get('/getAllUser', [App\Http\Controllers\ManageController::class, 'getAllUser']);
     Route::post('/addNewUser', [App\Http\Controllers\ManageController::class, 'addNewUser']);
-    Route::delete('/removeUser', [App\Http\Controllers\ManageController::class, 'removeUser']);
+    Route::post('/removeUser', [App\Http\Controllers\ManageController::class, 'removeUser']);
     Route::post('/changeUserStatus', [App\Http\Controllers\ManageController::class, 'changeUserStatus']);
 });
 
@@ -95,9 +95,7 @@ Route::get('/', function () {
 //    return view('dashboard');
 //});
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-Route::get('/manage', function(){
-    return view('manage');
-})->name('manage');
+Route::get('/manage', [App\Http\Controllers\ManageController::class, 'index'])->name('manage');
 
 Route::get('/profile', function(){
     return view('profile');
