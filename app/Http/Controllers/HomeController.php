@@ -150,4 +150,36 @@ class HomeController extends Controller
         return $this->success("successfully"
         );
     }
+
+
+    public function profile(Request $request)
+    {
+        $user = Auth::user();
+        $type = $request->get('type')??1;
+
+        if($type == 1){
+            $list = Balance::query()->where([
+                "user_id" => $user->id,
+            ])->get();
+        }
+        elseif($type== 2){
+            $list = Balance::query()->where([
+                "user_id" => $user->id,
+                "type" => 2,
+            ])->get();
+        }
+        elseif ($type == 3){
+            $list = Balance::query()->where([
+                "user_id" => $user->id,
+            ])->whereIn('type',[1,3])->get();
+        }
+        else{
+            $list=[];
+        }
+
+        return view("profile")->with([
+            'tradingHistory' => $list
+        ]);
+    }
+
 }

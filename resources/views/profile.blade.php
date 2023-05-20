@@ -512,85 +512,32 @@
                                                                             <thead>
                                                                             <tr>
                                                                                 <th>NO.</th>
-                                                                                <th>Energy of Type</th>
+                                                                                <th>Trading Type</th>
                                                                                 <th>Amount of transaction</th>
                                                                                 <th>Trading date</th>
                                                                                 <th>Description</th>
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody>
-{{--                                                                            @foreach($tradingHistory as $trading)--}}
-{{--                                                                            <tr>--}}
-{{--                                                                                <td>{{$trading->id}}</td>--}}
-{{--                                                                                <td>{{$trading->type}}</td>--}}
-{{--                                                                                <td>{{$trading->money}}</td>--}}
-{{--                                                                                <td>{{$trading->created_at}}</td>--}}
-{{--                                                                                <td>{{$trading->remark}}</td>--}}
-{{--                                                                            </tr>--}}
-{{--                                                                            @endforeach--}}
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr> <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
 
+
+                                                                            @foreach($tradingHistory as $trading)
                                                                             <tr>
-                                                                                <td>2</td>
-                                                                                <td>wind</td>
-                                                                                <td>30</td>
-                                                                                <td>10-April</td>
-                                                                                <td>ok</td>
+                                                                                <td>{{$trading->id}}</td>
+{{--                                                                                //1-deposit 2- trading cost 3-withdraw--}}
+                                                                                @if($trading->type == 1)
+                                                                                    <td>Save money</td>
+                                                                                    @elseif($trading->type == 2)
+                                                                                    <td>Trading cost</td>
+                                                                                @elseif($trading->type == 3)
+                                                                                    <td>withdraw</td>
+                                                                                @endif
+                                                                                <td>{{$trading->money}}</td>
+                                                                                <td>{{$trading->remark}}</td>
+                                                                                <td>{{$trading->created_at}}</td>
+
                                                                             </tr>
-                                                                            <tr>
-                                                                                <td>3</td>
-                                                                                <td>wind</td>
-                                                                                <td>30</td>
-                                                                                <td>15-April</td>
-                                                                                <td>good</td>
-                                                                            </tr>
+                                                                            @endforeach
                                                                             </tbody>
                                                                         </table>
 
@@ -656,14 +603,6 @@
             });
         });
 
-        //getTradingHistory
-        $.ajax({
-            url: '/getTradingHistory?type=1',
-            type: 'GET',
-            success: function (result) {
-                console.log(result)
-            }
-        });
         //modal 1 current money
         $("#recharge").click(function(){
             var balance = $("#balance").val();

@@ -77,17 +77,6 @@ Route::prefix('dashboard')->group(function () {
 
 
 
-//Route::middleware([
-//    'auth:sanctum',
-//    config('jetstream.auth_session'),
-//    'verified'
-//])->group(function () {
-//    Route::get('/dashboard', function () {
-//        return view('dashboard');
-//    })->name('dashboard');
-//});
-
-
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //static page entry
@@ -105,13 +94,13 @@ Route::get('/', function () {
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/manage', [App\Http\Controllers\ManageController::class, 'index'])->name('manage');
 
-Route::get('/profile', function(){
-    return view('profile');
-})->name('profile');
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+
+
+
 Route::get('/forgotPasswd', function(){
     return view('auth.forgot-password');
 })->name('forgot-password');
-
 
 
 Route::get('/test', function(){

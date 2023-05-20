@@ -47,27 +47,6 @@
                     </div>
                 @endforeach
             </div>
-
-
-{{--        @for( $i=0; $i< count($list);$i++)--}}
-{{--            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".{{2+$i*2}}s">--}}
-{{--                    <div class="feature-box">--}}
-{{--                        <div class="tumb">--}}
-{{--                        <a class="btn btn-link"  href="/trading/energyDetail?id={{$list[$i]['id']}}">--}}
-{{--                        <img src="./assets/images/trading/hydro.png" alt="solar energy">>--}}
-{{--                        <br>--}}
-{{--                        </a>--}}
-{{--                        </div>--}}
-{{--                        <h4 class="solar1">{{$list[$i]['title']}}</h4>--}}
-{{--                        <p>{{$list[$i]['description']}}</p>--}}
-{{--                        <p>Seller: John Doe</p>--}}
-{{--                        <p>Volume: {{$list[$i]['vol']."/kWh + "}}  </p>--}}
-{{--                        <p>Zone: {{$list[$i]['zone']}}</p>--}}
-{{--                        <p>Price: ${{$list[$i]['price']}}/kWh</p>--}}
-{{--                        <p>Created: {{$list[$i]['created_at']}}</p>--}}
-{{--                    </div>--}}
-{{--            </div>--}}
-{{--            @endfor--}}
         </div>
     </div>
 </div>
