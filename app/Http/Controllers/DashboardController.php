@@ -53,7 +53,6 @@ class DashboardController extends Controller
             $energy->avg_price = $avg_price;
             unset($energy->store);
         }
-        return $energies;
         return $this->success($energies
         );
 
