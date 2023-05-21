@@ -103,10 +103,10 @@ class DashboardController extends Controller
 
     public function getTradingHistory(Request $request)
     {
-
+        $user =  Auth::user();
+        $user->id=2;
         $numDays = $request->get('numDays')??2;
         $energyType = $request->get('energyType')??null;
-
 
         $current = Carbon::tomorrow();
         $begin = Carbon::tomorrow();
@@ -122,7 +122,8 @@ class DashboardController extends Controller
             ->where([
                 [ "created_at",">=",  date('Y-m-d H:i:s',$begin->getTimestamp())],
                 [ "created_at","<=",date('Y-m-d H:i:s',$current->getTimestamp())]
-            ]);
+            ])
+            ->where('buyer_id',$user->id??0)->orWhere('seller_id',$user->id??0);
         if($energyType){
             $orders = $orders->whereHas(
                 'store',function($q) use($energyType){

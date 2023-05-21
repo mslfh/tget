@@ -22,11 +22,4 @@ class Order extends Model
         return $this->hasOne(Store::class,'id','store_id');
     }
 
-    public static function getCreatedAtAttribute($created)
-    {
-        $time =  Carbon::create($created);
-        return $time->format('d/m/Y');
-    }
-
-
 }
