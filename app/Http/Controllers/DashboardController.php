@@ -15,8 +15,8 @@ class DashboardController extends Controller
     //
     public function index(Request $request){
            $user =  Auth::user();
-           $data =  $this->getMarketSummary($request);
-           $userData = $this->getActiveUserSummary($request);
+           $data =  $this->getMarketSummary($request)->getData()->data;
+           $userData = $this->getActiveUserSummary($request)->getData()->data;
            return view('dashboard',['data'=>$data,'userData'=>$userData, 'role'=>$user->role_id]);
     }
 
