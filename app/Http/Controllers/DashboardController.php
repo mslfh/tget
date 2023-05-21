@@ -15,11 +15,10 @@ class DashboardController extends Controller
     //
     public function index(Request $request){
            $user =  Auth::user();
-           $data =  $this->getMarketSummary($request);
-           $userData = $this->getActiveUserSummary($request);
+           $data =  $this->getMarketSummary($request)->getData()->data;
+           $userData = $this->getActiveUserSummary($request)->getData()->data;
            return view('dashboard',['data'=>$data,'userData'=>$userData, 'role'=>$user->role_id]);
     }
-
 
     public function getActiveUserSummary(Request $request)
     {
@@ -63,7 +62,6 @@ class DashboardController extends Controller
 
         $numDays = $request->get('numDays')??2;
         $energyType = $request->get('energyType')??null;
-
 
         $current = Carbon::tomorrow();
         $begin = Carbon::tomorrow();
@@ -145,6 +143,7 @@ class DashboardController extends Controller
                 $price  = $im['average_price'] * $im['volume'] +  $im['administration_fee']
                     + ($im['average_price'] * $im['volume'])* $im['tax']/100;
                 $data[$numDays - $numDay ]['tradings'][]=[
+                    'volume' => $im['volume'],
                     'price' => $price,
                     'energy' => $im->store->energy
                 ];
