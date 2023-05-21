@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 //user
 Route::get('/getUserInfo', [App\Http\Controllers\HomeController::class, 'getUserInfo']);
 Route::get('/getRole', [App\Http\Controllers\HomeController::class, 'getRole']);
@@ -75,16 +77,8 @@ Route::prefix('dashboard')->group(function () {
 });
 
 
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::get('/home', [App\Http\Controllers\IndexController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\IndexController::class, 'index']);
-
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/manage', [App\Http\Controllers\ManageController::class, 'index'])->name('manage');
-
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 
 

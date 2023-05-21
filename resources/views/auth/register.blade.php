@@ -11,17 +11,12 @@
 
     <!-- ========================= CSS here ========================= -->
     <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}" />
-    <link rel="stylesheet" href="{{asset("css/animate.css")}}" />
-    <link rel="stylesheet" href="{{asset("css/tiny-slider.css")}}" />
-    <link rel="stylesheet" href="{{asset("css/index.css")}}" />
     <link rel="stylesheet" href="{{asset("css/registration.css")}}" />
 
     <!-- ========================= JS here ========================= -->
     <script src="{{asset("js/jquery-3.6.4.min.js")}}"></script>
     <script src="{{asset("js/bootstrap.min.js")}}"></script>
     <script src="{{asset("js/main.js")}}"></script>
-    <script src="{{asset("js/tiny-slider.js")}}"></script>
-    <script src="{{asset("js/count-up.min.js")}}"></script>
 
     <style>
         input::placeholder {
@@ -79,7 +74,7 @@
                             <div class="col-lg-6 col-12">
                                 <div class="form-group">
                                     <label><image src={{asset("assets/icon/role.png")}} height="25px"></image></label>
-                                    <select class="form-select" value="" id="role" style="text-align-last:center" name="role_id">
+                                    <select class="form-select" value="" id="role" style="text-align-last:center" name="role">
                                         <option value="" >Select an option</option>
                                         <option value="buyer">Buyer</option>
                                         <option value="seller">Seller</option>

@@ -20,7 +20,6 @@ class DashboardController extends Controller
            return view('dashboard',['data'=>$data,'userData'=>$userData, 'role'=>$user->role_id]);
     }
 
-
     public function getActiveUserSummary(Request $request)
     {
         $users = User::query()->get();
@@ -63,7 +62,6 @@ class DashboardController extends Controller
 
         $numDays = $request->get('numDays')??2;
         $energyType = $request->get('energyType')??null;
-
 
         $current = Carbon::tomorrow();
         $begin = Carbon::tomorrow();
@@ -145,6 +143,7 @@ class DashboardController extends Controller
                 $price  = $im['average_price'] * $im['volume'] +  $im['administration_fee']
                     + ($im['average_price'] * $im['volume'])* $im['tax']/100;
                 $data[$numDays - $numDay ]['tradings'][]=[
+                    'volume' => $im['volume'],
                     'price' => $price,
                     'energy' => $im->store->energy
                 ];
