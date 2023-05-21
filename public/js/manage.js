@@ -1,6 +1,6 @@
 function addUser(){
-    let name = $("#name")
-    let email = $("#email")
+    let name = $("#name").val()
+    let email = $("#email").val()
     let status = 1
     let password = ""
     let role = $("input[name='role']:checked").val()
@@ -15,7 +15,8 @@ function addUser(){
         "postal_addr":postal_addr,
         "profile_photo_path":profile_photo_path
     }
-    $.post('/manage/addNewUser',payload)
+    console.log(payload)
+    $.post('/index.php/manage/addNewUser',payload)
 }
 
 function removeUser(userId){
@@ -33,15 +34,10 @@ function remove_user_success(userId){
 }
 
 function changeUserStatus(currUser, status){
-    $.post("/manage/changeUserStatus",{"user_id":currUser, "status":status},(data)=>{
+    $.post("/index.php/manage/changeUserStatus",{"user_id":currUser, "status":status},(data)=>{
         if(!data.status){
             alert(data.msg)
+            return
         }
     })
 }
-
-
-
-// $(document).ready(function() {
-//     $('.dropdown-toggle').dropdown();
-// });

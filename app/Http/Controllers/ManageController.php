@@ -10,9 +10,10 @@ class ManageController extends Controller
 {
     //
     public function index(Request $request){
+        $user =  Auth::user();
         $users = $this->getAllUser($request)->getData()->data;
 //        dd($users->list);
-        return view('manage',["users" => $users->list]);
+        return view('manage',["users" => $users->list, 'role'=>$user->role_id]);
     }
 
 
