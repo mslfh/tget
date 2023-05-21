@@ -108,6 +108,7 @@ class OrderController extends Controller
         }
         catch (\Exception $exception){
             DB::rollBack();
+            dd($exception->getMessage());
             return $this->error("error");
         }
 

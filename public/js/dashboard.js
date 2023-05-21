@@ -1,49 +1,60 @@
-function priceHistoryChartData(){
-    let priceData = $.get("/dashboard/getPriceHistory?numDays=7")
+function priceHistoryChartData(priceData){
     let xAxis = []
     let yAxis = []
     let energiesName = new Set()
     let pricesHistory = []
 
-    //Getting the x axis and data prep to get y axis information
-    priceData["data"].forEach((data)=>{
-            xAxis.push(data["date"])
+    // Getting the x axis and prepping for y axis data
+    priceData.forEach((data)=>{
+        xAxis.push(data["date"])
+        if("energies" in data){
             let energiesData = data["energies"]
+            let oneDayPrice = []
             energiesData.forEach((energy)=>{
                 let energyType = energy["energy"]["type"]
                 energiesName.add(energyType)
-                pricesHistory.push({energiesName:energy["selling_price"]})
+                let oneData = {}
+                oneData[energyType]=energy["selling_price"]
+                oneDayPrice.push(oneData)
             })
-        })
-
-    //Preparing data for y axis
-    energiesName.forEach(energy=>{
-        let energyPrice = []
-        pricesHistory.forEach(priceData =>{
-            if(Object.keys(priceData)[0] === energy){
-                energyPrice.push(priceData[energy])
-            }
-        })
-        let yData = {name:energy,data:energyPrice}
-        yAxis.push(yData)
+            pricesHistory.push(oneDayPrice)
+        } else {
+            pricesHistory.push([])
+        }
     })
-    return [xAxis, yAxis]
+
+    //Getting the y axis
+
+    energiesName.forEach((name)=>{
+        let priceData = [];
+        pricesHistory.forEach((price)=>{
+            if(!price.length){
+                priceData.push(0)
+            } else {
+                price.forEach((data) =>{
+                    if(name in data){
+                        priceData.push(data[name])
+                    } else {
+                        priceData.push(0)
+                    }
+                })
+            }
+
+
+        })
+        let energyData = {
+            "name":name,
+            "data":priceData
+        }
+        yAxis.push(energyData)
+    })
+    tradingPriceChart(xAxis,yAxis)
 }
 
-function tradingPriceChart(){
-    //Getting the xAxis and yAxis
-    let axisData = priceHistoryChartData()
-
+function tradingPriceChart(xAxis,yAxis){
     // chart 1
     var options = {
-        // series: [{
-        //     name: 'Consultations',
-        //     data: [440, 505, 414, 671, 227, 613, 901, 352, 752, 320, 257, 160]
-        // }, {
-        //     name: 'Patients',
-        //     data: [230, 420, 350, 270, 430, 320, 570, 310, 220, 220, 120, 100]
-        // }],
-        series :axisData[1],
+        series :yAxis,
         chart: {
             type: 'line',
             height: 250,
@@ -85,8 +96,7 @@ function tradingPriceChart(){
         },
         colors: ["#265ed7", "#fe6555"],
         xaxis: {
-            // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            categories: axisData[0],
+            categories: xAxis,
         },
         fill: {
             opacity: 1
@@ -97,36 +107,57 @@ function tradingPriceChart(){
 
 }
 
-function tradingHistoryChartData(){
-    let historyData = $.get("/dashboard/getTradingHistory")
+function tradingHistoryChartData(tradingData){
     let xAxis = []
     let yAxis = []
     let energiesName = new Set()
     let transactionHistory = []
 
-    //Getting the x axis and data prep to get y axis information
-    historyData["data"].forEach((data)=>{
+    // Getting the x axis and prepping for y axis data
+    tradingData.forEach((data)=>{
         xAxis.push(data["date"])
-        let tradingsData = data["tradings"]
-        tradingsData.forEach((trade)=>{
-            let energyType = trade["energy"]["type"]
-            energiesName.add(energyType)
-            transactionHistory.push({energiesName:trade["price"]})
-        })
-    })
-
-    //Preparing data for y axis
-    energiesName.forEach(energy=>{
-        let transactionPrice = []
-        transactionHistory.forEach(transaction =>{
-            if(Object.keys(transaction)[0] === energy){
-            transactionPrice.push(transaction[energy])
+        if("tradings" in data){
+            let tradingsData = data["tradings"]
+            let oneDayTrading = []
+            tradingsData.forEach((trading)=>{
+                let energyType = trading["energy"]["type"]
+                energiesName.add(energyType)
+                let oneData = {}
+                oneData[energyType]=trading["selling_price"]
+                oneDayTrading.push(oneData)
+            })
+            transactionHistory.push(oneDayTrading)
+        } else {
+            transactionHistory.push([])
         }
     })
-    let yData = {name:energy,data:transactionPrice}
-    yAxis.push(yData)
-})
-    return [xAxis, yAxis]
+
+    //Getting the y axis
+
+    energiesName.forEach((name)=>{
+        let tradingData = [];
+    //     pricesHistory.forEach((price)=>{
+    //         if(!price.length){
+    //             priceData.push(0)
+    //         } else {
+    //             price.forEach((data) =>{
+    //                 if(name in data){
+    //                     priceData.push(data[name])
+    //                 } else {
+    //                     priceData.push(0)
+    //                 }
+    //             })
+    //         }
+    //
+    //
+    //     })
+    //     let energyData = {
+    //         "name":name,
+    //         "data":priceData
+    //     }
+    //     yAxis.push(energyData)
+    })
+    // tradingPriceChart(xAxis,yAxis)
 }
 
 function tradingHistoryChart(){
@@ -196,8 +227,17 @@ function tradingHistoryChart(){
 }
 
 $(document).ready(function() {
-    tradingPriceChart()
-    tradingHistoryChart()
+    // var priceData;
+    $.get("/index.php/dashboard/getPriceHistory?numDays=7",(result)=>{
+        priceHistoryChartData(result["data"])
+    })
+
+    $.get("/index.php/dashboard/getTradingHistory", (result)=>{
+        tradingHistoryChartData(result["data"])
+    })
+    // tradingPriceChart()
+    // tradingHistoryChart()
+
 
 //    Check the role of current user. If it is manager display the manager view
 })
