@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Models\Balance;
+use App\Models\Energy;
 use App\Models\EnergyRecord;
 use App\Models\MarketSetting;
 use App\Models\Order;
@@ -14,7 +16,34 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index(Request $request)
+    {
+        $user =  Auth::user();
+
+        $pageSize = $request->get('pageSize',6);
+
+
+        $list = Energy::query()->paginate($pageSize);
+
+        foreach ( $list as $index=> $li){
+            $li->price = $average_price = Store::query()->where(
+                'energy_id',$li->id
+            )->average('selling_price');
+            $li->vol = $average_price = Store::query()->where(
+                'energy_id',$li->id
+            )->max('current_volume');
+        }
+
+        return view('trading', compact('list'))->with([
+            'role' => $user->role_id,
+        ]);
+
+    }
 
     public function submitOrder(Request $request)
     {
@@ -46,6 +75,7 @@ class OrderController extends Controller
             $trade_price = $average_price * $data['volume'] + $market_set->administration_fee
             + ($average_price * $data['volume'])*$market_set->tax/100;
 
+
             $market_price = EnergyRecord::query()->where('energy_id',$store->energy_id)
                 ->orderBy('created_at','desc')->limit(1);
 
@@ -53,7 +83,8 @@ class OrderController extends Controller
 
             $order->market_price = $market_price;
             $order->average_price = $average_price;
-
+            $order->trading_price = $trade_price;
+            $order->order_no = 'O'.$store->location.time();
             $order->save();
 
             //change money of buyer
@@ -82,7 +113,6 @@ class OrderController extends Controller
         }
 
     }
-
 
     public function submitEnergy(Request $request)
     {
@@ -113,4 +143,33 @@ class OrderController extends Controller
         }
         return $this->success($store);
     }
+
+    public function energyDetail(Request $request)
+    {
+        $energyId = $request->get('id');
+        $energy = Energy::query()->find($energyId);
+
+        if($energy){
+            $price = Store::query()->where(
+                'energy_id',$energyId
+            )->average('selling_price');
+
+            $storeList = Store::query()->where(
+                'energy_id',$energyId
+            )->with('seller:id,name')->get();
+
+            $tax = MarketSetting::query()->find(1)->toArray();
+
+            $energy->price = $price;
+            return view("energyDetail")->with([
+                'energy'=>$energy->toArray(),
+                'storeList'=>$storeList->toArray(),
+                'tax'=>$tax,
+            ]);
+        }
+        else{
+            return $this->error("energy not found");
+        }
+    }
+
 }

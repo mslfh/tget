@@ -17,4 +17,7 @@ class Store extends Model
     public function energy(){
         return $this->hasOne(Energy::class,'id','energy_id');
     }
+    public function seller(){
+        return $this->belongsTo(User::class,'seller_id','id');
+    }
 }

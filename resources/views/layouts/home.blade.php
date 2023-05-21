@@ -28,13 +28,12 @@
 <div id="app">
     <!-- Start Header Area -->
     <header class="header navbar-area">
-        <div class="container">
+        <div class="container" style="max-width: 1500px;">
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <div class="nav-inner">
                         <!-- Start Navbar -->
                         <nav class="navbar navbar-expand-lg">
-
                             <a class="navbar-brand" href={{route('home')}}>
                                 <img src={{asset("assets/images/logo/logo.png")}} alt="Logo">
                             </a>
@@ -43,37 +42,29 @@
                                     <li class="nav-item">
                                         <a href={{route("home")}}  aria-label="Toggle">Home</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href={{route("trading")}}  aria-label="Toggle">Trading</a>
-                                    </li>
 
                                     <li class="nav-item">
-                                        <a href={{route('masterTrading')}} class="home" aria-label="Toggle navigation">Master of Trading</a>
+                                        <a href={{route('trading')}} class="trading" aria-label="Toggle navigation">Trading</a>
                                     </li>
-                                    {{--                                    @endif--}}
-                                    {{--                                    @endif--}}
+                                    @if($role_id ==1 && $role_id !=0)
                                     <li class="nav-item">
-                                        <a href={{route('dashboard')}} class="home" aria-label="Toggle navigation">Dashboard</a>
+                                        <a href={{route('masterTrading')}} class="trading" aria-label="Toggle navigation">Master of Trading</a>
                                     </li>
-
+                                    @endif
+                                    @if($role_id ==1 && $role_id !=0)
                                     <li class="nav-item">
-                                        <a href={{route('manage')}} class="home" aria-label="Toggle navigation">Manage</a>
+                                        <a href={{route('dashboard')}} class="trading" aria-label="Toggle navigation">Dashboard</a>
                                     </li>
+                                    @endif
 
+                                    @if($role_id ==1 && $role_id !=0)
                                     <li class="nav-item">
-                                        <a href={{route('profile')}} class="home" aria-label="Toggle navigation">Profile</a>
+                                        <a href={{route('manage')}} class="trading" aria-label="Toggle navigation">Manage</a>
                                     </li>
-
-
-                                    {{--                                    <li class="nav-item">--}}
-{{--                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"--}}
-{{--                                           data-bs-target="#submenu-1-1" aria-controls="navbarSupportedContent" aria-expanded="false"--}}
-{{--                                           aria-label="Toggle navigation">Get started</a>--}}
-{{--                                        <ul class="sub-menu collapse" id="submenu-1-1">--}}
-{{--                                            <li class="nav-item"><a href={{route('register')}}>Register now</a></li>--}}
-{{--                                            <li class="nav-item"><a href={{route('login')}}>Login/Logout</a></li>--}}
-{{--                                        </ul>--}}
-{{--                                    </li>--}}
+                                    @endif
+                                    <li class="nav-item">
+                                        <a href={{route('profile')}} class="trading" aria-label="Toggle navigation">Profile</a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="button">
@@ -96,26 +87,26 @@
                                     <!-- Authentication Links -->
                                     @guest
                                         @if (Route::has('login'))
-                                            <li class="nav-item">
+                                            <li class="nav-item" style="margin-right: 20px;">
                                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                             </li>
                                         @endif
 
                                         @if (Route::has('register'))
-                                            <li class="nav-item">
+                                            <li class="nav-item" style="margin-right: 20px;">
                                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                             </li>
                                         @endif
                                     @else
                                         <li class="nav-item dropdown">
-                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <a style="color: #c6ccdb; font-size: 20px;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }}
                                             </a>
 
                                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();" style="padding: 0px 20px;color: #0000ff87;">
                                                     {{ __('Logout') }}
                                                 </a>
 

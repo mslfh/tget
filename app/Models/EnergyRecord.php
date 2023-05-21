@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class EnergyRecord extends Model
 {
     use HasFactory;
+    protected $fillable = ["market_price"];
 }

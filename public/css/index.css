@@ -85,8 +85,12 @@ html {
   }
 
   .header .navbar .navbar-nav .nav-item a.home {
-    color: #fff
+    color: #ffffff
   }
+
+.header .navbar .navbar-nav .nav-item a.active {
+    color: #547bc9
+}
 
   .sticky .navbar .navbar-nav .nav-item a.home {
     color: #3e80ff
@@ -171,7 +175,7 @@ html {
   }
 
   .navbar-nav .nav-item a.active {
-    color: #fff
+    color: #3957c4
   }
 
   .navbar-nav .nav-item a.dd-menu::after {

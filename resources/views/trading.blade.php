@@ -15,232 +15,82 @@
                     <p class="wow fadeInUp" data-wow-delay=".6s">Trade your energy to save the environment. Check out the
                         energies available in the market.</p>
                 </div>
+
+
+                @if($role != 2 && $role != 0)
                 <div class="col-12">
                 <button type="button" class="btn btn-outline-success sell-button mb-3" data-bs-toggle="modal"
                         data-bs-target="#sellerModal" id="sellEnergyButton">Sell Energy</button>
-
                 </div>
+                @endif
             </div>
 
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s">
-                <a class="btn btn-link"  href="{{ route('energyDetail') }}">
-                    <div class="feature-box">
-                        <div class="tumb">
-                            <img src="./assets/images/trading/hydro.png" alt="solar energy">>
-                            <br>
+            <div class="row">
+                @foreach($list as $item)
+                    <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".{{2+$loop->index*2}}s">
+                        <div class="feature-box">
+                            <div class="tumb">
+                                <a class="btn btn-link" href="/trading/energyDetail?id={{$item['id']}}">
+                                    <img src="./assets/images/trading/hydro.png" alt="solar energy">
+                                    <br>
+                                </a>
+                            </div>
+                            <h4 class="solar1">{{$item['title']}}</h4>
+                            <p>{{$item['description']}}</p>
+                            <p>Volume: {{$item['vol']."kWh + "}}</p>
+                            <p>Zone: {{$item['zone']}}</p>
+                            <p>Price: ${{$item['price']}}/kWh</p>
+                            <p>Created: {{$item['created_at']}}</p>
                         </div>
-                        <h4 class="solar1">Solar Energy</h4>
-                        <p>Energy produced from sunrays</p>
-                        <p>Seller: John Doe</p>
-                        <p>Volume: 100kwh</p>
-                        <p>Zone: A</p>
-                        <p>Price: $2/kWh</p>
-                        <p>Created: 05 Jan 2023</p>
                     </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".4s">
-                <div class="feature-box">
-                    <div class="tumb">
-                        <img src="./assets/images/trading/solar2.png" alt="wind energy">
-                    </div>
-                    <h4 class="wind1">Wind Energy</h4>
-                    <p>Energy produced from wind turbines</p>
-                    <p>Seller: John Doe</p>
-                    <p>Volume: 195kwh</p>
-                    <p>Zone: A</p>
-                    <p>Price: $2/kWh</p>
-                    <p>Created: 28 Jan 2023</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".6s">
-                <div class="feature-box">
-                    <div class="tumb">
-                        <img src="./assets/images/trading/wind.png" alt="solar energy">
-                    </div>
-                    <h4 class="solar=2">Solar Energy</h4>
-                    <p>Energy produced from sunrays</p>
-                    <p>Seller: Kath Lene</p>
-                    <p>Volume: 150kwh</p>
-                    <p>Zone: C</p>
-                    <p>Price: $2.50/kWh</p>
-                    <p>Created: 12 Feb 2023</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s">
-                <div class="feature-box">
-                    <div class="tumb">
-                        <img src="./assets/images/trading/hydro.png" alt="hydro energy">
-                    </div>
-                    <h4 class="hydro1">Hydro Energy</h4>
-                    <p>Energy produced from hydro power</p>
-                    <p>Seller: Mark Sean</p>
-                    <p>Volume: 150kwh</p>
-                    <p>Zone: C</p>
-                    <p>Price: $1.80/kWh</p>
-                    <p>Created: 19 Feb 2023</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".4s">
-                <div class="feature-box">
-                    <div class="tumb">
-                        <img src="./assets/images/trading/wind.png" alt="wing energy">
-                    </div>
-                    <h4 class="wind2">Wind Energy</h4>
-                    <p>Energy produced from wind turbines</p>
-                    <p>Seller: Sam Smith</p>
-                    <p>Volume: 100kwh</p>
-                    <p>Zone: B</p>
-                    <p>Price: $2/kWh</p>
-                    <p>Created: 11 Mar 2023</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".6s">
-                <div class="feature-box">
-                    <div class="tumb">
-                        <img src="./assets/images/trading/solar2.png" alt="solar energy">
-                    </div>
-                    <h4 class="solar3">Solar Energy</h4>
-                    <p>Energy produced from sunrays</p>
-                    <p>Seller: Sam Smith</p>
-                    <p>Volume: 250kwh</p>
-                    <p>Zone: B</p>
-                    <p>Price: $2/kWh</p>
-                    <p>Created: 22 Mar 2023</p>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
 </div>
 <!-- End Features Area -->
 
-<!-- Sell or Buy Energy -->
-{{--<div class="bottom-container" style="text-align: center;">--}}
-{{--    <button type="button" class="btn btn-outline-success sell-button mb-3" data-bs-toggle="modal"--}}
-{{--            data-bs-target="#sellerModal" id="sellEnergyButton">Sell Energy</button>--}}
-{{--    <div class="modal" tabindex="-1" id="sellerModal">--}}
-{{--        <div class="modal-dialog">--}}
-{{--            <div class="modal-content">--}}
-{{--                <div class="modal-header">--}}
-{{--                    <h4>Sell Your Energy</h4>--}}
-{{--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
-{{--                </div>--}}
-{{--                <div class="modal-body">--}}
-{{--                    <p id="sellError" class="text-danger"></p>--}}
-{{--                    <form>--}}
-{{--                        <div class="mb-3">--}}
-{{--                            <label for="inputEnergyType">Energy Type</label>--}}
-{{--                            <select id="inputEnergyType" class="form-control">--}}
-{{--                                <option selected>Choose...</option>--}}
-{{--                                <option>Solar</option>--}}
-{{--                                <option>Wind</option>--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-{{--                        <div class="mb-3">--}}
-{{--                            <label for="inputSellVolume">Sell Volume</label>--}}
-{{--                            <input type="number" class="form-control" id="inputSellVolume" value="">--}}
-{{--                        </div>--}}
-{{--                        <div class="mb-3">--}}
-{{--                            <label for="inputSellPrice">Sell Price</label>--}}
-{{--                            <input type="number" class="form-control" id="inputSellPrice" value="">--}}
-{{--                        </div>--}}
-{{--                    </form>--}}
-{{--                </div>--}}
-{{--                <div class="modal-footer">--}}
-{{--                    <button type="button" class="btn btn-danger" id="cancelButton" data-bs-dismiss="modal">Cancel</button>--}}
-{{--                    <button type="button" class="btn btn-primary" id="sellSubmitButton" onclick="submitSell()">Submit</button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
-{{--    <!-- Buy Energy -->--}}
-{{--    <button type="button" class="btn btn-outline-primary buy-button mb-3" data-bs-toggle="modal"--}}
-{{--            data-bs-target="#buyerModal" id="buyEnergyButton">Buy Energy</button>--}}
-{{--    <div class="modal" tabindex="-1" id="buyerModal">--}}
-{{--        <div class="modal-dialog">--}}
-{{--            <div class="modal-content">--}}
-{{--                <div class="modal-header">--}}
-{{--                    <h4>Buy Available Energy</h4>--}}
-{{--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
-{{--                </div>--}}
-{{--                <div class="modal-body">--}}
-{{--                    <p class="text-danger" id="error"></p>--}}
-{{--                    <form>--}}
-{{--                        <div class="mb-3">--}}
-{{--                            <label for="energyType">Energy Type</label>--}}
-{{--                            <input type="text" class="form-control" id="energyType" value="Solar" disabled>--}}
-{{--                        </div>--}}
-{{--                        <div class="mb-3">--}}
-{{--                            <label for="availableVolume">Available Volume</label>--}}
-{{--                            <input type="text" class="form-control" id="availableVolume" value="100" readonly>--}}
-{{--                        </div>--}}
-{{--                        <div class="mb-3">--}}
-{{--                            <label for="buyPrice">Buy Price</label>--}}
-{{--                            <input type="text" class="form-control" id="buyPrice" value="1.9 /kWh" readonly>--}}
-{{--                        </div>--}}
-{{--                        <div class="mb-3">--}}
-{{--                            <label for="buyVolume">Buy Volume</label>--}}
-{{--                            <input type="number" class="form-control" id="buyVolume" value="">--}}
-{{--                        </div>--}}
-{{--                    </form>--}}
-{{--                    <div class="container" id="summaryDetail" style="display: none;">--}}
-{{--                        <h3>Summary of the Price</h3>--}}
-{{--                        <ul>--}}
-{{--                            <li>Price (Buy volume x Buy price): $</li>--}}
-{{--                            <li>Admin Fee: $</li>--}}
-{{--                            <li>Tax Fee: $</li>--}}
-{{--                            <li>Total Fee (Price + Admin Fee + tax): $</li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="modal-footer">--}}
-{{--                    <button type="button" class="btn btn-danger" id="cancelButton" onclick="cancel()"--}}
-{{--                            data-bs-dismiss="modal">Cancel</button>--}}
-{{--                    <button type="button" class="btn btn-primary" id="buyCheckButton" onclick="checkBuyVolume()">Check</button>--}}
-{{--                    <button type="button" class="btn btn-primary" id="buySubmitButton" onclick="submitBuy()"--}}
-{{--                            style="display: none;" data-bs-dismiss="modal">Submit</button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-
 <div class="modal" tabindex="-1" id="sellerModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4>Sell Your Energy</h4>
+                <h4>Buy Available Energy</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p id="sellError" class="text-danger"></p>
+                <p class="text-danger" id="error"></p>
                 <form>
                     <div class="mb-3">
-                        <label for="inputEnergyType">Energy Type</label>
-                        <select id="inputEnergyType" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>Solar</option>
-                            <option>Wind</option>
-                        </select>
+                        <label for="energyType">Energy Type</label>
+                        <input type="text" class="form-control" id="energyType" value="Solar" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="inputSellVolume">Sell Volume</label>
-                        <input type="number" class="form-control" id="inputSellVolume" value="">
+                        <label for="Title">Energy Title</label>
+                        <input type="text" class="form-control" id="energyTitleInput" value="100" readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="inputSellPrice">Sell Price</label>
-                        <input type="number" class="form-control" id="inputSellPrice" value="">
+                        <label for="buyPrice">Buy Price</label>
+                        <input type="text" class="form-control" id="buyPrice" value="1.9 /kWh" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="buyVolume">Buy Volume</label>
+                        <input type="text" class="form-control" id="buyVolume" value="1000" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="buyVolume">Remark</label>
+                        <input type="text" class="form-control" id="remark" >
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" id="cancelButton" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="sellSubmitButton" onclick="submitSell()">Submit</button>
+                {{--                <button type="button" class="btn btn-danger" id="cancelButton" onclick="cancel()"--}}
+                {{--                        data-bs-dismiss="modal">Cancel</button>--}}
+                <button type="button" class="btn btn-primary" id="sellEnergy">
+                    Confirm
+                </button>
             </div>
         </div>
     </div>
@@ -248,14 +98,30 @@
 
 <!--Pagination-->
 <div class="pagination justify-content-center">
-    <ul class=pagination-list>
-        <li class="previous"><a href="javascript:void(0)">Prev</a></li>
-        <li class=active><a href="javascript:void(0)">1</a></li>
-        <li><a href="javascript:void(0)">2</a></li>
-        <li><a href="javascript:void(0)">3</a></li>
-        <li><a href="javascript:void(0)">4</a></li>
-        <li><a href="javascript:void(0)">5</a></li>
-        <li class="next"><a href="javascript:void(0)">Next</a></li>
+    <ul class="pagination-list">
+        <!-- Previous Page Link -->
+        @if ($list->onFirstPage())
+            <li class="previous disabled"><a href="javascript:void(0)">Prev</a></li>
+        @else
+            <li class="previous"><a href="{{ $list->previousPageUrl() }}">Prev</a></li>
+        @endif
+
+    <!-- Pagination Elements -->
+        @for ($i = 1; $i <= $list->lastPage(); $i++)
+            @if ($i == $list->currentPage())
+                <li class="active"><a href="javascript:void(0)">{{ $i }}</a></li>
+            @else
+                <li><a href="{{ $list->url($i) }}">{{ $i }}</a></li>
+            @endif
+        @endfor
+
+    <!-- Next Page Link -->
+        @if ($list->hasMorePages())
+            <li class="next"><a href="{{ $list->nextPageUrl() }}">Next</a></li>
+        @else
+            <li class="next disabled"><a href="javascript:void(0)">Next</a></li>
+        @endif
     </ul>
 </div>
+
 @endsection

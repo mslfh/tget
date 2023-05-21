@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-                $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -26,7 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view("home");
+        $user = Auth::user();
+        return view("home")->with([
+            'role_id'=>$user->role_id]
+        );
     }
 
     public function getRole(Request $request)
@@ -50,7 +53,6 @@ class HomeController extends Controller
         $user = Auth::user();
         return $this->success([ "status" => $user->status]);
     }
-
 
     public function getUserInfo(Request $request)
     {
@@ -134,7 +136,6 @@ class HomeController extends Controller
         }
     }
 
-
     public function changeMoney(Request $request)
     {
         $user = Auth::user();
@@ -150,4 +151,35 @@ class HomeController extends Controller
         return $this->success("successfully"
         );
     }
+
+    public function profile(Request $request)
+    {
+        $user = Auth::user();
+        $type = $request->get('type')??1;
+
+        if($type == 1){
+            $list = Balance::query()->where([
+                "user_id" => $user->id,
+            ])->get();
+        }
+        elseif($type== 2){
+            $list = Balance::query()->where([
+                "user_id" => $user->id,
+                "type" => 2,
+            ])->get();
+        }
+        elseif ($type == 3){
+            $list = Balance::query()->where([
+                "user_id" => $user->id,
+            ])->whereIn('type',[1,3])->get();
+        }
+        else{
+            $list=[];
+        }
+
+        return view("profile")->with([
+            'tradingHistory' => $list
+        ]);
+    }
+
 }

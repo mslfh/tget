@@ -2,11 +2,10 @@
 
 @section('content')
 
-    {{--        <link rel="stylesheet" href={{asset("assets/css/style.min.css")}}>--}}
 
     <div class=" section">
 
-        <div class="container">
+    <div class="container">
 
             <br>
             <br>
@@ -35,10 +34,10 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <th id="AdministrationFee">-</th>
-                            <td id="TaxFee">-</td>
-                            <td>
-                                <button class="btn btn-sm btn-default">
+                            <th id="AdministrationFee">{{$fee['administration_fee']}}</th>
+                            <td id="TaxFee">{{$fee['tax']}}</td>
+                            <td id="Action">
+                                <button class="btn btn-sm btn-default" id="editBtn">
                                     <i class="bi bi-pencil"></i>
                                 </button>
                             </td>
@@ -65,39 +64,39 @@
                                 <div class=container><br><br>
                                     <div class=row>
                                         <div class=col-12>
+
+                                            <button type="button" class="btn btn-outline-success sell-button mb-4" id="addEnergyBtn" data-bs-toggle="modal" data-bs-target="#addRenewableEnergy" >Add new energy</button>
+
                                             <div id="orders">
                                                 <div class="table_page table-responsive">
                                                     <table>
                                                         <thead>
                                                         <tr>
-                                                            <th>Order</th>
-                                                            <th>Date</th>
-                                                            <th>Status</th>
-                                                            <th>Total</th>
+                                                            <th>Energy</th>
+                                                            <th>Title</th>
+                                                            <th>Type</th>
+                                                            <th>Description</th>
+                                                            <th>Zone</th>
                                                             <th>Actions</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
+
+                                                        @foreach($energyList as $energy)
                                                         <tr>
-                                                            <td>1</td>
-                                                            <td>May 10, 2018</td>
-                                                            <td><span class="success">Completed</span></td>
-                                                            <td>$25.00 for 1 item</td>
+                                                            <td><img width="40px" src="{{$energy->image}}"></td>
+                                                            <td>{{$energy->title}}</td>
+                                                            <td>{{$energy->type}}</td>
+                                                            <td>{{$energy->description}}</td>
+                                                            <td>{{$energy->zone}}</td>
                                                             <td>
                                                                 <div>
-                                                                    <button class="btn btn-sm btn-default"><i class="bi bi-pencil-square"></i>
-                                                                    </button>
-                                                                    <button class="btn btn-sm btn-default"><i class="bi bi-trash3"></i></button>
+                                                                    <button id="editEnergy-Btn-{{$energy->id}}" type="button" class="btn btn-sm btn-default editEnergy-bt" data-bs-toggle="modal" data-bs-target="#editRenewableEnergy" ><i class="bi bi-pencil-square"></i></button>
+                                                                    <button id="deleteEnergy-Btn-{{$energy->id}}" class="btn btn-sm btn-default deleteEnergy-bt" data-bs-toggle="modal" data-bs-target="#confirmModal"><i class="bi bi-trash3"></i></button>
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>May 10, 2018</td>
-                                                            <td>Processing</td>
-                                                            <td>$17.00 for 1 item</td>
-                                                            <td><a href="cart.html" class="view">view</a></td>
-                                                        </tr>
+                                                        @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -145,34 +144,37 @@
                                                     <table>
                                                         <thead>
                                                         <tr>
-                                                            <th>Order</th>
+                                                            <th>No</th>
+                                                            <th>Buyer</th>
+                                                            <th>Seller</th>
+                                                            <th>Energy</th>
+                                                            <th>Volume</th>
+                                                            <th>Trading Price</th>
+                                                            <th>Tax/Market Fee</th>
                                                             <th>Date</th>
-                                                            <th>Status</th>
-                                                            <th>Total</th>
-                                                            <th>Actions</th>
+                                                            <th>Action</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>May 10, 2018</td>
-                                                            <td><span class="success">Completed</span></td>
-                                                            <td>$25.00 for 1 item</td>
-                                                            <td>
-                                                                <div class=button>
-                                                                    <button href="#" data-bs-toggle="modal" class="btn btn-primary btn-sm"
-                                                                            data-bs-target="#viewOrder">view
-                                                                    </button>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>May 10, 2018</td>
-                                                            <td>Processing</td>
-                                                            <td>$17.00 for 1 item</td>
-                                                            <td><a href="cart.html" class="view">view</a></td>
-                                                        </tr>
+                                                        @foreach($tradingHistory as $history)
+                                                            <tr>
+                                                                <td>{{$history->order_no}}</td>
+                                                                <td>{{$history->buyer->name}}</td>
+                                                                <td>{{$history->seller->name}}</td>
+                                                                <td><img width="20px" src="{{$history->store->energy->image}}"> {{$history->store->energy->title}}</td>
+                                                                <td>{{$history->volume}}/kwh</td>
+                                                                <td>$ {{$history->trading_price}}</td>
+                                                                <td>${{$history->administration_fee}} / {{$history->tax}}%</td>
+                                                                <td>{{$history->created_at}}</td>
+                                                                <td>
+                                                                    <div class=button>
+                                                                        <button id="btn-view-{{$history->id}}" href="#" data-bs-toggle="modal" class="btn btn-primary btn-sm btn-view-order"
+                                                                                data-bs-target="#viewOrder">view
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -183,7 +185,9 @@
                                 <!--Pagination-->
                                 <div class="pagination justify-content-center">
                                     <ul class=pagination-list>
+
                                         <li class="previous"><a href="javascript:void(0)">Prev</a></li>
+
                                         <li class=active><a href="javascript:void(0)">1</a></li>
                                         <li><a href="javascript:void(0)">2</a></li>
                                         <li><a href="javascript:void(0)">3</a></li>
@@ -191,6 +195,7 @@
                                         <li><a href="javascript:void(0)">5</a></li>
                                         <li class="next"><a href="javascript:void(0)">Next</a></li>
                                     </ul>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -204,107 +209,119 @@
 {{--            </div>--}}
     </div>
 
-
-
-    <div class="modal" tabindex="-1" role="dialog" id="AddRenewableEnergy">
+    <div class="modal" tabindex="-1" role="dialog" id="editRenewableEnergy">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add Renewable Energy</h5>
+                    <h5 class="modal-title">Edit Renewable Energy</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" >
                     <form action="#" method="post">
                         <div class="form-group">
                             <table>
-                                <tr>
-                                    <td>Title</td>
-                                    <td><input type="input" class="form-control" placeholder="Enter title"></td>
-                                </tr>
-                                <tr>
-                                    <td>Description</td>
-                                    <td><input type="input" class="form-control" placeholder="Enter Description"></td>
-                                </tr>
-                                <tr>
-                                    <td>Type</td>
-                                    <td><input type="input" class="form-control" placeholder="Enter Type"></td>
-                                </tr>
-                                <tr>
-                                    <td>Price per kWh</td>
-                                    <td><input type="input" class="form-control" placeholder="Enter Price per kWh"></td>
-                                </tr>
+                                <input style="display: none" id="energyIdInput">
                                 <tr>
                                     <td>Image</td>
                                     <td>
                                         <button type="file">Change image</button>
                                     </td>
                                 </tr>
+
+                                <tr>
+                                    <td>Title</td>
+                                    <td><input type="input" class="form-control" name="title" placeholder="Enter title"></td>
+                                </tr>
+                                <tr>
+                                    <td>Description</td>
+                                    <td><input type="input" class="form-control" name="description" placeholder="Enter Description"></td>
+                                </tr>
+                                <tr>
+                                    <td>Type</td>
+                                    <td><input type="input" class="form-control" name="type" placeholder="Enter Type"></td>
+                                </tr>
+                                <tr>
+                                    <td>Market Price (kWh)</td>
+                                    <td><input type="input" class="form-control" name="price" placeholder="Enter Price per kWh"></td>
+                                </tr>
+
                             </table>
                         </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Update</button>
+                            <button type="button" class="btn btn-primary" id="updateEnergyBtn">Update</button>
                         </div>
                     </form>
-
                 </div>
-
             </div>
         </div>
     </div>
 
-    <div class="modal" tabindex="-1" role="dialog" id="updateDetails">
+    <div class="modal" tabindex="-1" role="dialog" id="addRenewableEnergy">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Update Renewable Energy</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h3>Add Renewable Energy</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="#" method="post">
                         <div class="form-group">
-                            <div style="text-align:center">
-                                <img src="assets/images/solar.jpg" class="energyPlaceholerDetail"><br>
-                                <button type="file" class="btn btn-light">Upload image</button>
-                            </div>
-                            <table>
+                            <div class="energy-area">
+                            <table >
+                                <input style="display: none" id="energyIdInput">
                                 <tr>
-                                    <td>Title</td>
-                                    <td><input type="input" class="form-control" placeholder="Enter title"
-                                               value="On-grid solar"></td>
-                                </tr>
-                                <tr>
-                                    <td>Description</td>
-                                    <td><input type="input" class="form-control" placeholder="Enter Description"
-                                               value="On-grid means your solar system is tied to your local utility's GRID	">
+                                    <td>Image</td>
+                                    <td>
+                                        <button type="file">Change image</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Type</td>
-                                    <td><input type="input" class="form-control" placeholder="Enter Type" value="Solar">
-                                    </td>
+                                <tr style="height: 10px;">
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td>Price per kWh</td>
-                                    <td><input type="input" class="form-control" placeholder="Enter Price per kWh"
-                                               value="2.12"></td>
+                                    <td>Title:</td>
+                                    <td><input type="input" class="form-control" name="title" placeholder="Enter title"></td>
+                                </tr>
+
+                                <tr style="height: 20px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Description: </td>
+                                    <td><input type="input" class="form-control" name="description" placeholder="Enter Description"></td>
+                                </tr>
+                                <tr style="height:20px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Type:</td>
+                                    <td><input type="input" class="form-control" name="type" placeholder="Enter Type"></td>
+                                </tr>
+                                <tr style="height: 20px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Market Price (kWh):</td>
+                                    <td><input type="input" class="form-control" name="price" placeholder="Enter Price per kWh"></td>
                                 </tr>
                             </table>
-                        </div>
 
+                        </div>
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Update</button>
+                            <button type="button" class="btn btn-primary" id="saveEnergyBtn">Save</button>
                         </div>
                     </form>
-
                 </div>
-
             </div>
         </div>
     </div>
@@ -313,89 +330,86 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>Sell Your Energy</h4>
+                    <h3>Trading detail</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="padding: 0px">
 
-                    {{--                    <div class="col-lg-5 mt-md-30px mt-lm-30px">--}}
                     <div class="your-order-area">
-                        <h3>Your order</h3>
+
                         <div class="your-order-wrap gray-bg-4">
                             <div class="your-order-product-info">
                                 <div class="your-order-top">
                                     <ul>
-                                        <li>Product</li>
-                                        <li>Total</li>
+                                        <li><b>Product</b></li>
+                                        <li><b>Price</b></li>
                                     </ul>
                                 </div>
                                 <div class="your-order-middle">
                                     <ul>
-                                        <li><span class="order-middle-left">Product Name X 1</span> <span
-                                                class="order-price">$100 </span></li>
-                                        <li><span class="order-middle-left">Product Name X 1</span> <span
-                                                class="order-price">$100 </span></li>
+                                        <li><span class="order-middle-left" id="ProductContent"></span>
+                                            <span class="order-price" id="average_price"></span></li>
                                     </ul>
                                 </div>
-                                <div class="your-order-bottom">
+
+                                <div class="your-order-middle">
                                     <ul>
-                                        <li class="your-order-shipping">Shipping</li>
-                                        <li>Free shipping</li>
+                                        <li><span class="order-middle-left" >Tax</span><span class="order-price" id="Tax"></span></li>
                                     </ul>
                                 </div>
+
+                                <div class="your-order-middle">
+                                    <ul>
+                                        <li><span class="order-middle-left">Administration Fee</span><span class="order-price" id="Administration_Fee"></span></li>
+                                    </ul>
+                                </div>
+                                <div class="your-order-middle">
+                                    <ul>
+                                        <li><span class="order-middle-left">Market Price</span><span class="order-price" id="Market_Price"></span></li>
+                                    </ul>
+                                </div>
+
                                 <div class="your-order-total">
                                     <ul>
                                         <li class="order-total">Total</li>
-                                        <li>$100</li>
+                                        <li id="trading_price"></li>
                                     </ul>
                                 </div>
+
                             </div>
                             <div class="payment-method">
                                 <div class="payment-accordion element-mrg">
                                     <div id="faq" class="panel-group">
+
                                         <div class="panel panel-default single-my-account m-0">
                                             <div class="panel-heading my-account-title">
-                                                <h4 class="panel-title"><a data-bs-toggle="collapse"
-                                                                           href="#my-account-1" class="collapsed"
-                                                                           aria-expanded="true">Direct bank transfer</a>
-                                                </h4>
+                                                <h4 class="panel-title"><a data-bs-toggle="collapse" href="#buyer-info" class="collapsed" aria-expanded="true">Buyer&nbsp;&nbsp;<i class="bi bi-chevron-down"></i></a></h4>
                                             </div>
-                                            <div id="my-account-1" class="panel-collapse collapse show"
-                                                 data-bs-parent="#faq">
-
+                                            <div id="buyer-info" class="panel-collapse collapse show" data-bs-parent="#faq">
                                                 <div class="panel-body">
-                                                    <p>Please send a check to Store Name, Store Street, Store Town,
-                                                        Store State / County, Store Postcode.</p>
+                                                    <p class="buyer-info" id="buyer-info"></p>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="panel panel-default single-my-account m-0">
                                             <div class="panel-heading my-account-title">
-                                                <h4 class="panel-title"><a data-bs-toggle="collapse"
-                                                                           href="#my-account-2" aria-expanded="false"
-                                                                           class="collapsed">Check payments</a></h4>
+                                                <h4 class="panel-title"><a data-bs-toggle="collapse" href="#seller-info" class="collapsed" aria-expanded="true">Seller&nbsp;&nbsp;<i class="bi bi-chevron-down"></i></a></h4>
                                             </div>
-                                            <div id="my-account-2" class="panel-collapse collapse"
-                                                 data-bs-parent="#faq">
-
+                                            <div id="seller-info" class="panel-collapse collapse show" data-bs-parent="#faq">
                                                 <div class="panel-body">
-                                                    <p>Please send a check to Store Name, Store Street, Store Town,
-                                                        Store State / County, Store Postcode.</p>
+                                                    <p class="seller-info"></p>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="panel panel-default single-my-account m-0">
                                             <div class="panel-heading my-account-title">
-                                                <h4 class="panel-title"><a data-bs-toggle="collapse"
-                                                                           href="#my-account-3">Cash on delivery</a>
-                                                </h4>
+                                                <h4 class="panel-title"><a data-bs-toggle="collapse" href="#order-info" class="collapsed" aria-expanded="true">Order&nbsp;&nbsp;<i class="bi bi-chevron-down"></i></a></h4>
                                             </div>
-                                            <div id="my-account-3" class="panel-collapse collapse"
-                                                 data-bs-parent="#faq">
-
+                                            <div id="order-info" class="panel-collapse collapse show" data-bs-parent="#faq">
                                                 <div class="panel-body">
-                                                    <p>Please send a check to Store Name, Store Street, Store Town,
-                                                        Store State / County, Store Postcode.</p>
+                                                    <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -403,28 +417,228 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="Place-order mt-25">
+
+                        <div class="Place-order mt-25" style="">
                             <a class="btn-hover" href="#">Place Order</a>
                         </div>
-                        {{--                </div>--}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Confirm delete</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="padding: 0px">
+
+                    <div class="your-order-area">
+
+                        <div class="your-order-wrap gray-bg-4">
+                            <div class="your-order-product-info">
+                                <div class="your-order-total">
+                                    <input style="display: none" id="energyId">
+                                    <span class="order-total" style="font-size: 20px;">Are you sure to delete this energy?</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="Place-order mt-25" >
+                            <a class="btn-hover" style="background-color: rgba(200,87,87,0.74);" >
+                                <button class="btn btn-sm btn-default deleteBtn"  id="confirm_delete_btn" >I'm confirmed</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        $(document).ready(function () {
-            $.ajax({
-            url: '/mtrading/getServiceFee',
-            type: 'GET',
-            success: function(result) {
-                console.log(result.data.administration_fee)
-                $("#AdministrationFee").html( result.data.administration_fee);
-                $("#TaxFee").html( result.data.tax)
-            }
+        $(document).ready(function() {
+            $('#editBtn').click(function() {
+                var administrationFee = $('#AdministrationFee').text().trim();
+                var taxFee = $('#TaxFee').text().trim();
+
+                var administrationFeeInput = $('<input>').attr({
+                    type: 'text',
+                    value: administrationFee,
+                    id: 'AdministrationFeeInput'
+                });
+
+                var taxFeeInput = $('<input>').attr({
+                    type: 'text',
+                    value: taxFee,
+                    id: 'TaxFeeInput'
+                });
+
+                $('#AdministrationFee').html(administrationFeeInput);
+                $('#TaxFee').html(taxFeeInput);
+
+                var columnIndex = $(this).closest('td').index();
+                var table = $('#table1');
+                table.find('tr').each(function() {
+                    $(this).find('td').eq(columnIndex-1).hide();
+                });
+
+                var checkButton = $('<button>').attr({
+                    class: 'btn btn-sm btn-default',
+                    id: 'CheckButton'
+                }).html('<i class="bi bi-check-lg"></i>');
+
+                var cancelButton = $('<button>').attr({
+                    class: 'btn btn-sm btn-default',
+                    id: 'CancelButton'
+                }).html('<i class="bi bi-x-lg"></i>');
+
+                $('#table1 tbody tr').append($('<td>').append(checkButton).append(cancelButton));
             });
-        })
+
+            $(document).on('click', '#CheckButton', function() {
+                var administrationFee = $('#AdministrationFeeInput').val();
+                var taxFee = $('#TaxFeeInput').val();
+
+                $.post('/mtrading/updateFee',{
+                    "administration_fee": administrationFee,
+                    "tax": taxFee
+                },function ($data){
+                    alert($data.msg)
+                    location.reload()
+                });
+            });
+
+            $(document).on('click', '#CancelButton', function() {
+                var administrationFee = $('#AdministrationFeeInput').val();
+                var taxFee = $('#TaxFeeInput').val();
+
+                $('#AdministrationFee').html($('<span>').text(administrationFee));
+                $('#TaxFee').html($('<span>').text(taxFee));
+
+                $('#CheckButton').parent('td').remove();
+                $('#CancelButton').parent('td').remove();
+
+                var columnIndex = $(this).closest('td').index();
+                var table = $('#table1');
+                table.find('tr').each(function() {
+                    $(this).find('td').eq(columnIndex).show();
+                });
+            });
+
+        });
+
+        $('.editEnergy-bt').click(function () {
+            var energyId = $(this).attr('id').split('-')[2];
+
+            var modal = $('#editRenewableEnergy');
+
+            // Make an AJAX request to fetch energy details
+            $.get("/mtrading/getEnergyDetail", {
+                "id": energyId
+            }, function(data) {
+                if (data.status === 1) {
+                    $('#energyIdInput').val(energyId);
+                    modal.find('input[name="title"]').val(data.data.title);
+                    modal.find('input[name="description"]').val(data.data.description);
+                    modal.find('input[name="type"]').val(data.data.type);
+                    modal.find('input[name="price"]').val(data.data.market_price);
+                    modal.find('input[name="price"]').val(data.data.market_price);
+                    modal.modal('show');
+                }
+            });
+        });
+
+
+        $('.deleteEnergy-bt').click(function () {
+
+            var energyId = $(this).attr('id').split('-')[2];
+            var modal = $('#confirmModal');
+            // Make an AJAX request to fetch energy details
+            modal.find('#energyId').val(energyId);
+        });
+
+        $('.btn-view-order').click(function () {
+                var orderId = $(this).attr('id').split('-')[2];
+
+                var modal = $('#viewOrder');
+
+                // Make an AJAX request to fetch energy details
+                $.get("/mtrading/getOrderDetail", {
+                    "id": orderId
+                }, function(data) {
+                    if (data.status === 1) {
+                        var order = data.data;
+                        modal.find('#ProductContent').text(order.store.energy.title + ' x ' + order.volume+" /kwh");
+                        modal.find('#average_price').text("$ "+order.average_price);
+                        modal.find('#Tax').text(order.tax+ " %");
+                        modal.find('#Administration_Fee').text("$ "+order.administration_fee);
+                        modal.find('#Market_Price').text("$ "+order.market_price);
+                        modal.find('#trading_price').text("$ "+order.trading_price);
+                        modal.find('#buyer-info').html("<span class='Trading-info'>Name:   "+order.buyer.name+"<br>Email:   "+order.buyer.email+"<br> Zone:   "+order.buyer.zone+"</span >");
+                        modal.find('#seller-info').html("<span class='Trading-info'>Name: "+order.seller.name+"<br>Email:   "+order.seller.email+"<br> Zone:  "+order.seller.zone+"</span >");
+                        modal.find('#order-info').html("<span class='Trading-info'>Order time:  "+order.created_at +"<br>Remark:   "+order.remark+"</span >");
+                        // Update HTML witTh order details
+                        modal.modal('show');
+                    }
+                });
+            });
+
+        $('#updateEnergyBtn').click(function() {
+            var $form = $('#editRenewableEnergy form');
+
+            var energyId =   $('#energyIdInput').val()
+
+            var $url = "/mtrading/updateEnergy?id="+energyId; // Set the URL for updating the energy data
+            var $data = {
+                "title": $form.find('input[name="title"]').val(),
+                "description": $form.find('input[name="description"]').val(),
+                "type": $form.find('input[name="type"]').val(),
+                "market_price": $form.find('input[name="price"]').val(),
+                // Get other form field values as needed
+            };
+
+            $.post($url, $data, function($response) {
+                alert($response.msg)
+                location.reload()
+            });
+        });
+
+
+        $('#confirm_delete_btn').click(function() {
+
+            var energyId =   $('#confirmModal').find('#energyId').val();
+
+
+            $.ajax({
+                url: 'mtrading/deleteEnergy?id='+energyId,
+                type: 'DELETE',
+                success: function(result) {
+                    alert(result.msg)
+                    location.reload()
+                }
+            });
+        });
+
+        $('#saveEnergyBtn').click(function() {
+
+            var $form = $('#addRenewableEnergy form');
+
+            var $url = "mtrading/addNewEnergy";
+            var $data = {
+                "title": $form.find('input[name="title"]').val(),
+                "description": $form.find('input[name="description"]').val(),
+                "type": $form.find('input[name="type"]').val(),
+                "market_price": $form.find('input[name="price"]').val(),
+            };
+
+            $.post($url, $data, function($response) {
+                alert($response.msg)
+                location.reload()
+            });
+        });
+
     </script>
 @endsection

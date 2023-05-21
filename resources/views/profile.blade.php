@@ -289,7 +289,7 @@
                                             <image src={{asset("assets/icon/user.png")}}></image>
                                         </label>
                                         {{--                                                <label for="text" style="font-size: large; font-weight: 700;">Name:</label>--}}
-                                        <input class=form-control type='email' id="userEmail" value="Name: Ryan"
+                                        <input class=form-control type='text' id="userName" value="Name: Ryan"
                                                readonly style="color:gray">
 
                                     </div>
@@ -325,52 +325,40 @@
                                             <label style="padding: 0px;">
                                                 <image src={{asset("assets/icon/role.png")}}></image>
                                             </label>
-                                            <select class="form-select" value="" style="font-weight:bold">
-                                                <option value="buyer">Buyer</option>
-                                                <option value="seller">Seller</option>
-                                                <option value="both">Buyer&Seller</option>
-                                                <option value="both">service manager</option>
+                                            <select class="form-select" value="" style="font-weight:bold" name="role" id="role_id">
+                                                <option value="2">Buyer</option>
+                                                <option value="3">Seller</option>
+                                                <option value="4">Buyer&Seller</option>
+                                                {{--  <option value="both">service manager</option>--}}
                                             </select>
                                         </div>
                                     </div>
-                                    <!-- Zone -->
+                                    <!-- password -->
+                                    <label for="password" style="font-size: large; font-weight: 700;">Password</label>
+                                    <div class="form-group">
+                                        <label style="padding: 0px;">
+                                            <image src={{asset("assets/icon/password.png")}} ></image>
+                                        </label>
+                                        <input class=form-control type='password' id="password" value="" name="password">
+                                    </div>
+
+
+                                    <!-- postal_address -->
+                                    <label for="text" style="font-size: large; font-weight: 700;">Postal address</label>
+                                    <div class="form-group">
+                                        <label style="padding: 0px;">
+                                            <image src={{asset("assets/icon/home.png")}}></image>
+                                        </label>
+                                        <input class=form-control type='text' id="postal_address" value="" name="postal_address">
+                                    </div>
+
+                                    <!-- zone -->
                                     <label for="text" style="font-size: large; font-weight: 700;">Zone</label>
                                     <div class="form-group">
                                         <label style="padding: 0px;">
                                             <image src={{asset("assets/images/profile/location.png")}}></image>
                                         </label>
-                                        <select class="form-select" value="" style="font-weight:bold">
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
-                                        </select>
-                                    </div>
-
-
-                                    <!-- password -->
-                                    <label for="text" style="font-size: large; font-weight: 700;">Password</label>
-                                    <div class="form-group">
-                                        <label style="padding: 0px;">
-                                            <image src={{asset("assets/images/profile/location.png")}}></image>
-                                        </label>
-                                        <select class="form-select" value="" style="font-weight:bold">
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- potal_address -->
-                                    <label for="text" style="font-size: large; font-weight: 700;">Potal address</label>
-                                    <div class="form-group">
-                                        <label style="padding: 0px;">
-                                            <image src={{asset("assets/images/profile/location.png")}}></image>
-                                        </label>
-                                        <select class="form-select" value="" style="font-weight:bold">
+                                        <select class="form-select" value="" style="font-weight:bold" name="zone" id="zone">
                                             <option value="A">A</option>
                                             <option value="B">B</option>
                                             <option value="C">C</option>
@@ -390,8 +378,7 @@
                         {{--balance--}}
                         <div class="contact-form" style="margin: 1%;">
                             <form method='post' action="#" id="update-balance">
-                                <label for="text" style="font-size:large; font-weight: 700; padding-bottom: 20px;">Current
-                                    Balance</label>
+                                <label for="text" style="font-size:large; font-weight: 700; padding-bottom: 20px;">Current Balance</label>
 
                                 <div class="row">
                                     <div class="col-8">
@@ -400,14 +387,14 @@
                                                 <image
                                                     src={{asset("assets/images/profile/price.png")}} height="25px"></image>
                                             </label>
-                                            <input  id="balance" class=form-control type='text' value="100" readonly
-                                                   style="color: gray">
+                                            <input  id="balance" class=form-control type='text' value="100"
+                                                   style="color: gray" readonly>
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class='button-control mb-5 '>
-                                            <button class='btn' type='button' data-bs-toggle="modal"
-                                                    data-bs-target="#rechargeModal" id="recharge"
+                                            <button id="recharge" class='btn' type='button' data-bs-toggle="modal"
+                                                    data-bs-target="#rechargeModal"
                                                     style="background-color:darkblue; padding: 7px">
                                                 <i class="bi bi-currency-exchange"></i>
                                             </button>
@@ -431,13 +418,13 @@
                                                             <div class="mb-3">
                                                                 <label for="Current Amount">Current Amount</label>
                                                                 <input type="text" class="form-control input-group"
-                                                                       id="CurrentAmount" value="-" readonly>
+                                                                       id="CurrentAmount1" readonly>
                                                             </div>
                                                             <br>
                                                             <div class="mb-3">
                                                                 <label for="Recharge Amount">Recharge Amount</label>
                                                                 <input type="number" class="form-control input-group"
-                                                                       id="AddMoney" value="0">
+                                                                       id="AddMoney" value="0" name="AddMoney">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -468,13 +455,13 @@
                                                             <div class="mb-3">
                                                                 <label for="Current Amount">Current Amount</label>
                                                                 <input type="text" class="form-control input-group"
-                                                                       id="CurrentAmount" value="100" readonly>
+                                                                       id="CurrentAmount2" value="" readonly>
                                                             </div>
                                                             <br>
                                                             <div class="mb-3">
                                                                 <label for="Withdraw Amount">Withdraw Amount</label>
                                                                 <input type="number" class="form-control input-group"
-                                                                       id="WithdrawAmount" value="0">
+                                                                       id="reduceMoney" value="0" name="WithdrawAmount">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -482,7 +469,7 @@
                                                                     data-bs-dismiss="modal"
                                                                     style="background-color:gray;">Close
                                                             </button>
-                                                            <button type="button" class="btn btn-primary">Withdraw
+                                                            <button type="button" class="btn btn-primary" id="withdrawAmount">Withdraw
                                                                 Amount
                                                             </button>
                                                         </div>
@@ -525,83 +512,32 @@
                                                                             <thead>
                                                                             <tr>
                                                                                 <th>NO.</th>
-                                                                                <th>Energy of Type</th>
+                                                                                <th>Trading Type</th>
                                                                                 <th>Amount of transaction</th>
                                                                                 <th>Trading date</th>
                                                                                 <th>Description</th>
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr> <tr>
-                                                                                <td>1</td>
-                                                                                <td>Solar</td>
-                                                                                <td>30</td>
-                                                                                <td>1-April</td>
-                                                                                <td>enough</td>
-                                                                            </tr>
 
+
+                                                                            @foreach($tradingHistory as $trading)
                                                                             <tr>
-                                                                                <td>2</td>
-                                                                                <td>wind</td>
-                                                                                <td>30</td>
-                                                                                <td>10-April</td>
-                                                                                <td>ok</td>
+                                                                                <td>{{$trading->id}}</td>
+{{--                                                                                //1-deposit 2- trading cost 3-withdraw--}}
+                                                                                @if($trading->type == 1)
+                                                                                    <td>Save money</td>
+                                                                                    @elseif($trading->type == 2)
+                                                                                    <td>Trading cost</td>
+                                                                                @elseif($trading->type == 3)
+                                                                                    <td>withdraw</td>
+                                                                                @endif
+                                                                                <td>{{$trading->money}}</td>
+                                                                                <td>{{$trading->remark}}</td>
+                                                                                <td>{{$trading->created_at}}</td>
+
                                                                             </tr>
-                                                                            <tr>
-                                                                                <td>3</td>
-                                                                                <td>wind</td>
-                                                                                <td>30</td>
-                                                                                <td>15-April</td>
-                                                                                <td>good</td>
-                                                                            </tr>
+                                                                            @endforeach
                                                                             </tbody>
                                                                         </table>
 
@@ -643,16 +579,42 @@
 
     <script>
         $(document).ready(function () {
+            //getUserInformation
             $.ajax({
                 url: '/getUserInfo',
                 type: 'GET',
                 success: function(result) {
+                    // console.log(result)
                     var balance = $("#balance");
-
                     $("#balance").val(result.data.account_balance)
+                    // var userName = $("#userName")
+                    $("#userName").val("Name: "+ result.data.name)
+                    //userEmail
+                    $("#userEmail").val("Email: "+ result.data.email)
+                    //role_id
+                    $("#role_id").val(result.data.role_id)
+                    //password
+                    $("#password").val(result.data.password)
+                    //postal_address
+                    $("#postal_address").val(result.data.postal_addr)
+                    //zone
+                    $("zone").val(result.data.zone)
                 }
             });
-        })
+        });
+
+        //modal 1 current money
+        $("#recharge").click(function(){
+            var balance = $("#balance").val();
+            $("#CurrentAmount1").val(balance)
+        });
+
+        //modal 2 current money
+        $("#withdraw").click(function(){
+            var balance = $("#balance").val();
+            $("#CurrentAmount2").val(balance)
+        });
+
         $("#rechargeAmount").click(function(){
 
             var money = $("#AddMoney").val()
@@ -666,10 +628,30 @@
                 },
                 success: function(result) {
                    alert(result.data)
+                    location.reload()
+                }
+            });
+        })
+
+        $("#withdrawAmount").click(function(){
+
+            var money = $("#reduceMoney").val()
+
+            $.ajax({
+                url: '/changeMoney',
+                type: 'POST',
+                data:{
+                    "money": money,
+                    "type" : "withdraw"
+                },
+                success: function(result) {
+                    alert(result.data)
+                    location.reload()
                 }
             });
         })
     </script>
+
 
 @endsection
 
