@@ -104,7 +104,6 @@ class DashboardController extends Controller
     public function getTradingHistory(Request $request)
     {
         $user =  Auth::user();
-        $user->id=2;
         $numDays = $request->get('numDays')??2;
         $energyType = $request->get('energyType')??null;
 
