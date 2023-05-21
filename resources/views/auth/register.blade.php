@@ -79,7 +79,7 @@
                             <div class="col-lg-6 col-12">
                                 <div class="form-group">
                                     <label><image src={{asset("assets/icon/role.png")}} height="25px"></image></label>
-                                    <select class="form-select" value="" id="role" style="text-align-last:center" name="role">
+                                    <select class="form-select" value="" id="role" style="text-align-last:center" name="role_id">
                                         <option value="" >Select an option</option>
                                         <option value="buyer">Buyer</option>
                                         <option value="seller">Seller</option>

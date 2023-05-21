@@ -82,9 +82,6 @@ Route::prefix('dashboard')->group(function () {
 Route::get('/home', [App\Http\Controllers\IndexController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\IndexController::class, 'index']);
 
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//});
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/manage', [App\Http\Controllers\ManageController::class, 'index'])->name('manage');
 
@@ -97,6 +94,3 @@ Route::get('/forgotPasswd', function(){
 })->name('forgot-password');
 
 
-Route::get('/test', function(){
-    return view('test');
-})->name('test');
