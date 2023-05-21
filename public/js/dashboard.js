@@ -112,34 +112,30 @@ function tradingHistoryChartData(tradingData){
     let yAxis = []
     let energiesName = new Set()
     let transactionHistory = []
-    // let xAxis = []
-    // let yAxis = []
-    // let energiesName = new Set()
-    // let pricesHistory = []
-    //
-    // // Getting the x axis and prepping for y axis data
-    // priceData.forEach((data)=>{
-    //     xAxis.push(data["date"])
-    //     if("energies" in data){
-    //         let energiesData = data["energies"]
-    //         let oneDayPrice = []
-    //         energiesData.forEach((energy)=>{
-    //             let energyType = energy["energy"]["type"]
-    //             energiesName.add(energyType)
-    //             let oneData = {}
-    //             oneData[energyType]=energy["selling_price"]
-    //             oneDayPrice.push(oneData)
-    //         })
-    //         pricesHistory.push(oneDayPrice)
-    //     } else {
-    //         pricesHistory.push([])
-    //     }
-    // })
-    //
-    // //Getting the y axis
-    //
-    // energiesName.forEach((name)=>{
-    //     let priceData = [];
+
+    // Getting the x axis and prepping for y axis data
+    tradingData.forEach((data)=>{
+        xAxis.push(data["date"])
+        if("tradings" in data){
+            let tradingsData = data["tradings"]
+            let oneDayTrading = []
+            tradingsData.forEach((trading)=>{
+                let energyType = trading["energy"]["type"]
+                energiesName.add(energyType)
+                let oneData = {}
+                oneData[energyType]=trading["selling_price"]
+                oneDayTrading.push(oneData)
+            })
+            transactionHistory.push(oneDayTrading)
+        } else {
+            transactionHistory.push([])
+        }
+    })
+
+    //Getting the y axis
+
+    energiesName.forEach((name)=>{
+        let tradingData = [];
     //     pricesHistory.forEach((price)=>{
     //         if(!price.length){
     //             priceData.push(0)
@@ -160,7 +156,7 @@ function tradingHistoryChartData(tradingData){
     //         "data":priceData
     //     }
     //     yAxis.push(energyData)
-    // })
+    })
     // tradingPriceChart(xAxis,yAxis)
 }
 
