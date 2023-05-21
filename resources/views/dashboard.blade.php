@@ -26,87 +26,23 @@
         <section class="content-body">
             <div class="page-content">
                 <div class="container-fluid">
-
-
-                    <div class="panel panel-default single-my-account" data-aos="fade-up" data-aos-delay="200">
-                        <div class="panel-heading my-account-title">
-                            <h4 class="panel-title">
-                                <a data-bs-toggle="collapse" href="#show_detail" aria-expanded="false" class="collapsed">
-                                    Trading History <i class="bi bi-caret-down-fill"></i></a>
-                            </h4>
-                        </div>
-                        <div id="show_detail" class="panel-collapse collapse" data-bs-parent="#faq">
-                            <div class="panel-body">
-                                <div class=container><br>
-                                    <div class=row>
-                                        <div class=col-12>
-                                            <div id="orders">
-                                                <div class="table_page table-responsive">
-                                                    <table>
-                                                        <thead>
-                                                        <tr>
-                                                            <th>Order</th>
-                                                            <th>Date</th>
-                                                            <th>Status</th>
-                                                            <th>Total</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>May 10, 2018</td>
-                                                            <td><span class="success">Completed</span></td>
-                                                            <td>$25.00 for 1 item</td>
-                                                            <td>
-                                                                <div class=button>
-                                                                    <button href="#" data-bs-toggle="modal" class="btn btn-primary btn-sm"
-                                                                            data-bs-target="#viewOrder">view
-                                                                    </button>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>May 10, 2018</td>
-                                                            <td>Processing</td>
-                                                            <td>$17.00 for 1 item</td>
-                                                            <td><a href="cart.html" class="view">view</a></td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Pagination-->
-                                <div class="pagination justify-content-center">
-                                    <ul class=pagination-list>
-                                        <li class="previous"><a href="javascript:void(0)">Prev</a></li>
-                                        <li class=active><a href="javascript:void(0)">1</a></li>
-                                        <li><a href="javascript:void(0)">2</a></li>
-                                        <li><a href="javascript:void(0)">3</a></li>
-                                        <li><a href="javascript:void(0)">4</a></li>
-                                        <li><a href="javascript:void(0)">5</a></li>
-                                        <li class="next"><a href="javascript:void(0)">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
                     {{--Manager Only Views--}}
                     @if($role == 1)
                         <div class="row manager-view" id="user-summary">
                         <div class="col-lg-12">
                             <div class="card">
-                                <div class="card-body">
-                                    <div class="d-md-flex">
-                                        <h4 class="card-title col-md-9 mb-md-0 mb-3 align-self-center">User Summary</h4>
+                                <div class="card-header border-bottom-0">
+                                    <div class="d-lg-flex align-items-center">
+                                        <div>
+                                            <h5 class="font-weight-bold mb-2 mb-lg-0">
+                                                <a data-bs-toggle="collapse" href="#user-summary-detail" aria-expanded="false" class="collapsed">
+                                                    User Summary <i class="bi bi-caret-down-fill"></i></a>
+                                            </h5>
+                                        </div>
                                     </div>
-                                    <div class="table-responsive mt-5">
+                                </div>
+                                <div class="card-body">
+                                    <div id="user-summary-detail" class="table-responsive mt-5">
                                         <table class="table">
                                             <thead>
                                             <tr>
@@ -117,15 +53,15 @@
                                             </thead>
                                             <tbody>
                                             {{--  Filling in the User Summary Data --}}
-{{--                                            @foreach($userData as $user)--}}
-{{--                                                <tr class="active">--}}
-{{--                                                    <td class="align-middle">--}}
-{{--                                                        <h6>{{user["postal_addr"]}}</h6>--}}
-{{--                                                    </td>--}}
-{{--                                                    <td class="align-middle">{{user["buyer"]}}</td>--}}
-{{--                                                    <td class="align-middle">{{user["seller"]}}</td>--}}
-{{--                                                </tr>--}}
-{{--                                            @endforeach--}}
+                                            @foreach($userData as $user)
+                                                <tr class="active">
+                                                    <td class="align-middle">
+                                                        <h6>{{$user->zone}}</h6>
+                                                    </td>
+                                                    <td class="align-middle">{{$user->total_buyer}}</td>
+                                                    <td class="align-middle">{{$user->total_seller}}</td>
+                                                </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -205,7 +141,7 @@
                                     <div class="d-lg-flex align-items-center">
                                         <h5 class="font-weight-bold mb-2 mb-lg-0">
                                             <a data-bs-toggle="collapse" href="#trading-chart" aria-expanded="false" class="collapsed">
-                                                Trading Transcation History<i class="bi bi-caret-down-fill"></i></a>
+                                                Traded Energy Volume over Time<i class="bi bi-caret-down-fill"></i></a>
                                         </h5>
                                     </div>
                                 </div>
@@ -219,14 +155,4 @@
             </div>
         </section>
     </div>
-
-    <div id="content">
-
-        <p id="click"></p>
-
-    </div>
-
-
-
-
 @endsection

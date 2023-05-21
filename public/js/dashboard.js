@@ -123,7 +123,7 @@ function tradingHistoryChartData(tradingData){
                 let energyType = trading["energy"]["type"]
                 energiesName.add(energyType)
                 let oneData = {}
-                oneData[energyType]=trading["selling_price"]
+                oneData[energyType]=trading["volume"]
                 oneDayTrading.push(oneData)
             })
             transactionHistory.push(oneDayTrading)
@@ -133,36 +133,38 @@ function tradingHistoryChartData(tradingData){
     })
 
     //Getting the y axis
-
     energiesName.forEach((name)=>{
         let tradingData = [];
-    //     pricesHistory.forEach((price)=>{
-    //         if(!price.length){
-    //             priceData.push(0)
-    //         } else {
-    //             price.forEach((data) =>{
-    //                 if(name in data){
-    //                     priceData.push(data[name])
-    //                 } else {
-    //                     priceData.push(0)
-    //                 }
-    //             })
-    //         }
-    //
-    //
-    //     })
-    //     let energyData = {
-    //         "name":name,
-    //         "data":priceData
-    //     }
-    //     yAxis.push(energyData)
+        transactionHistory.forEach((transaction)=>{
+            if(!transaction.length){
+                tradingData.push(0)
+            } else {
+                var temp=0;
+                transaction.forEach((data) =>{
+                    if(name in data){
+                        temp = temp + data[name]
+                    } else {
+                        tradingData.push(0)
+                    }
+                })
+                if(temp){
+                    tradingData.push(temp)
+                }
+            }
+        })
+        let historyData = {
+            "name":name,
+            "data":tradingData
+        }
+        yAxis.push(historyData)
     })
-    // tradingPriceChart(xAxis,yAxis)
+
+    console.log(xAxis)
+    console.log(yAxis)
+    tradingHistoryChart(xAxis,yAxis)
 }
 
-function tradingHistoryChart(){
-    //Getting the xAxis and yAxis
-    let axisData = tradingHistoryChartData()
+function tradingHistoryChart(xAxis,yAxis){
 
     // chart 1
     var options = {
@@ -173,7 +175,7 @@ function tradingHistoryChart(){
         //     name: 'Patients',
         //     data: [230, 420, 350, 270, 430, 320, 570, 310, 220, 220, 120, 100]
         // }],
-        series :axisData[1],
+        series :yAxis,
         chart: {
             type: 'line',
             height: 250,
@@ -216,13 +218,13 @@ function tradingHistoryChart(){
         colors: ["#265ed7", "#fe6555"],
         xaxis: {
             // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            categories: axisData[0],
+            categories: xAxis,
         },
         fill: {
             opacity: 1
         }
     };
-    var chart = new ApexCharts(document.querySelector("#price-chart"), options);
+    var chart = new ApexCharts(document.querySelector("#trading-chart"), options);
     chart.render();
 }
 
