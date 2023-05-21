@@ -6,12 +6,16 @@
     /*position: relative;*/
 }
 
-.page-title{
-    padding:20px;
+.content-header{
+    margin-top:50px;
 }
 
 .page-content{
     padding: 20px;
+}
+
+.page-title{
+    padding-left:30px;
 }
 
 .row {
@@ -25,4 +29,9 @@
 
 h5>a{
     color:black;
+}
+
+td>input{
+    width:120px;
+    height:30px;
 }

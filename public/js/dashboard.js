@@ -143,12 +143,12 @@ function tradingHistoryChartData(tradingData){
                 transaction.forEach((data) =>{
                     if(name in data){
                         temp = temp + data[name]
-                    } else {
-                        tradingData.push(0)
                     }
                 })
                 if(temp){
                     tradingData.push(temp)
+                }else{
+                    tradingData.push(0)
                 }
             }
         })
@@ -158,23 +158,12 @@ function tradingHistoryChartData(tradingData){
         }
         yAxis.push(historyData)
     })
-
-    console.log(xAxis)
-    console.log(yAxis)
     tradingHistoryChart(xAxis,yAxis)
 }
 
 function tradingHistoryChart(xAxis,yAxis){
-
     // chart 1
     var options = {
-        // series: [{
-        //     name: 'Consultations',
-        //     data: [440, 505, 414, 671, 227, 613, 901, 352, 752, 320, 257, 160]
-        // }, {
-        //     name: 'Patients',
-        //     data: [230, 420, 350, 270, 430, 320, 570, 310, 220, 220, 120, 100]
-        // }],
         series :yAxis,
         chart: {
             type: 'line',
@@ -234,7 +223,7 @@ $(document).ready(function() {
         priceHistoryChartData(result["data"])
     })
 
-    $.get("/index.php/dashboard/getTradingHistory", (result)=>{
+    $.get("/index.php/dashboard/getTradingHistory?numDays=7", (result)=>{
         tradingHistoryChartData(result["data"])
     })
     // tradingPriceChart()
