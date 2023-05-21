@@ -85,10 +85,10 @@
                                                 @foreach($data as $item)
                                                     <tr class="active">
                                                         <td class="align-middle">
-                                                            <h6>{{item["type"]}}</h6>
+                                                            <h6>{{$item->type}}</h6>
                                                         </td>
-                                                        <td class="align-middle">{{item["total_volume"]}}</td>
-                                                        <td class="align-middle">{{item["avg_price"]}}</td>
+                                                        <td class="align-middle">{{$item->total_volume}}</td>
+                                                        <td class="align-middle">{{$item->avg_price}}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
