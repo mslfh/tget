@@ -72,21 +72,15 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/getMarketSummary', [App\Http\Controllers\DashboardController::class, 'getMarketSummary']);
     Route::get('/getPriceHistory', [App\Http\Controllers\DashboardController::class, 'getPriceHistory']);
     Route::get('/getTradingHistory', [App\Http\Controllers\DashboardController::class, 'getTradingHistory']);
-    Route::post('/getTradingHistory', [App\Http\Controllers\DashboardController::class, 'getTradingHistory']);
 });
 
 
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//static page entry
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/home', [App\Http\Controllers\IndexController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\IndexController::class, 'index']);
 
 //Route::get('/dashboard', function () {
 //    return view('dashboard');

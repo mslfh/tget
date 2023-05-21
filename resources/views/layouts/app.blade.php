@@ -40,7 +40,7 @@
     <!-- Start Header Area -->
     <header class="header navbar-area">
         <img id="header_img" style="position: absolute;" src="{{asset("assets/images/header.png")}}">
-        <div class="container">
+        <div class="container" style="max-width: 1500px">
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <div class="nav-inner">
@@ -55,28 +55,27 @@
                                     <li class="nav-item">
                                         <a href={{route('home')}} class="home" aria-label="Toggle navigation">Home</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href={{route('trading')}} class="home" aria-label="Toggle navigation">Trading</a>
-                                    </li>
 
-{{--                                    @if(isset($status))--}}
-{{--                                    @if($status==1 && $data['role'] == "manager")--}}
-                                        <li class="nav-item">
-                                            <a href={{route('masterTrading')}} class="home" aria-label="Toggle navigation">Master of Trading</a>
-                                        </li>
-{{--                                    @endif--}}
-{{--                                    @endif--}}
                                     <li class="nav-item">
-                                        <a href={{route('dashboard')}} class="home" aria-label="Toggle navigation">Dashboard</a>
+                                        <a href="{{ route('trading') }}" class="home {{ Request::is('trading') ? 'active' : '' }}" aria-label="Toggle navigation">Trading</a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a href={{route('manage')}} class="home" aria-label="Toggle navigation">Manage</a>
+                                        <a href="{{route('masterTrading')}}" class="home {{ Request::is('masterTrading') ? 'active' : '' }}" aria-label="Toggle navigation" >Master of Trading </a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a href={{route('profile')}} class="home" aria-label="Toggle navigation">Profile</a>
+                                        <a href="{{route('dashboard')}}" class="home {{ Request::is('dashboard') ? 'active' : '' }}" aria-label="Toggle navigation">Dashboard</a>
                                     </li>
+
+                                    <li class="nav-item">
+                                        <a href="{{route('manage')}}" class="home {{ Request::is('manage') ? 'active' : '' }}" aria-label="Toggle navigation">Manage</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="{{route('profile')}}" class="home {{ Request::is('profile') ? 'active' : '' }}" aria-label="Toggle navigation">Profile</a>
+                                    </li>
+
 
                                 </ul>
                             </div>
@@ -100,26 +99,26 @@
                                     <!-- Authentication Links -->
                                     @guest
                                         @if (Route::has('login'))
-                                            <li class="nav-item">
+                                            <li class="nav-item" style="margin-right: 20px;">
                                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                             </li>
                                         @endif
 
                                         @if (Route::has('register'))
-                                            <li class="nav-item">
+                                            <li class="nav-item" style="margin-right: 20px;">
                                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                             </li>
                                         @endif
                                     @else
                                         <li class="nav-item dropdown">
-                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <a style="color: #c6ccdb; font-size: 20px;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }}
                                             </a>
 
                                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();" style="padding: 0px 20px;color: #0000ff87;">
                                                     {{ __('Logout') }}
                                                 </a>
 
@@ -229,5 +228,4 @@
 </footer>
 <!--/ End Footer Area -->
 </body>
-
 <!-- End Header Area -->

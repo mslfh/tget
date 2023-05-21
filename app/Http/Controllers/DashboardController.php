@@ -25,16 +25,17 @@ class DashboardController extends Controller
     {
         $users = User::query()->get();
 
-        $users = $users->groupBy('postal_addr');
+        $users = $users->groupBy('zone');
         $data=[];
         foreach ($users as $index=>$group){
             $data[] = [
-                    "postal_addr" => $index,
-                    "total_user" =>$group->count()
+                    "zone" => $index,
+                    "total_buyer" =>$group->where('role_id',2)->count(),
+                    "total_seller" =>$group->where('role_id',3)->count(),
+                    "buyer_seller" =>$group->where('role_id',4)->count(),
             ];
         }
-        return $this->success($data
-        );
+        return $this->success($data);
 
     }
 

@@ -9,22 +9,19 @@
     var sticky = header_navbar.offsetTop;
 
     var logo = document.querySelector('.navbar-brand img')
+      var currentURL = window.location.href;
     if (window.pageYOffset > sticky) {
       header_navbar.classList.add("sticky");
-        header_img.style.display = 'none';
-      logo.src = 'assets/images/logo/bule-logo.png';
+      if(header_img){
+          header_img.style.display = 'none';
+      }
+        logo.src = currentURL.split('/').slice(0, 3).join('/') + '/assets/images/logo/bule-logo.png';
     } else {
       header_navbar.classList.remove("sticky");
-      logo.src = 'assets/images/logo/logo.png';
-        header_img.style.display = 'block';
-    }
-
-    // show or hide the back-top-top button
-    var backToTo = document.querySelector(".scroll-top");
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      backToTo.style.display = "flex";
-    } else {
-      backToTo.style.display = "none";
+        logo.src = currentURL.split('/').slice(0, 3).join('/') + '/assets/images/logo/logo.png';
+        if(header_img){
+            header_img.style.display = 'block';
+        }
     }
   };
 

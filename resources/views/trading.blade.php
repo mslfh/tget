@@ -17,7 +17,7 @@
                 </div>
 
 
-                @if($role != 2 )
+                @if($role != 2 && $role != 0)
                 <div class="col-12">
                 <button type="button" class="btn btn-outline-success sell-button mb-3" data-bs-toggle="modal"
                         data-bs-target="#sellerModal" id="sellEnergyButton">Sell Energy</button>
@@ -52,6 +52,50 @@
 </div>
 <!-- End Features Area -->
 
+<div class="modal" tabindex="-1" id="sellerModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Buy Available Energy</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger" id="error"></p>
+                <form>
+                    <div class="mb-3">
+                        <label for="energyType">Energy Type</label>
+                        <input type="text" class="form-control" id="energyType" value="Solar" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Title">Energy Title</label>
+                        <input type="text" class="form-control" id="energyTitleInput" value="100" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="buyPrice">Buy Price</label>
+                        <input type="text" class="form-control" id="buyPrice" value="1.9 /kWh" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="buyVolume">Buy Volume</label>
+                        <input type="text" class="form-control" id="buyVolume" value="1000" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="buyVolume">Remark</label>
+                        <input type="text" class="form-control" id="remark" >
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                {{--                <button type="button" class="btn btn-danger" id="cancelButton" onclick="cancel()"--}}
+                {{--                        data-bs-dismiss="modal">Cancel</button>--}}
+                <button type="button" class="btn btn-primary" id="sellEnergy">
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--Pagination-->
 <div class="pagination justify-content-center">
     <ul class="pagination-list">
@@ -79,8 +123,5 @@
         @endif
     </ul>
 </div>
-
-
-{{--<script src="{{asset("/js/trading.js")}}"></script>--}}
 
 @endsection
