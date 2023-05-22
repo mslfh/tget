@@ -339,7 +339,7 @@
                                         <label style="padding: 0px;">
                                             <image src={{asset("assets/icon/password.png")}} ></image>
                                         </label>
-                                        <input class=form-control type='password' id="password" value="" name="password">
+                                        <input class=form-control type='password' id="password" value="" maxlength="13" name="password">
                                     </div>
 
 
@@ -594,7 +594,7 @@
                     //role_id
                     $("#role_id").val(result.data.role_id)
                     //password
-                    $("#password").val(result.data.password)
+                    // $("#password").val(result.data.password)
                     //postal_address
                     $("#postal_address").val(result.data.postal_addr)
                     //zone
