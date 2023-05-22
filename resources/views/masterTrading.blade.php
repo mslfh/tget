@@ -84,7 +84,7 @@
 
                                                         @foreach($energyList as $energy)
                                                         <tr>
-                                                            <td><img width="40px" src="{{$energy->image}}"></td>
+                                                            <td><img width="40px" src="{{asset($energy->image)}}"></td>
                                                             <td>{{$energy->title}}</td>
                                                             <td>{{$energy->type}}</td>
                                                             <td>{{$energy->description}}</td>
@@ -276,7 +276,7 @@
                                 <tr>
                                     <td>Image</td>
                                     <td>
-                                        <button type="file">Change image</button>
+                                        <input type="file" id="energyImage" placeholder="upload file">
                                     </td>
                                 </tr>
                                 <tr style="height: 10px;">
@@ -313,7 +313,6 @@
                                     <td><input type="input" class="form-control" name="price" placeholder="Enter Price per kWh"></td>
                                 </tr>
                             </table>
-
                         </div>
                         </div>
                         <div class="modal-footer">
@@ -625,19 +624,50 @@
         $('#saveEnergyBtn').click(function() {
 
             var $form = $('#addRenewableEnergy form');
-
             var $url = "mtrading/addNewEnergy";
-            var $data = {
-                "title": $form.find('input[name="title"]').val(),
-                "description": $form.find('input[name="description"]').val(),
-                "type": $form.find('input[name="type"]').val(),
-                "market_price": $form.find('input[name="price"]').val(),
-            };
 
-            $.post($url, $data, function($response) {
-                alert($response.msg)
-                location.reload()
+// 创建FormData对象
+            var formData = new FormData();
+
+// 添加文本字段数据
+            formData.append("title", $form.find('input[name="title"]').val());
+            formData.append("description", $form.find('input[name="description"]').val());
+            formData.append("type", $form.find('input[name="type"]').val());
+            formData.append("market_price", $form.find('input[name="price"]').val());
+
+// 添加图片文件
+            var imageFile = $('#energyImage')[0].files[0];
+            formData.append("image", imageFile);
+
+// 使用$.ajax进行POST请求
+            $.ajax({
+                url: $url,
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    alert(response.msg);
+                    location.reload();
+                }
             });
+
+
+
+            // var $form = $('#addRenewableEnergy form');
+            //
+            // var $url = "mtrading/addNewEnergy";
+            // var $data = {
+            //     "title": $form.find('input[name="title"]').val(),
+            //     "description": $form.find('input[name="description"]').val(),
+            //     "type": $form.find('input[name="type"]').val(),
+            //     "market_price": $form.find('input[name="price"]').val(),
+            // };
+            //
+            // $.post($url, $data, function($response) {
+            //     alert($response.msg)
+            //     location.reload()
+            // });
         });
 
     </script>
