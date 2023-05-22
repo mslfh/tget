@@ -260,6 +260,8 @@
             box-shadow: 0 8px 36px 0 rgba(0, 0, 0, .1);
             border-radius: 20px
         }
+
+
     </style>
 
     <div class="account-style">
@@ -280,7 +282,7 @@
                                     <input type="file" id="uploadInput" style="display: none;">
 
                                     <img  id="uploadImg" src="{{asset("assets/images/profile/upload.png")}}"
-                                         style=" float: right; width: 10%">
+                                         style=" float: right; width: 10%; cursor:pointer;">
                                     <!-- name -->
 
                                     <br>
@@ -341,7 +343,7 @@
                                         <label style="padding: 0px;">
                                             <image src={{asset("assets/icon/password.png")}} ></image>
                                         </label>
-                                        <input class=form-control type='password' id="password" value="" maxlength="13" name="password">
+                                        <input class=form-control type='password' id="password" value="******" maxlength="13" name="password">
                                     </div>
 
 
@@ -351,7 +353,7 @@
                                         <label style="padding: 0px;">
                                             <image src={{asset("assets/icon/home.png")}}></image>
                                         </label>
-                                        <input class=form-control type='text' id="postal_address" value="" name="postal_address">
+                                        <input class=form-control type='text' id="postal_address" value="" name="postal_addr" style="font-weight:bold">
                                     </div>
 
                                     <!-- zone -->
@@ -560,9 +562,9 @@
                                                             <li class="next"><a href="javascript:void(0)">Next</a></li>
                                                         </ul>
                                                     </div>
-                                                    <button class='btn col-lg-3 col-7' type='button' id="trading-history"
-                                                            style="float:right; background-color: #24126a;" id="download">Download
-                                                    </button>
+{{--                                                    <button class='btn col-lg-3 col-7' type='button' id="trading-history"--}}
+{{--                                                            style="float:right; background-color: #24126a;" id="download">Download--}}
+{{--                                                    </button>--}}
                                                 </div>
                                             </div>
                                         </div>
@@ -579,6 +581,24 @@
     </div>
 
     <script>
+        //old password focus disappear, blur appear
+        $(document).ready(function(){
+            var defaultValue = '******';
+
+            $("#password").focus(function(){
+                if ($(this).val() == defaultValue) {
+                    $(this).val('');
+                }
+            });
+
+            $("#password").blur(function(){
+                if ($(this).val() == '') {
+                    $(this).val(defaultValue);
+                }
+            });
+        });
+
+
         $(document).ready(function () {
             //getUserInformation
             $.ajax({
@@ -608,6 +628,47 @@
                 }
             });
         });
+
+        // update user details
+        $("#save").click(function(){
+
+            var role_id = $("#role_id").val();
+            var password = $("#password").val();
+            var postal_addr = $("#postal_addr").val();
+            var zone = $("#zone").val();
+
+            // Prepare data object
+            var data = {
+                "role_id": role_id
+            };
+
+            // Add password if it is not '******'
+            if (password !== '******') {
+                data.password = password;
+            }
+
+            // Add postal_addr if it is not empty
+            if (postal_addr) {
+                data.postal_addr = postal_addr;
+            }
+
+            // Add zone if it is not empty
+            if (zone) {
+                data.zone = zone;
+            }
+
+            $.ajax({
+                url: '/updateUser',
+                type: 'POST',
+                data: data,
+                success: function(result) {
+                    alert(result.data);
+                    location.reload();
+                }
+            });
+        });
+
+
 
         //modal 1 current money
         $("#recharge").click(function(){
@@ -684,10 +745,10 @@
 
             var formData = new FormData();
 
-            // formData.append("title", $form.find('#role_id').val());
-            // formData.append("description", $form.find('input[name="description"]').val());
-            // formData.append("type", $form.find('input[name="type"]').val());
-            // formData.append("market_price", $form.find('input[name="price"]').val());
+            formData.append("title", $form.find('#role_id').val());
+            formData.append("description", $form.find('#password').val());
+            formData.append("type", $form.find('#postal_address').val());
+            formData.append("market_price", $form.find('i#zone').val());
 
             var imageFile = $('#uploadInput')[0].files[0];
             formData.append("userImage", imageFile);

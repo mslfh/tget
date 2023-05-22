@@ -116,7 +116,7 @@
                             </div>
                             <div class="form-group input-group">
                                 <label><image src={{asset("assets/icon/home.png")}} height="25px"></image></label>
-                                <input class=form-control type='text' placeholder="Postal address" id="postalAddress" name="postalAddress" required>
+                                <input class=form-control type='text' placeholder="Postal address" id="postalAddress" name="postal_addr" required>
                             </div>
                         <div class="form-group">
                             <br><br>
