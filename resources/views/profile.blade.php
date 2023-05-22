@@ -260,6 +260,8 @@
             box-shadow: 0 8px 36px 0 rgba(0, 0, 0, .1);
             border-radius: 20px
         }
+
+
     </style>
 
     <div class="account-style">
@@ -281,7 +283,7 @@
                                     <input type="file" id="uploadInput" style="display: none;">
 
                                     <img  id="uploadImg" src="{{asset("assets/images/profile/upload.png")}}"
-                                         style=" float: right; width: 10%">
+                                         style=" float: right; width: 10%; cursor:pointer;">
                                     <!-- name -->
 
                                     <br>
@@ -352,7 +354,7 @@
                                         <label style="padding: 0px;">
                                             <image src={{asset("assets/icon/home.png")}}></image>
                                         </label>
-                                        <input class=form-control type='text' id="postal_address" value="" name="postal_addr">
+                                        <input class=form-control type='text' id="postal_address" value="" name="postal_addr" style="font-weight:bold">
                                     </div>
 
                                     <!-- zone -->
@@ -561,9 +563,9 @@
                                                             <li class="next"><a href="javascript:void(0)">Next</a></li>
                                                         </ul>
                                                     </div>
-                                                    <button class='btn col-lg-3 col-7' type='button' id="trading-history"
-                                                            style="float:right; background-color: #24126a;" id="download">Download
-                                                    </button>
+{{--                                                    <button class='btn col-lg-3 col-7' type='button' id="trading-history"--}}
+{{--                                                            style="float:right; background-color: #24126a;" id="download">Download--}}
+{{--                                                    </button>--}}
                                                 </div>
                                             </div>
                                         </div>
@@ -744,10 +746,10 @@
 
             var formData = new FormData();
 
-            // formData.append("title", $form.find('#role_id').val());
-            // formData.append("description", $form.find('input[name="description"]').val());
-            // formData.append("type", $form.find('input[name="type"]').val());
-            // formData.append("market_price", $form.find('input[name="price"]').val());
+            formData.append("title", $form.find('#role_id').val());
+            formData.append("description", $form.find('#password').val());
+            formData.append("type", $form.find('#postal_address').val());
+            formData.append("market_price", $form.find('i#zone').val());
 
             var imageFile = $('#uploadInput')[0].files[0];
             formData.append("userImage", imageFile);
