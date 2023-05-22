@@ -285,7 +285,7 @@
                                 </tr>
                                 <tr>
                                     <td>Title:</td>
-                                    <td><input type="input" class="form-control" name="title" placeholder="Enter title"></td>
+                                    <td><input type="input" class="form-control" name="title" placeholder="Enter title" required></td>
                                 </tr>
 
                                 <tr style="height: 20px;">
@@ -302,7 +302,7 @@
                                 </tr>
                                 <tr>
                                     <td>Type:</td>
-                                    <td><input type="input" class="form-control" name="type" placeholder="Enter Type"></td>
+                                    <td><input type="input" class="form-control" name="type" placeholder="Enter Type" required> </td>
                                 </tr>
                                 <tr style="height: 20px;">
                                     <td></td>
@@ -310,7 +310,7 @@
                                 </tr>
                                 <tr>
                                     <td>Market Price (kWh):</td>
-                                    <td><input type="input" class="form-control" name="price" placeholder="Enter Price per kWh"></td>
+                                    <td><input type="input" class="form-control" name="price" placeholder="Enter Price per kWh" required></td>
                                 </tr>
                             </table>
                         </div>
@@ -652,22 +652,6 @@
                 }
             });
 
-
-
-            // var $form = $('#addRenewableEnergy form');
-            //
-            // var $url = "mtrading/addNewEnergy";
-            // var $data = {
-            //     "title": $form.find('input[name="title"]').val(),
-            //     "description": $form.find('input[name="description"]').val(),
-            //     "type": $form.find('input[name="type"]').val(),
-            //     "market_price": $form.find('input[name="price"]').val(),
-            // };
-            //
-            // $.post($url, $data, function($response) {
-            //     alert($response.msg)
-            //     location.reload()
-            // });
         });
 
     </script>

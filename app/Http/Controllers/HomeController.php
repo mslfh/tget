@@ -70,13 +70,28 @@ class HomeController extends Controller
 
     public function updateUser(Request $request)
     {
+
+        $path = null;
+        if($request->file('userImage')){
+            $filePath ='public/userImage/'.date('Y-m-d');
+
+            $path = $request->file('userImage')->store(
+                $filePath
+            );
+            $path = "storage/".explode('/',$path,2)[1];
+        }
+
+
         $user = Auth::user();
         $data = $request->post();
 
         if(isset($user->id)){
             $user->name = isset($data['name'])? $data['name'] :$user->name;
+            $user->role_id = isset($data['role_id'])? $data['role_id'] :$user->role_id;
+            $user->zone = isset($data['zone'])? $data['zone'] :$user->zone;
             $user->password = isset($data['password'])? bcrypt($data['password']):$user->password;
             $user->postal_addr = isset($data['postal_addr'])? $data['postal_addr'] :$user->postal_addr;
+            $user->profile_photo_path = $path? $path :$user->profile_photo_path;
             $user->save();
             return $this->success(
                 $user

@@ -271,13 +271,16 @@
 
                         {{-- user--}}
                         <div class="text-danger formMargin" id="error"></div>
-                        <form method='post' action="#" id="update-form">
+                        <div method='post' action="#" id="update-form">
                             <div class=row style="margin-bottom :0px">
                                 <!-- Image of user -->
                                 <div class="col-lg-5 col-5" style="margin-top: 10px; ">
-                                    <img class="rounded-circle p-1 border"
-                                         src={{asset("assets/images/profile/personalAvatar.png")}}>
-                                    <img src="{{asset("assets/images/profile/upload.png")}}"
+                                    <img id="personalAvatar" class="rounded-circle p-1 border"
+                                         >
+
+                                    <input type="file" id="uploadInput" style="display: none;">
+
+                                    <img  id="uploadImg" src="{{asset("assets/images/profile/upload.png")}}"
                                          style=" float: right; width: 10%">
                                     <!-- name -->
 
@@ -369,11 +372,11 @@
 
                                     <!-- Save Edit Details Button -->
                                     <div class='button-control1 mb-5 d-flex' style="float: right;">
-                                        <button class='btn1 btn-primary' type='submit' id="save">Save</button>
+                                            <button class='btn1 btn-primary'  id="saveUser">Save</button>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
 
                         {{--balance--}}
                         <div class="contact-form" style="margin: 1%;">
@@ -576,7 +579,6 @@
         </div>
     </div>
 
-
     <script>
         $(document).ready(function () {
             //getUserInformation
@@ -586,6 +588,11 @@
                 success: function(result) {
                     // console.log(result)
                     var balance = $("#balance");
+                    if(result.data.profile_photo_path){
+                        $("#personalAvatar").attr('src',result.data.profile_photo_path)
+                    }else{
+                        $("#personalAvatar").attr('src',"assets/images/profile/personalAvatar.png")
+                    }
                     $("#balance").val(result.data.account_balance)
                     // var userName = $("#userName")
                     $("#userName").val("Name: "+ result.data.name)
@@ -650,6 +657,56 @@
                 }
             });
         })
+
+        $('#uploadImg').click(function() {
+            $('#uploadInput').trigger('click');
+
+
+        });
+
+        $('#uploadInput').change(function() {
+            var selectedImage = this.files[0];
+
+            if (selectedImage) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#personalAvatar').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(selectedImage);
+            }
+        });
+
+        $('#saveUser').click(function() {
+
+            var $form = $('#update-form form');
+            var $url = "/updateUser";
+
+            var formData = new FormData();
+
+            // formData.append("title", $form.find('#role_id').val());
+            // formData.append("description", $form.find('input[name="description"]').val());
+            // formData.append("type", $form.find('input[name="type"]').val());
+            // formData.append("market_price", $form.find('input[name="price"]').val());
+
+            var imageFile = $('#uploadInput')[0].files[0];
+            formData.append("userImage", imageFile);
+
+            $.ajax({
+                url: $url,
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    alert(response.msg);
+                    location.reload();
+                }
+            });
+
+        });
+
     </script>
 
 
