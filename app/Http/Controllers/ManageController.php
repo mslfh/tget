@@ -8,12 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class ManageController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request){
         $user =  Auth::user();
         $users = $this->getAllUser($request)->getData()->data;
-//        dd($users->list);
-        return view('manage',["users" => $users->list, 'role'=>$user->role_id]);
+        return view('manage',["users" => $users->list, 'role'=>$user->role_id??0]);
     }
 
 

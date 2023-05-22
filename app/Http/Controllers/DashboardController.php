@@ -12,12 +12,16 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request){
            $user =  Auth::user();
            $data =  $this->getMarketSummary($request)->getData()->data;
            $userData = $this->getActiveUserSummary($request)->getData()->data;
-           return view('dashboard',['data'=>$data,'userData'=>$userData, 'role'=>$user->role_id]);
+           return view('dashboard',['data'=>$data,'userData'=>$userData, 'role'=>$user->role_id??0]);
     }
 
     public function getActiveUserSummary(Request $request)
@@ -66,6 +70,8 @@ class DashboardController extends Controller
         $current = Carbon::tomorrow();
         $begin = Carbon::tomorrow();
         $begin->subDays($numDays);
+
+
 
         $stores = Store::query()
             ->select('energy_id','selling_price',"created_at")

@@ -6,7 +6,6 @@
     <div class=" section">
 
     <div class="container">
-
             <br>
             <br>
             <br>
@@ -104,18 +103,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--Pagination-->
-                                <div class="pagination justify-content-center">
-                                    <ul class=pagination-list>
-                                        <li class="previous"><a href="javascript:void(0)">Prev</a></li>
-                                        <li class=active><a href="javascript:void(0)">1</a></li>
-                                        <li><a href="javascript:void(0)">2</a></li>
-                                        <li><a href="javascript:void(0)">3</a></li>
-                                        <li><a href="javascript:void(0)">4</a></li>
-                                        <li><a href="javascript:void(0)">5</a></li>
-                                        <li class="next"><a href="javascript:void(0)">Next</a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -181,20 +168,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!--Pagination-->
-                                <div class="pagination justify-content-center">
-                                    <ul class=pagination-list>
-
-                                        <li class="previous"><a href="javascript:void(0)">Prev</a></li>
-
-                                        <li class=active><a href="javascript:void(0)">1</a></li>
-                                        <li><a href="javascript:void(0)">2</a></li>
-                                        <li><a href="javascript:void(0)">3</a></li>
-                                        <li><a href="javascript:void(0)">4</a></li>
-                                        <li><a href="javascript:void(0)">5</a></li>
-                                        <li class="next"><a href="javascript:void(0)">Next</a></li>
-                                    </ul>
                                 </div>
                                 </div>
                             </div>
@@ -626,20 +599,16 @@
             var $form = $('#addRenewableEnergy form');
             var $url = "mtrading/addNewEnergy";
 
-// 创建FormData对象
             var formData = new FormData();
 
-// 添加文本字段数据
             formData.append("title", $form.find('input[name="title"]').val());
             formData.append("description", $form.find('input[name="description"]').val());
             formData.append("type", $form.find('input[name="type"]').val());
             formData.append("market_price", $form.find('input[name="price"]').val());
 
-// 添加图片文件
             var imageFile = $('#energyImage')[0].files[0];
             formData.append("image", imageFile);
 
-// 使用$.ajax进行POST请求
             $.ajax({
                 url: $url,
                 type: "POST",

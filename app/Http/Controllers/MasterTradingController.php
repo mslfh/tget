@@ -13,6 +13,10 @@ use Illuminate\Support\Str;
 
 class MasterTradingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index(Request $request)
     {
@@ -57,13 +61,10 @@ class MasterTradingController extends Controller
 
     public function getEnergyList(Request $request)
     {
-        $pageSize = $request->get('pageSize',10);
+        $data =  Energy::query()->get()->toArray();
 
-        $data = Energy::query()->paginate($pageSize)->toArray();
         return $this->success([
-            'list' => $data['data'],
-            'current_page' => $data['current_page'],
-            'total' => $data['total']
+            'list' => $data,
         ]);
     }
     public function addNewEnergy(Request $request)
@@ -177,7 +178,6 @@ class MasterTradingController extends Controller
             },
         ])->get();
         return $this->success($data);
-
     }
 
 

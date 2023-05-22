@@ -26,18 +26,24 @@
   };
 
   //search
-  $(document).ready(function () {
-    $('#search-button').click(function () {
-      $('html, body').animate({
-    scrollTop: $('#energy-list').offset().top - 150
-  }, 1000);
-      var searchValue = $('#search-input').val().toLowerCase();
+    $(document).ready(function () {
+        $('#search-button').click(function () {
+            if (window.location.href.indexOf("home") === -1) {
+                window.location.href = "trading?keywords="+$('#search-input').val();
+            } else {
+                $('html, body').animate({
+                    scrollTop: $('#energy-list').offset().top - 150
+                }, 1000);
 
-      $('.single-testimonial').each(function () {
-        var text = $(this).find('h4').text().toLowerCase();
-        var match = text.indexOf(searchValue) !== -1;
-        $(this).toggle(match);
-      });
+                var searchValue = $('#search-input').val().toLowerCase();
+
+                $('.single-testimonial').each(function () {
+                    var text = $(this).find('h4').text().toLowerCase();
+                    var match = text.indexOf(searchValue) !== -1;
+                    $(this).toggle(match);
+                });
+            }
+        });
     });
-  });
+
 })();

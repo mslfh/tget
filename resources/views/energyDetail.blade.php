@@ -72,11 +72,10 @@
 
                             <div class="stock mt-30px">
                                 <span class="avallabillty">Stock:
-                                    <span class="in-stock mx-5" id="current-volume">  {{$storeList[0]['current_volume'].' mL'}}
+                                    <span class="in-stock mx-5" id="current-volume">  {{$storeList[0]['current_volume'].' kWh'}}
                                     </span>
                                 </span>
                             </div>
-
 
                             <p class="mt-30px mb-0">{{$energy['description']}} </p>
                             <div class="pro-details-quality">
