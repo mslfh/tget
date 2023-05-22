@@ -8,6 +8,8 @@ use App\Models\MarketSetting;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 class MasterTradingController extends Controller
 {
@@ -66,11 +68,21 @@ class MasterTradingController extends Controller
     }
     public function addNewEnergy(Request $request)
     {
+        $path = null;
+        if($request->file('image')){
+            $filePath ='public/EnergyImg/'.date('Y-m-d');
+
+            $path = $request->file('image')->store(
+                $filePath
+            );
+            $path = "storage/".explode('/',$path,2)[1];
+        }
+
         $data = $request->post();
         $energy = new Energy();
 
         $energy->title = $data['title'] ??"";
-        $energy->image = $data['image'] ??"";
+        $energy->image = $path;
         $energy->description = $data['description'] ??"";
         $energy->type = $data['type'] ??"";
         $energy->save();

@@ -56,7 +56,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4>Buy Available Energy</h4>
+                <h4>Sell Available Energy</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -64,24 +64,37 @@
                 <form>
                     <div class="mb-3">
                         <label for="energyType">Energy Type</label>
-                        <input type="text" class="form-control" id="energyType" value="Solar" disabled>
+                        <select class="form-select" value="" style="font-weight:bold" name="energyType" id="energyType">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="Title">Energy Title</label>
-                        <input type="text" class="form-control" id="energyTitleInput" value="100" readonly>
+                        <input type="text" class="form-control" id="energyTitleInput" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="buyPrice">Buy Price</label>
-                        <input type="text" class="form-control" id="buyPrice" value="1.9 /kWh" readonly>
+                        <label >Sell Price</label>
+                        <input type="text" class="form-control" id="sellPrice"  placeholder="please input your selling price.">
                     </div>
                     <div class="mb-3">
-                        <label for="buyVolume">Buy Volume</label>
-                        <input type="text" class="form-control" id="buyVolume" value="1000" readonly>
+                        <label for="buyVolume">Volume</label>
+                        <input type="text" class="form-control" id="sellVolume" placeholder="please input the volume." >
                     </div>
 
                     <div class="mb-3">
-                        <label for="buyVolume">Remark</label>
-                        <input type="text" class="form-control" id="remark" >
+                        <label for="buyVolume">Zone</label>
+                        <select class="form-select" name="location" id="sellZone" >
+                            <option value="" style="color: grey">please select selling zone.</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                        </select>
                     </div>
                 </form>
             </div>
@@ -124,4 +137,7 @@
     </ul>
 </div>
 
+    <script>
+
+    </script>
 @endsection
