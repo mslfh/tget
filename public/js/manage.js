@@ -16,14 +16,22 @@ function addUser(){
         "profile_photo_path":profile_photo_path
     }
     console.log(payload)
-    $.post('/index.php/manage/addNewUser',payload)
+    $.post('/index.php/manage/addNewUser',payload, (data)=>{
+        location.reload()
+    })
 }
 
 function removeUser(userId){
-    alert("Are you sure you want to delete this user?")
+
+    // alert("Are you sure you want to delete this user?")
     $.post('/index.php/manage/removeUser',{"user_id": userId},(data) => {
         if(!data.status){
             alert(data.msg)
+        } else {
+            if (window.confirm("Are you sure you want to delete this user?")) {
+                // window.open("/index.php/manage");
+                location.reload()
+            }
         }
     })
 }
@@ -38,6 +46,8 @@ function changeUserStatus(currUser, status){
         if(!data.status){
             alert(data.msg)
             return
+        } else {
+            location.reload()
         }
     })
 }
