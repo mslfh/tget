@@ -193,34 +193,56 @@
                 </div>
                 <div class="modal-body" >
                     <form action="#" method="post">
-                        <div class="form-group">
+                        <div class="form-group ">
+                            <div class="energy-area">
                             <table>
                                 <input style="display: none" id="energyIdInput">
-                                <tr>
+                                <tr >
                                     <td>Image</td>
                                     <td>
-                                        <button type="file">Change image</button>
+                                        <img id="editImage" height="60px" style="padding: 10px">
+
+                                        <input type="file" id="uploadImage" style="display: none;">
+
+                                        <img  id="uploadImg" src="{{asset("assets/images/profile/upload.png")}}"
+                                              style="width: 12%; cursor:pointer;">
                                     </td>
                                 </tr>
-
-                                <tr>
+                                <tr style="height: 10px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr >
                                     <td>Title</td>
                                     <td><input type="input" class="form-control" name="title" placeholder="Enter title"></td>
                                 </tr>
-                                <tr>
+                                <tr style="height: 10px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr >
                                     <td>Description</td>
                                     <td><input type="input" class="form-control" name="description" placeholder="Enter Description"></td>
                                 </tr>
-                                <tr>
+                                <tr style="height: 10px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr >
                                     <td>Type</td>
                                     <td><input type="input" class="form-control" name="type" placeholder="Enter Type"></td>
                                 </tr>
-                                <tr>
+                                <tr style="height: 10px;">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr >
                                     <td>Market Price (kWh)</td>
                                     <td><input type="input" class="form-control" name="price" placeholder="Enter Price per kWh"></td>
                                 </tr>
 
                             </table>
+                            </div>
                         </div>
 
                         <div class="modal-footer">
@@ -286,6 +308,16 @@
                                     <td><input type="input" class="form-control" name="price" placeholder="Enter Price per kWh" required></td>
                                 </tr>
                             </table>
+                                <br>
+                            <span >Zone:</span>
+                                <br>
+                            <select class="form-select" value="A"  name="zone" id="selzone">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                            </select>
                         </div>
                         </div>
                         <div class="modal-footer">
@@ -513,10 +545,10 @@
             }, function(data) {
                 if (data.status === 1) {
                     $('#energyIdInput').val(energyId);
+                    $('#editImage').attr('src', data.data.image)
                     modal.find('input[name="title"]').val(data.data.title);
                     modal.find('input[name="description"]').val(data.data.description);
                     modal.find('input[name="type"]').val(data.data.type);
-                    modal.find('input[name="price"]').val(data.data.market_price);
                     modal.find('input[name="price"]').val(data.data.market_price);
                     modal.modal('show');
                 }
@@ -563,17 +595,27 @@
             var energyId =   $('#energyIdInput').val()
 
             var $url = "/mtrading/updateEnergy?id="+energyId; // Set the URL for updating the energy data
-            var $data = {
-                "title": $form.find('input[name="title"]').val(),
-                "description": $form.find('input[name="description"]').val(),
-                "type": $form.find('input[name="type"]').val(),
-                "market_price": $form.find('input[name="price"]').val(),
-                // Get other form field values as needed
-            };
 
-            $.post($url, $data, function($response) {
-                alert($response.msg)
-                location.reload()
+            var formData = new FormData();
+
+            formData.append("title", $form.find('input[name="title"]').val());
+            formData.append("description", $form.find('input[name="description"]').val());
+            formData.append("type", $form.find('input[name="type"]').val());
+            formData.append("market_price", $form.find('input[name="price"]').val());
+
+            var imageFile = $('#uploadImage')[0].files[0];
+            formData.append("Image", imageFile);
+
+            $.ajax({
+                url: $url,
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    alert(response.msg);
+                    location.reload();
+                }
             });
         });
 
@@ -603,6 +645,7 @@
             formData.append("description", $form.find('input[name="description"]').val());
             formData.append("type", $form.find('input[name="type"]').val());
             formData.append("market_price", $form.find('input[name="price"]').val());
+            formData.append("zone", $('#selzone').val());
 
             var imageFile = $('#energyImage')[0].files[0];
             formData.append("image", imageFile);
@@ -621,5 +664,21 @@
 
         });
 
+        $('#uploadImg').click(function() {
+            $('#uploadImage').trigger('click');
+        });
+
+        $('#uploadImage').change(function() {
+            var selectedImage = this.files[0];
+
+            if (selectedImage) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#editImage').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(selectedImage);
+            }
+        });
     </script>
 @endsection

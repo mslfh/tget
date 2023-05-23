@@ -192,7 +192,8 @@ class HomeController extends Controller
         }
 
         return view("profile")->with([
-            'tradingHistory' => $list
+            'tradingHistory' => $list,
+            'role_id' => $user->role_id
         ]);
     }
 

@@ -18,8 +18,8 @@
                     </div>
 
 
-                    @if($role_id != 2 && $role_id != 0)
-                        <div class="col-12">
+                    @if($role_id != 2 && $role_id != 1)
+                        <div class="col-12" style="padding-left: 200px;">
                             <button type="button" class="btn btn-outline-success sell-button mb-3"
                                     data-bs-toggle="modal"
                                     data-bs-target="#sellerModal" id="sellEnergyButton">Sell Energy
@@ -31,6 +31,9 @@
             </div>
             <div class="row">
                 <div class="row">
+                    @if(count($list)==0)
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s" style="text-align: center; color: #9c9191;">NO ENERGY...</h2>
+                    @endif
                     @foreach($list as $item)
                         <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".{{2+$loop->index*2}}s">
                             <div class="feature-box">
@@ -48,7 +51,7 @@
                                   text-overflow: ellipsis;">{{$item['description']}}</p>
                                 <p >Volume: {{$item['vol']." kWh + "}}</p>
                                 <p >Zone: {{$item['zone']}}</p>
-                                <p >Price: ${{$item['price']}}/kWh</p>
+                                <p >Price: ${{$item['price']}}/kWh </p>
                                 <p style="color: grey">Created: {{$item['time']}}</p>
                             </div>
                         </div>
@@ -73,13 +76,15 @@
                         <select class="form-select" value="" style="font-weight:bold" name="energySel"
                                 id="energySel">
                             @foreach( $Energy as $Ener)
-                            <option value="{{$Ener['id']}}">{{$Ener['title']}}</option>
+                                @if(isset($Ener['records'][0]["market_price"]))
+                                <option value="{{$Ener['id']}}">{{$Ener['title']." ($".$Ener['records'][0]["market_price"].")"}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
                         <label>Sell Price</label>
-                        <input type="number" class="form-control" id="sellPrice"
+                        <input  class="form-control" id="sellPrice"
                                placeholder="please input your selling price.">
                     </div>
                     <div class="mb-3">
@@ -139,7 +144,6 @@
 
         $('#sellEnergy').click(function (e) {
 
-            var $form = $('#sellerModal form');
             var $url = "/trading/submitEnergy";
 
             var formData = new FormData();
@@ -149,11 +153,25 @@
                 return
             }
 
-
             if (!$.isNumeric($('#sellVolume').val()) || parseInt($('#sellVolume').val())< 0) {
                 alert("Please enter a valid number for the selling volume.");
                 return
             }
+
+
+            var marketPriceText = $('#energySel option:selected').text().match(/\(\$(\d+)\)/);
+            if (marketPriceText) {
+                var marketPrice = parseInt(marketPriceText[1]);
+                var sellPrice = parseInt($('#sellPrice').val());
+                var priceDifference = Math.abs(sellPrice - marketPrice);
+                var priceThreshold = marketPrice * 0.1; // 10% threshold
+
+                if (priceDifference >= priceThreshold) {
+                    alert("Selling price is outside ±10% of market price($"+marketPrice+").");
+                    return
+                }
+            }
+
             formData.append("energy_id",$('#energySel').val());
             formData.append("selling_price", $('#sellPrice').val() );
             formData.append("volume",$('#sellVolume').val() );
@@ -171,5 +189,8 @@
             });
 
         });
+
+
+
     </script>
 @endsection

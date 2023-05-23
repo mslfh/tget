@@ -31,9 +31,9 @@ class OrderController extends Controller
         $list = Energy::query();
 
         if($key){
-            $list->where('title',$key)->orWhere('type',$key);
-        }
+            $list->where('type',$key)->orWhere('zone',$key);
 
+        }
         $list = $list->paginate($pageSize);
 
         foreach ( $list as $index=> $li){
@@ -45,7 +45,10 @@ class OrderController extends Controller
             )->max('current_volume');
             $li->time = $li->created_at->format("d/m/Y");
         }
-        $Energy = Energy::query()->select('id','title')->get()->toArray();
+        $Energy = Energy::query()->select('id','title')->with(['records'=>function($q){
+            $q->orderBy("created_at",'desc')->limit(1);
+        }])->get()->toArray();
+
         return view('trading', compact('list'))->with([
             'role_id' => $user->role_id,
             'Energy' => $Energy,
@@ -95,9 +98,11 @@ class OrderController extends Controller
             $order->save();
 
             //change money of buyer
-           if(! $user->balance($trade_price,0,2,$order->id,"trading cost of ".$trade_price)) {
-               return $this->error("Fail in getting money from buyer");
-           }
+
+            $buyInfo = "Buy ".$data['volume']." kWh of ".$store->energy->title." : ".$trade_price;
+               if(! $user->balance($trade_price,0,2,$order->id,$buyInfo)) {
+                   return $this->error("Fail in getting money from buyer");
+               }
 
             //change money of seller
             $seller  = User::query()->find($data['seller_id']);
@@ -150,7 +155,6 @@ class OrderController extends Controller
         return $this->success($store);
     }
 
-
     public function energyDetail(Request $request)
     {
         $energyId = $request->get('id');
@@ -178,7 +182,4 @@ class OrderController extends Controller
             return $this->error("energy not found");
         }
     }
-
-
-
 }

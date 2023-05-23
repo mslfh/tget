@@ -26,6 +26,7 @@
 <body>
 
 <div id="app">
+
     <!-- Start Header Area -->
     <header class="header navbar-area">
         <div class="container" style="max-width: 1500px;">
@@ -70,7 +71,7 @@
                                 </ul>
                             </div>
                             <div class="button">
-                                <input placeholder="Renewable energy type" class="search" id="search-input">
+                                <input placeholder="Energy type / Zone" class="search" id="search-input">
                                 <button id="search-button" class="search-button" >Search</button>
                             </div>
 
@@ -102,7 +103,7 @@
                                     @else
                                         <li class="nav-item dropdown">
                                             <a style="color: #c6ccdb; font-size: 20px;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                {{ Auth::user()->name }}
+                                                {{ Auth::user()->name }}⏷
                                             </a>
 
                                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

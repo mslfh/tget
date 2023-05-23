@@ -88,6 +88,7 @@ class MasterTradingController extends Controller
         $energy->image = $path;
         $energy->description = $data['description'] ??"";
         $energy->type = $data['type'] ??"";
+        $energy->zone = $data['zone'] ??"";
         $energy->save();
         $energy->records()->create([
             "market_price" =>  $data ['market_price']
@@ -96,6 +97,17 @@ class MasterTradingController extends Controller
     }
     public function updateEnergy(Request $request)
     {
+
+        $path = null;
+        if($request->file('Image')){
+            $filePath ='public/EnergyImg/'.date('Y-m-d');
+
+            $path = $request->file('Image')->store(
+                $filePath
+            );
+            $path = "storage/".explode('/',$path,2)[1];
+        }
+
         $data = $request->post();
         $energyId = $request->get('id');
         $energy = Energy::query()->find($energyId);
@@ -104,7 +116,7 @@ class MasterTradingController extends Controller
             $energy->image = $data['image'] ??$energy->image;
             $energy->description = $data['description'] ??$energy->description;
             $energy->type = $data['type'] ??$energy->type;
-
+            $energy->image = $path??$energy->image;
             $market_price = EnergyRecord::query()->where(
                 'energy_id',$energy->id
             )->orderBy('updated_at',"desc")->limit(1)->get()->first();
@@ -181,7 +193,6 @@ class MasterTradingController extends Controller
         ])->get();
         return $this->success($data);
     }
-
 
     public function getOrderDetail(Request $request)
     {

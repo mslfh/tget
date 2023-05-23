@@ -63,7 +63,8 @@
                                         <span class="in-stock">
                                            &nbsp; {{$store['seller']['name']}}; &nbsp;
                                         </span>
-                                            <input style="display: none" id="seller_Id" value="{{$store['seller']['id']}}">
+                                            <input style="display: none" id="seller_Id"
+                                                   value="{{$store['seller']['id']}}">
                                             <input style="display: none" id="store_Id" value="{{$store['id']}}">
                                     </a>
                                     @endforeach
@@ -160,7 +161,7 @@
 
                         <div class="mb-3">
                             <label for="buyVolume">Remark</label>
-                            <input type="text" class="form-control" id="remark" >
+                            <input type="text" class="form-control" id="remark">
                         </div>
                     </form>
                     <div class="container" id="summaryDetail" style="display: none;">
@@ -190,103 +191,104 @@
     <script>
         $(document).ready(function () {
 
-            // 添加点击事件监听器
-            $('#buyEnergyButton').click(function() {
+            $('#buyEnergyButton').click(function () {
+
+                var availableVolume = $('#current-volume').html().match(/\d+/)[0];
                 var energyTypeInput = $('#energyType');
                 var buyPrice = $('#buyPrice');
                 var energyTitleInput = $('#energyTitleInput');
                 var buyVolume = $('#buyVolume');
 
-                // 获取商品信息和购买数量
-                var energyType = $('#energy_Type').text(); // 这里是示例，根据实际情况获取商品类型
-                var price = $('#energyPrice').text(); // 这里是示例，根据实际情况获取商品类型
-                var title = $('#energy_title').text(); // 这里是示例，根据实际情况获取商品类型
-                var volume = $('input[name="qtybutton"]').val(); // 获取购买数量输入框的值
+                var energyType = $('#energy_Type').text();
+                var price = $('#energyPrice').text();
+                var title = $('#energy_title').text();
+                var volume = $('input[name="qtybutton"]').val();
 
-                // 将信息填充到模态框中的表单字段中
-                energyTypeInput.val(energyType);
-                energyTitleInput.val(title);
-                buyVolume.val(volume);
-                buyPrice.val(price);
+
+                if (parseInt(volume) > parseInt(availableVolume)) {
+                    alert("Buy Volume exceed the Available volume. Please check again")
+                    $("#buyerModal").css('display',"none")
+                    location.reload()
+                } else {
+                    energyTypeInput.val(energyType);
+                    energyTitleInput.val(title);
+                    buyVolume.val(volume);
+                    buyPrice.val(price);
+                }
             });
-
 
             $('a[data-current-volume]').click(function (e) {
                 e.preventDefault();
 
-                $("#sellerId").val( $(this).find('input#seller_Id').val())
-                $("#storeId").val( $(this).find('input#store_Id').val())
+                $("#sellerId").val($(this).find('input#seller_Id').val())
+                $("#storeId").val($(this).find('input#store_Id').val())
                 // 移除之前的样式
                 $('a[data-current-volume] span').removeClass('active-span');
 
                 var currentVolume = $(this).data('current-volume');
-                $('#current-volume').text(currentVolume + ' mL');
+                $('#current-volume').text(currentVolume + ' kWh');
 
                 $(this).find('span').addClass('active-span');
             });
         });
-        function submitBuy(){
 
-            if( $("#sellerId").val() == "0"   ){
+        function submitBuy() {
+
+            if ($("#sellerId").val() == "0") {
                 $("#sellerId").val({{$storeList[0]['seller']['id']}})
             }
-            if( $("#storeId").val() == "0" ){
+            if ($("#storeId").val() == "0") {
                 $("#storeId").val({{$storeList[0]['id']}})
             }
 
-            $("#buySubmitButton").css('display','none')
-            $("#buyCheckButton").css('display','')
-            $("#summaryDetail").css('display','none')
-            $("#buyerMarketList").css('display','')
+            $("#buySubmitButton").css('display', 'none')
+            $("#buyCheckButton").css('display', '')
+            $("#summaryDetail").css('display', 'none')
+            $("#buyerMarketList").css('display', '')
 
             var url = "/trading/submitOrder";
             var data = {
-                "energy_id":  $("#energyId").val(),
+                "energy_id": $("#energyId").val(),
                 "volume": $('#buyVolume').val(),
-                "seller_id": $("#sellerId").val( ),
-                "store_id":  $("#storeId").val( ),
-                "remark":  $("#remark").val()
+                "seller_id": $("#sellerId").val(),
+                "store_id": $("#storeId").val(),
+                "remark": $("#remark").val()
             };
             console.log(data)
-            $.post(url, data, function(response) {
+            $.post(url, data, function (response) {
                 alert(response.msg)
                 location.reload()
             });
 
         }
 
-        function checkBuyVolume(){
+        function checkBuyVolume() {
             var availableVolume = $('#current-volume').html().match(/\d+/)[0];
             let inputVolume = $("#buyVolume").val()
 
-            console.log(availableVolume,inputVolume)
+            console.log(availableVolume, inputVolume)
 
-            if(!inputVolume){
+            if (!inputVolume) {
                 alert("Please enter the amount of volume to buy")
                 return
             }
 
-            if(parseInt(inputVolume) > parseInt(availableVolume)){
-                alert("Buy Volume exceed the Available volume. Please check again")
-                return
-            } else {
-                var buyPrice = $('#buyPrice').val().match(/\d+/)[0];
-                var buyVolume = $('#buyVolume').val().match(/\d+/)[0];
+            var buyPrice = $('#buyPrice').val().match(/\d+/)[0];
+            var buyVolume = $('#buyVolume').val().match(/\d+/)[0];
 
-                var tax = buyPrice * buyVolume * {{$tax['tax']}} / 100;
-                var fee =  buyPrice * buyVolume + {{$tax['administration_fee']}}
-                    + tax ;
+            var tax = buyPrice * buyVolume * {{$tax['tax']}} / 100;
+            var fee = buyPrice * buyVolume + {{$tax['administration_fee']}}
+                +tax;
 
-                $('#total_price').html(buyPrice * buyVolume )
-                $('#tax').html(tax)
-                $('#total_fee').html(fee)
-                $("#buyCheckButton").css('display','none')
-                $("#error").html("")
-                $("#buySubmitButton").css('display','')
-                // Display the summary price details
-                // In the future change it with proper function to display the selected energy
-                $("#summaryDetail").css('display','')
-            }
+            $('#total_price').html(buyPrice * buyVolume)
+            $('#tax').html(tax)
+            $('#total_fee').html(fee)
+            $("#buyCheckButton").css('display', 'none')
+            $("#error").html("")
+            $("#buySubmitButton").css('display', '')
+            // Display the summary price details
+            // In the future change it with proper function to display the selected energy
+            $("#summaryDetail").css('display', '')
         }
     </script>
 @endsection
