@@ -273,7 +273,7 @@
 
                         {{-- user--}}
                         <div class="text-danger formMargin" id="error"></div>
-                        <div method='post' action="#" id="update-form">
+                        <div  id="update-form">
                             <div class=row style="margin-bottom :0px">
                                 <!-- Image of user -->
                                 <div class="col-lg-5 col-5" style="margin-top: 10px; ">
@@ -385,7 +385,7 @@
                                 <label for="text" style="font-size:large; font-weight: 700; padding-bottom: 20px;">Current Balance</label>
 
                                 <div class="row">
-                                    <div class="col-8">
+                                    <div class="col-7">
                                         <div class="form-group input-group " style="width: 100%;">
                                             <label>
                                                 <image
@@ -395,17 +395,19 @@
                                                    style="color: gray" readonly>
                                         </div>
                                     </div>
-                                    <div class="col-3">
-                                        <div class='button-control mb-5 '>
+                                    <div class="col-5">
+                                        <div class='button-control mb-9'>
                                             <button id="recharge" class='btn' type='button' data-bs-toggle="modal"
                                                     data-bs-target="#rechargeModal"
                                                     style="background-color:darkblue; padding: 7px">
                                                 <i class="bi bi-currency-exchange"></i>
+                                                Deposit
                                             </button>
                                             <button class='btn' type='button' data-bs-toggle="modal"
                                                     data-bs-target="#withdrawModal" id="withdraw"
                                                     style="background-color:grey; padding: 7px">
                                                 <i class="bi bi-collection"></i>
+                                                Withdraw
                                             </button>
                                             {{--                                            rechrage modal--}}
                                             <div class="modal" tabindex="-1" id="rechargeModal">
@@ -515,10 +517,10 @@
                                                                         <table class="table table-striped">
                                                                             <thead>
                                                                             <tr>
-                                                                                <th>NO.</th>
-                                                                                <th>Trading Type</th>
+                                                                                <th style="width:50px">NO.</th>
+                                                                                <th style="width: 130px">Trading Type</th>
                                                                                 <th>Amount of transaction</th>
-                                                                                <th>Trading date</th>
+                                                                                <th>Trading date time</th>
                                                                                 <th>Description</th>
                                                                             </tr>
                                                                             </thead>
@@ -537,8 +539,8 @@
                                                                                     <td>withdraw</td>
                                                                                 @endif
                                                                                 <td>{{$trading->money}}</td>
-                                                                                <td>{{$trading->remark}}</td>
                                                                                 <td>{{$trading->created_at}}</td>
+                                                                                <td>{{$trading->remark}}</td>
 
                                                                             </tr>
                                                                             @endforeach
@@ -598,6 +600,17 @@
             });
         });
 
+        //rechargeAmount & withdrawAmount default = 0
+        $(document).ready(function(){
+            $("#recharge").click(function(){
+                $("#AddMoney").val(0);
+            });
+
+            $("#withdraw").click(function(){
+                $("#reduceMoney").val(0);
+            });
+        });
+
 
         $(document).ready(function () {
             //getUserInformation
@@ -624,46 +637,7 @@
                     //postal_address
                     $("#postal_address").val(result.data.postal_addr)
                     //zone
-                    $("zone").val(result.data.zone)
-                }
-            });
-        });
-
-        // update user details
-        $("#save").click(function(){
-
-            var role_id = $("#role_id").val();
-            var password = $("#password").val();
-            var postal_addr = $("#postal_addr").val();
-            var zone = $("#zone").val();
-
-            // Prepare data object
-            var data = {
-                "role_id": role_id
-            };
-
-            // Add password if it is not '******'
-            if (password !== '******') {
-                data.password = password;
-            }
-
-            // Add postal_addr if it is not empty
-            if (postal_addr) {
-                data.postal_addr = postal_addr;
-            }
-
-            // Add zone if it is not empty
-            if (zone) {
-                data.zone = zone;
-            }
-
-            $.ajax({
-                url: '/updateUser',
-                type: 'POST',
-                data: data,
-                success: function(result) {
-                    alert(result.data);
-                    location.reload();
+                    $("#zone").val(result.data.zone)
                 }
             });
         });
@@ -740,15 +714,19 @@
 
         $('#saveUser').click(function() {
 
-            var $form = $('#update-form form');
             var $url = "/updateUser";
 
             var formData = new FormData();
 
-            formData.append("title", $form.find('#role_id').val());
-            formData.append("description", $form.find('#password').val());
-            formData.append("type", $form.find('#postal_address').val());
-            formData.append("market_price", $form.find('i#zone').val());
+            formData.append("role_id", $('#role_id').val());
+            if(!$('#password').val() == "******"){
+                formData.append("password",$('#password').val());
+            }
+            formData.append("postal_addr",$('#postal_address').val());
+            formData.append("zone", $('#zone').val());
+
+
+            console.log(formData)
 
             var imageFile = $('#uploadInput')[0].files[0];
             formData.append("userImage", imageFile);
