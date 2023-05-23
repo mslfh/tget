@@ -521,9 +521,9 @@
                                                                             <tr>
                                                                                 <th style="width:50px">NO.</th>
                                                                                 <th style="width: 130px">Trading Type</th>
-                                                                                <th>Amount of transaction</th>
+                                                                                <th style="width:85px">Amount</th>
                                                                                 <th>Description</th>
-                                                                                <th>Trading date time</th>
+                                                                                <th style="overflow: auto">Trading date time</th>
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -540,9 +540,9 @@
                                                                                 @elseif($trading->type == 3)
                                                                                     <td>withdraw</td>
                                                                                 @endif
-                                                                                <td>{{$trading->money}}</td>
-                                                                                <td>{{$trading->remark}}</td>
-                                                                                <td>{{$trading->created_at}}</td>
+                                                                                <td style="overflow: auto">{{$trading->money}}</td>
+                                                                                <td style="overflow: auto">{{$trading->remark}}</td>
+                                                                                <td style="overflow: auto; text-overflow: initial;">{{$trading->created_at}}</td>
 
                                                                             </tr>
                                                                             @endforeach
