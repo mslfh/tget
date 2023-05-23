@@ -18,7 +18,7 @@ class OrderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     public function index(Request $request)
@@ -45,11 +45,11 @@ class OrderController extends Controller
             )->max('current_volume');
             $li->time = $li->created_at->format("d/m/Y");
         }
-
+        $Energy = Energy::query()->select('id','title')->get()->toArray();
         return view('trading', compact('list'))->with([
-            'role' => $user->role_id,
+            'role_id' => $user->role_id,
+            'Energy' => $Energy,
         ]);
-
     }
 
     public function submitOrder(Request $request)
@@ -115,7 +115,6 @@ class OrderController extends Controller
         }
         catch (\Exception $exception){
             DB::rollBack();
-            dd($exception->getMessage());
             return $this->error("error");
         }
 
@@ -127,7 +126,7 @@ class OrderController extends Controller
         $data = $request->post();
 
         $store = Store::query()->where([
-            "seller_id" => $user->id?? 1,
+            "seller_id" => $user->id,
             "energy_id" => $data['energy_id'],
             "selling_price" => $data['selling_price'],
             "location" => $data['location'],
@@ -140,7 +139,7 @@ class OrderController extends Controller
         }
         else {
             $store = new Store();
-            $store->seller_id = $user->id?? 1;
+            $store->seller_id = $user->id;
             $store->energy_id = $data['energy_id'];
             $store->selling_price = $data['selling_price'];
             $store->total_volume = $data['volume'];
@@ -150,6 +149,7 @@ class OrderController extends Controller
         }
         return $this->success($store);
     }
+
 
     public function energyDetail(Request $request)
     {
@@ -178,5 +178,7 @@ class OrderController extends Controller
             return $this->error("energy not found");
         }
     }
+
+
 
 }

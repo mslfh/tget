@@ -14,7 +14,7 @@ class IndexController extends Controller
         $data = Energy::query()->get()->toArray();
 
         return view("home")->with([
-                'role_id'=>$user->role_id??0, //0 is visitor
+            'role_id'=>$user->role_id??0, //0 is visitor
             "energy_list"=>$data
         ]);
     }

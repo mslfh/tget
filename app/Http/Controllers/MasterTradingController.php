@@ -20,6 +20,7 @@ class MasterTradingController extends Controller
 
     public function index(Request $request)
     {
+
         $MarketSetting = MarketSetting::query()->find(1);
 
         $fee = [
@@ -33,6 +34,7 @@ class MasterTradingController extends Controller
                 "fee"=>$fee,
                 "energyList"=>$energyList,
                 "tradingHistory"=>$tradingHistory,
+                "role_id"=>Auth::user()->role_id??0,
             ]
         );
     }

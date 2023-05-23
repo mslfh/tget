@@ -523,7 +523,6 @@
             });
         });
 
-
         $('.deleteEnergy-bt').click(function () {
 
             var energyId = $(this).attr('id').split('-')[2];
@@ -577,7 +576,6 @@
                 location.reload()
             });
         });
-
 
         $('#confirm_delete_btn').click(function() {
 

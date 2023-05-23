@@ -15,10 +15,20 @@
       if(header_img){
           header_img.style.display = 'none';
       }
-        logo.src = currentURL.split('/').slice(0, 3).join('/') + '/assets/images/logo/bule-logo.png';
+        if (window.location.href.indexOf("energyDetail") === -1) {
+            logo.src = '../assets/images/logo/bule-logo.png';
+        }
+       else{
+            logo.src = '/assets/images/logo/bule-logo.png';
+        }
     } else {
       header_navbar.classList.remove("sticky");
-        logo.src = currentURL.split('/').slice(0, 3).join('/') + '/assets/images/logo/logo.png';
+        if (window.location.href.indexOf("energyDetail") === -1) {
+            logo.src = '../assets/images/logo/bule-logo.png';
+        }
+        else{
+            logo.src = '/assets/images/logo/bule-logo.png';
+        }
         if(header_img){
             header_img.style.display = 'block';
         }
@@ -28,6 +38,7 @@
   //search
     $(document).ready(function () {
         $('#search-button').click(function () {
+            console.log(window.location.href);
             if (window.location.href.indexOf("home") === -1) {
                 window.location.href = "trading?keywords="+$('#search-input').val();
             } else {

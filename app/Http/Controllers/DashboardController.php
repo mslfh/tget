@@ -71,8 +71,6 @@ class DashboardController extends Controller
         $begin = Carbon::tomorrow();
         $begin->subDays($numDays);
 
-
-
         $stores = Store::query()
             ->select('energy_id','selling_price',"created_at")
             ->with([
@@ -125,8 +123,11 @@ class DashboardController extends Controller
             ->where([
                 [ "created_at",">=",  date('Y-m-d H:i:s',$begin->getTimestamp())],
                 [ "created_at","<=",date('Y-m-d H:i:s',$current->getTimestamp())]
-            ])
-            ->where('buyer_id',$user->id??0)->orWhere('seller_id',$user->id??0);
+            ]);
+        if($user->role_id != 1 ){
+            $orders = $orders->where('buyer_id',$user->id??0)->orWhere('seller_id',$user->id??0);
+        }
+
         if($energyType){
             $orders = $orders->whereHas(
                 'store',function($q) use($energyType){

@@ -259,13 +259,16 @@
             var availableVolume = $('#current-volume').html().match(/\d+/)[0];
             let inputVolume = $("#buyVolume").val()
 
+            console.log(availableVolume,inputVolume)
+
             if(!inputVolume){
                 alert("Please enter the amount of volume to buy")
                 return
             }
 
-            if(inputVolume > availableVolume){
-                $("#error").html("Buy Volume exceed the Available volume. Please check again")
+            if(parseInt(inputVolume) > parseInt(availableVolume)){
+                alert("Buy Volume exceed the Available volume. Please check again")
+                return
             } else {
                 var buyPrice = $('#buyPrice').val().match(/\d+/)[0];
                 var buyVolume = $('#buyVolume').val().match(/\d+/)[0];

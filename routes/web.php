@@ -18,6 +18,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\IndexController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\IndexController::class, 'index']);
+
 //user
 Route::get('/getUserInfo', [App\Http\Controllers\HomeController::class, 'getUserInfo']);
 Route::get('/getRole', [App\Http\Controllers\HomeController::class, 'getRole']);
@@ -51,6 +52,7 @@ Route::prefix('mtrading')->group(function () {
 Route::get('/trading', [App\Http\Controllers\OrderController::class, 'index'])->name('trading');
 //trading
 Route::prefix('trading')->group(function () {
+    Route::get('/getEnergyType', [App\Http\Controllers\OrderController::class, 'getEnergyType']);
     Route::post('/submitOrder', [App\Http\Controllers\OrderController::class, 'submitOrder']);
     Route::post('/submitEnergy', [App\Http\Controllers\OrderController::class, 'submitEnergy']);
     Route::get('/energyDetail', [App\Http\Controllers\OrderController::class, 'energyDetail'])->name('energyDetail');

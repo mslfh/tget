@@ -46,21 +46,23 @@
                                     <li class="nav-item">
                                         <a href={{route('trading')}} class="trading" aria-label="Toggle navigation">Trading</a>
                                     </li>
-                                    @if($role_id ==1 && $role_id !=0)
-                                    <li class="nav-item">
-                                        <a href={{route('masterTrading')}} class="trading" aria-label="Toggle navigation">Master of Trading</a>
-                                    </li>
-                                    @endif
-                                    @if($role_id ==1 && $role_id !=0)
-                                    <li class="nav-item">
-                                        <a href={{route('dashboard')}} class="trading" aria-label="Toggle navigation">Dashboard</a>
-                                    </li>
-                                    @endif
+                                    @if(isset($role_id))
+                                        @if($role_id ==1 && $role_id !=0)
+                                        <li class="nav-item">
+                                            <a href={{route('masterTrading')}} class="trading" aria-label="Toggle navigation">Master of Trading</a>
+                                        </li>
+                                        @endif
+                                        @if($role_id ==1 && $role_id !=0)
+                                        <li class="nav-item">
+                                            <a href={{route('dashboard')}} class="trading" aria-label="Toggle navigation">Dashboard</a>
+                                        </li>
+                                        @endif
 
-                                    @if($role_id ==1 && $role_id !=0)
-                                    <li class="nav-item">
-                                        <a href={{route('manage')}} class="trading" aria-label="Toggle navigation">Manage</a>
-                                    </li>
+                                        @if($role_id ==1 && $role_id !=0)
+                                        <li class="nav-item">
+                                            <a href={{route('manage')}} class="trading" aria-label="Toggle navigation">Manage</a>
+                                        </li>
+                                        @endif
                                     @endif
                                     <li class="nav-item">
                                         <a href={{route('profile')}} class="trading" aria-label="Toggle navigation">Profile</a>

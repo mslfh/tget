@@ -58,8 +58,8 @@
                                     <li class="nav-item">
                                         <a href={{route('trading')}} class="trading" aria-label="Toggle navigation">Trading</a>
                                     </li>
-                                    @if(isset($role_id))
 
+                                    @if(isset($role_id))
                                     @if($role_id ==1 && $role_id !=0)
                                         <li class="nav-item">
                                             <a href={{route('masterTrading')}} class="trading" aria-label="Toggle navigation">Master of Trading</a>
@@ -75,8 +75,8 @@
                                             <a href={{route('manage')}} class="trading" aria-label="Toggle navigation">Manage</a>
                                         </li>
                                     @endif
-
                                     @endif
+
                                     <li class="nav-item">
                                         <a href={{route('profile')}} class="trading" aria-label="Toggle navigation">Profile</a>
                                     </li>

@@ -56,7 +56,6 @@ class HomeController extends Controller
 
     public function getUserInfo(Request $request)
     {
-
         $user = Auth::user();
         if(isset($user->id)){
             return $this->success(

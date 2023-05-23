@@ -18,7 +18,7 @@
                     </div>
 
 
-                    @if($role != 2 && $role != 0)
+                    @if($role_id != 2 && $role_id != 0)
                         <div class="col-12">
                             <button type="button" class="btn btn-outline-success sell-button mb-3"
                                     data-bs-toggle="modal"
@@ -68,49 +68,37 @@
                 </div>
                 <div class="modal-body">
                     <p class="text-danger" id="error"></p>
-                    <form>
-                        <div class="mb-3">
-                            <label for="energyType">Energy Type</label>
-                            <select class="form-select" value="" style="font-weight:bold" name="energyType"
-                                    id="energyType">
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                                <option value="E">E</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="Title">Energy Title</label>
-                            <input type="text" class="form-control" id="energyTitleInput" value="">
-                        </div>
-                        <div class="mb-3">
-                            <label>Sell Price</label>
-                            <input type="text" class="form-control" id="sellPrice"
-                                   placeholder="please input your selling price.">
-                        </div>
-                        <div class="mb-3">
-                            <label for="buyVolume">Volume</label>
-                            <input type="text" class="form-control" id="sellVolume"
-                                   placeholder="please input the volume.">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="buyVolume">Zone</label>
-                            <select class="form-select" name="location" id="sellZone">
-                                <option value="" style="color: grey">please select selling zone.</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                                <option value="E">E</option>
-                            </select>
-                        </div>
-                    </form>
+                    <div class="mb-3">
+                        <label for="energySel">Energy</label>
+                        <select class="form-select" value="" style="font-weight:bold" name="energySel"
+                                id="energySel">
+                            @foreach( $Energy as $Ener)
+                            <option value="{{$Ener['id']}}">{{$Ener['title']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Sell Price</label>
+                        <input type="number" class="form-control" id="sellPrice"
+                               placeholder="please input your selling price.">
+                    </div>
+                    <div class="mb-3">
+                        <label for="buyVolume">Volume</label>
+                        <input type="number" class="form-control" id="sellVolume"
+                               placeholder="please input the volume.">
+                    </div>
+                    <div class="mb-3">
+                        <label for="buyVolume">Zone</label>
+                        <select class="form-select" name="location" id="sellZone">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    {{--                <button type="button" class="btn btn-danger" id="cancelButton" onclick="cancel()"--}}
-                    {{--                        data-bs-dismiss="modal">Cancel</button>--}}
                     <button type="button" class="btn btn-primary" id="sellEnergy">
                         Confirm
                     </button>
@@ -149,5 +137,39 @@
 
     <script>
 
+        $('#sellEnergy').click(function (e) {
+
+            var $form = $('#sellerModal form');
+            var $url = "/trading/submitEnergy";
+
+            var formData = new FormData();
+
+            if (!$.isNumeric($('#sellPrice').val()) || parseInt($('#sellPrice').val()) < 0) {
+                alert("Please enter a valid number for the selling price.");
+                return
+            }
+
+
+            if (!$.isNumeric($('#sellVolume').val()) || parseInt($('#sellVolume').val())< 0) {
+                alert("Please enter a valid number for the selling volume.");
+                return
+            }
+            formData.append("energy_id",$('#energySel').val());
+            formData.append("selling_price", $('#sellPrice').val() );
+            formData.append("volume",$('#sellVolume').val() );
+            formData.append("location",$('#sellZone').val());
+            $.ajax({
+                url: $url,
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    alert(response.msg);
+                    location.reload();
+                }
+            });
+
+        });
     </script>
 @endsection
