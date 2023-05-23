@@ -99,15 +99,20 @@ class OrderController extends Controller
 
             //change money of buyer
 
-            $buyInfo = "Buy ".$data['volume']." kWh of ".$store->energy->title." : ".$trade_price;
-               if(! $user->balance($trade_price,0,2,$order->id,$buyInfo)) {
+            $Info = "Buy ".$data['volume']." kWh of ".$store->energy->title." : ".$trade_price;
+            if($data['remark']){
+                $Info .= "(".$data['remark'].")";
+            }
+               if(! $user->balance($trade_price,0,2,$order->id,$Info)) {
                    return $this->error("Fail in getting money from buyer");
                }
 
             //change money of seller
+
             $seller  = User::query()->find($data['seller_id']);
            $price = $trade_price - $market_set->administration_fee;
-            if(! $seller->balance($price,1,2,$order->id,"trading increase of ".$price)) {
+            $Info = "Sell ".$data['volume']." kWh of ".$store->energy->title." : ".$price;
+            if(! $seller->balance($price,1,2,$order->id,$Info)) {
                 return $this->error("Fail in adding money of seller");
             }
 
