@@ -338,7 +338,9 @@
                                         </div>
                                     </div>
                                     <!-- password -->
+
                                     <label for="password" style="font-size: large; font-weight: 700;">Password</label>
+                                    <div id="Err" style="color:red;"></div>
                                     <div class="form-group">
                                         <label style="padding: 0px;">
                                             <image src={{asset("assets/icon/password.png")}} ></image>
@@ -520,8 +522,8 @@
                                                                                 <th style="width:50px">NO.</th>
                                                                                 <th style="width: 130px">Trading Type</th>
                                                                                 <th>Amount of transaction</th>
-                                                                                <th>Trading date time</th>
                                                                                 <th>Description</th>
+                                                                                <th>Trading date time</th>
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -534,13 +536,13 @@
                                                                                 @if($trading->type == 1)
                                                                                     <td>Save money</td>
                                                                                     @elseif($trading->type == 2)
-                                                                                    <td>Trading cost</td>
+                                                                                    <td>Energy Trading</td>
                                                                                 @elseif($trading->type == 3)
                                                                                     <td>withdraw</td>
                                                                                 @endif
                                                                                 <td>{{$trading->money}}</td>
-                                                                                <td>{{$trading->created_at}}</td>
                                                                                 <td>{{$trading->remark}}</td>
+                                                                                <td>{{$trading->created_at}}</td>
 
                                                                             </tr>
                                                                             @endforeach
@@ -552,18 +554,19 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!--Pagination-->
-                                                    <div class="pagination justify-content-center">
-                                                        <ul class=pagination-list>
-                                                            <li class="previous"><a href="javascript:void(0)">Prev</a></li>
-                                                            <li class=active><a href="javascript:void(0)">1</a></li>
-                                                            <li><a href="javascript:void(0)">2</a></li>
-                                                            <li><a href="javascript:void(0)">3</a></li>
-                                                            <li><a href="javascript:void(0)">4</a></li>
-                                                            <li><a href="javascript:void(0)">5</a></li>
-                                                            <li class="next"><a href="javascript:void(0)">Next</a></li>
-                                                        </ul>
-                                                    </div>
+{{--                                                    <!--Pagination-->--}}
+{{--                                                    <div class="pagination justify-content-center">--}}
+{{--                                                        <ul class=pagination-list>--}}
+{{--                                                            <li class="previous"><a href="javascript:void(0)">Prev</a></li>--}}
+{{--                                                            <li class=active><a href="javascript:void(0)">1</a></li>--}}
+{{--                                                            <li><a href="javascript:void(0)">2</a></li>--}}
+{{--                                                            <li><a href="javascript:void(0)">3</a></li>--}}
+{{--                                                            <li><a href="javascript:void(0)">4</a></li>--}}
+{{--                                                            <li><a href="javascript:void(0)">5</a></li>--}}
+{{--                                                            <li class="next"><a href="javascript:void(0)">Next</a></li>--}}
+{{--                                                        </ul>--}}
+{{--                                                    </div>--}}
+
 {{--                                                    <button class='btn col-lg-3 col-7' type='button' id="trading-history"--}}
 {{--                                                            style="float:right; background-color: #24126a;" id="download">Download--}}
 {{--                                                    </button>--}}
@@ -719,14 +722,24 @@
             var formData = new FormData();
 
             formData.append("role_id", $('#role_id').val());
-            if(!$('#password').val() == "******"){
-                formData.append("password",$('#password').val());
+            if($('#password').val()  != "******"){
+                var passwordPattern = /^(?=.*[A-Z].*[A-Z])(?=.*\d)(?=.*[~`!@#$%^&*()_+-={}|\\:;"'<>,.?/])(?!.*\s).{5,10}$/;
+                var password = $('#password').val().trim();
+                console.log(password);
+                console.log("OK");
+                if(passwordPattern.test(password)){
+                    formData.append("password", $('#password').val());;
+                }else{
+                    $("#Err").text("Password include 5~10 characters in length, at least 2 uppercase letters, 1 number and one of special.");
+                    return;
+                }
+
             }
             formData.append("postal_addr",$('#postal_address').val());
             formData.append("zone", $('#zone').val());
 
 
-            console.log(formData)
+            // console.log(formData)
 
             var imageFile = $('#uploadInput')[0].files[0];
             formData.append("userImage", imageFile);
