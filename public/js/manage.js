@@ -15,11 +15,21 @@ function addUser(){
         "postal_addr":postal_addr,
         "profile_photo_path":profile_photo_path
     }
-    console.log(payload)
-    $.post('/index.php/manage/addNewUser',payload, (data)=>{
-        location.reload()
-    })
+    // console.log(payload)
+    if (validateEmail(email)){
+        $.post('/index.php/manage/addNewUser',payload, (data)=>{
+            location.reload()
+        })
+    } else {
+        alert("Please enter a valid email")
+    }
 }
+
+function validateEmail(email) {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+}
+
 
 function removeUser(userId){
     $.post('/index.php/manage/removeUser',{"user_id": userId},(data) => {

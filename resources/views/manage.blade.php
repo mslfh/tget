@@ -48,7 +48,15 @@
                                                                 <td>{{$user->id}}</td>
                                                                 <td>{{$user->name}}</td>
                                                                 <td>{{$user->email}}</td>
-                                                                <td>{{$user->role_id}}</td>
+                                                                @if($user->role_id == 1)
+                                                                    <td>Manager</td>
+                                                                @elseif($user->role_id == 2)
+                                                                    <td>Buyer</td>
+                                                                @elseif($user->role_id == 3)
+                                                                    <td>Seller</td>
+                                                                @else
+                                                                    <td>Seller & Buyer</td>
+                                                                @endif
                                                                 @if($user->status == 1)
                                                                     <td>Active</td>
                                                                 @else
