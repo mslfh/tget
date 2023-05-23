@@ -126,20 +126,29 @@
 
             <div class="row testimonial-slider" id="energy-list">
 
+                @foreach($energy_list as $energy)
+
                 <div class="col-lg-6 col-12 ">
                     <div class=single-testimonial>
                         <div class=inner-content>
                             <div class=quote-icon> <i class="lni lni-quotation"></i> </div>
                             <div class=text>
-                                <p>“Energy from the sun's rays that can be converted into electricity using solar panels or used
-                                    directly for heating and lighting.”</p>
+                                <p style="display: -webkit-box;
+                                  -webkit-line-clamp: 5;
+                                  -webkit-box-orient: vertical;
+                                  overflow: hidden;
+                                  text-overflow: ellipsis;">{{$energy['description']}}</p>
                             </div>
-                            <div class=author> <img src={{asset("assets/images/energy-list/solar.jpg")}} alt="#">
-                                <h4 class=name>Solar Energy <span class=deg>Sun's rays</span> </h4>
+                            <a href="trading/energyDetail?id={{$energy['id']}}">
+                            <div class=author>
+                                <img src="{{$energy['image']}}" alt="#">
+                                <h4 class=name>{{$energy['type']}} <span class=deg>{{$energy['title']}}</span> </h4>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
+                @endforeach
                 <div class="col-lg-6 col-12 ">
                     <div class=single-testimonial>
                         <div class=inner-content>

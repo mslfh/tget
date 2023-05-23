@@ -277,8 +277,7 @@
                             <div class=row style="margin-bottom :0px">
                                 <!-- Image of user -->
                                 <div class="col-lg-5 col-5" style="margin-top: 10px; ">
-                                    <img id="personalAvatar" class="rounded-circle p-1 border"
-                                         >
+                                    <img id="personalAvatar" class="rounded-circle p-1 border" height="350px" width="350px">
 
                                     <input type="file" id="uploadInput" style="display: none;">
 

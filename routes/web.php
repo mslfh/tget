@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\IndexController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\IndexController::class, 'index']);
 //user
 Route::get('/getUserInfo', [App\Http\Controllers\HomeController::class, 'getUserInfo']);
 Route::get('/getRole', [App\Http\Controllers\HomeController::class, 'getRole']);
@@ -35,7 +35,6 @@ Route::get('/masterTrading', [App\Http\Controllers\MasterTradingController::clas
 Route::prefix('mtrading')->group(function () {
     Route::get('/getServiceFee', [App\Http\Controllers\MasterTradingController::class, 'getServiceFee']);
     Route::post('/updateFee', [App\Http\Controllers\MasterTradingController::class, 'updateFee']);
-
     Route::get('/getEnergyList', [App\Http\Controllers\MasterTradingController::class, 'getEnergyList']);
     Route::get('/getTradingHistory', [App\Http\Controllers\MasterTradingController::class, 'getTradingHistory']);
     Route::post('/addNewEnergy', [App\Http\Controllers\MasterTradingController::class, 'addNewEnergy']);

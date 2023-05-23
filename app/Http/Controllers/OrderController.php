@@ -27,8 +27,14 @@ class OrderController extends Controller
 
         $pageSize = $request->get('pageSize',6);
 
+        $key = $request->get("keywords");
+        $list = Energy::query();
 
-        $list = Energy::query()->paginate($pageSize);
+        if($key){
+            $list->where('title',$key)->orWhere('type',$key);
+        }
+
+        $list = $list->paginate($pageSize);
 
         foreach ( $list as $index=> $li){
             $li->price = $average_price = Store::query()->where(
@@ -37,6 +43,7 @@ class OrderController extends Controller
             $li->vol = $average_price = Store::query()->where(
                 'energy_id',$li->id
             )->max('current_volume');
+            $li->time = $li->created_at->format("d/m/Y");
         }
 
         return view('trading', compact('list'))->with([
