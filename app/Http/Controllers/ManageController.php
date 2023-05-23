@@ -13,7 +13,7 @@ class ManageController extends Controller
         $user =  Auth::user();
         $users = $this->getAllUser($request)->getData()->data;
 //        dd($users->list);
-        return view('manage',["users" => $users->list, 'role'=>$user->role_id]);
+        return view('manage',["users" => $users->list, 'role_id'=>$user->role_id]);
     }
 
 

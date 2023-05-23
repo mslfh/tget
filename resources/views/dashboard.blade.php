@@ -12,8 +12,8 @@
 {{--    <link rel="stylesheet" href={{asset("static/css/icons.css")}}>--}}
 {{--    <link rel="stylesheet" href={{asset("static/css/app.css")}}>--}}
 {{--    <link rel="stylesheet" href={{asset("static/css/dark-style.css")}}>--}}
-
-    <div class="container page-wrapper page-content">
+    <div class="section">
+        <div class="container page-wrapper page-content">
         <section class="content-header">
             <div class="page-title">
                 <div class="row">
@@ -27,7 +27,7 @@
             <div class="page-content">
                 <div class="container-fluid">
                     {{--Manager Only Views--}}
-                    @if($role == 1)
+                    @if($role_id == 1)
                         <div class="row manager-view" id="user-summary">
                         <div class="col-lg-12">
                             <div class="card">
@@ -154,5 +154,6 @@
                 </div>
             </div>
         </section>
+    </div>
     </div>
 @endsection

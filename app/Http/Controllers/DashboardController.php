@@ -17,7 +17,7 @@ class DashboardController extends Controller
            $user =  Auth::user();
            $data =  $this->getMarketSummary($request)->getData()->data;
            $userData = $this->getActiveUserSummary($request)->getData()->data;
-           return view('dashboard',['data'=>$data,'userData'=>$userData, 'role'=>$user->role_id]);
+           return view('dashboard',['data'=>$data,'userData'=>$userData, 'role_id'=>$user->role_id]);
     }
 
     public function getActiveUserSummary(Request $request)

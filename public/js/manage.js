@@ -22,23 +22,15 @@ function addUser(){
 }
 
 function removeUser(userId){
-
-    // alert("Are you sure you want to delete this user?")
     $.post('/index.php/manage/removeUser',{"user_id": userId},(data) => {
         if(!data.status){
             alert(data.msg)
         } else {
             if (window.confirm("Are you sure you want to delete this user?")) {
-                // window.open("/index.php/manage");
                 location.reload()
             }
         }
     })
-}
-
-
-function remove_user_success(userId){
-    alert("User Id: user")
 }
 
 function changeUserStatus(currUser, status){

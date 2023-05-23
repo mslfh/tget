@@ -3,7 +3,7 @@
 @section('content')
     <script src="{{asset("/js/manage.js")}}"></script>
     <div class="section">
-        @if($role == 1)
+        @if($role_id == 1)
 
             <div class="container page-wrapper page-content">
                 <section class="content-header">
