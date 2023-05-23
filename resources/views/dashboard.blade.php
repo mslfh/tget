@@ -90,7 +90,7 @@
                                             <thead>
                                             <tr>
                                                 <th class="border-top-0">Energy Type</th>
-                                                <th class="border-top-0">Volume</th>
+                                                <th class="border-top-0">Available Volume</th>
                                                 <th class="border-top-0">Price</th>
                                             </tr>
                                             </thead>
