@@ -714,15 +714,16 @@
 
         $('#saveUser').click(function() {
 
-            var $form = $('#update-form form');
             var $url = "/updateUser";
 
             var formData = new FormData();
 
-            formData.append("role_id", $form.find('#role_id').val());
-            formData.append("password", $form.find('#password').val());
-            formData.append("postal_addr", $form.find('#postal_address').val());
-            formData.append("zone", $form.find('#zone').val());
+            formData.append("role_id", $('#role_id').val());
+            if(!$('#password').val() == "******"){
+                formData.append("password",$('#password').val());
+            }
+            formData.append("postal_addr",$('#postal_address').val());
+            formData.append("zone", $('#zone').val());
 
 
             console.log(formData)
