@@ -191,6 +191,9 @@
     <script>
         $(document).ready(function () {
 
+
+
+
             $('#buyEnergyButton').click(function () {
 
                 var availableVolume = $('#current-volume').html().match(/\d+/)[0];

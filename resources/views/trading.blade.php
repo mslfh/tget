@@ -38,10 +38,18 @@
                         <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".{{2+$loop->index*2}}s">
                             <div class="feature-box">
                                 <div class="tumb">
+                                    @if(isset($item['vol']) )
+
                                     <a class="btn btn-link" href="/trading/energyDetail?id={{$item['id']}}">
-                                        <img src="./assets/images/trading/hydro.png" alt="solar energy">
+                                        <img src="{{$item['image']}}" alt="{{$item['title']}}">
                                         <br>
                                     </a>
+                                    @else
+                                        <a class="btn btn-a-no" >
+                                            <img src="{{$item['image']}}" alt="{{$item['title']}}">
+                                            <br>
+                                        </a>
+                                    @endif
                                 </div>
                                 <h4 class="solar1">{{$item['title']}}</h4>
                                 <p style="display: -webkit-box;
@@ -142,7 +150,7 @@
 
     <script>
 
-        $('#sellEnergy').click(function (e) {
+        $('#sellEnergy').click(function () {
 
             var $url = "/trading/submitEnergy";
 
@@ -190,6 +198,9 @@
 
         });
 
+        $('a.btn-a-no').click(function (){
+            alert('No Available Volume')
+        });
 
 
     </script>

@@ -49,7 +49,7 @@ Route::prefix('mtrading')->group(function () {
 
 
 //add trading page
-Route::get('/trading', [App\Http\Controllers\OrderController::class, 'index'])->name('trading');
+Route::get('/trading', [App\Http\Controllers\IndexController::class, 'tradingIndex'])->name('trading');
 //trading
 Route::prefix('trading')->group(function () {
     Route::get('/getEnergyType', [App\Http\Controllers\OrderController::class, 'getEnergyType']);

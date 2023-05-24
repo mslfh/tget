@@ -324,6 +324,9 @@
                                     <!-- Position -->
                                     <label for="" style="font-size: large; font-weight: 700;">Role</label>
 
+
+
+                                    @if($role_id != 1)
                                     <div class="form-group">
                                         <div>
                                             <label style="padding: 0px;">
@@ -337,6 +340,15 @@
                                             </select>
                                         </div>
                                     </div>
+                                    @else
+                                        <div class="form-group">
+                                            <label style="padding: 0px;">
+                                                <image src={{asset("assets/icon/role.png")}} ></image>
+                                            </label>
+                                            <input class=form-control  maxlength="13" value="Manager" readonly>
+                                        </div>
+
+                                    @endif
                                     <!-- password -->
 
                                     <label for="password" style="font-size: large; font-weight: 700;">Password</label>
